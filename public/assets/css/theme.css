@@ -11,7 +11,7 @@
     --color-yellow: #fbbf24;
     --color-primary: #3b82f6;
     --color-widget: #334155;
-    --color-bakcground: #f1f5f9;
+    --color-background: #f1f5f9;
 
     --color-nav-hover: #94a3b8;
 
@@ -31,7 +31,7 @@
 }
 
 body {
-    background: var(--color-bakcground);
+    background: var(--color-background);
 }
 
 .toast {
