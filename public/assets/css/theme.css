@@ -94,16 +94,19 @@ body {
     margin-right: 6px;
 }
 
-.homepage .image-content img{
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    max-width: fit-content;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+.homepage {
+    background: url('/assets/img/background.png');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height: 100vh;
+width: 100%; /* Use this instead of max-width: fit-content; */
+margin: 0;
+padding: 0;
+font-family: Arial, sans-serif;
 }
+
+
 .wrapper .login-section {
     display: flex;
     justify-content: center;
@@ -117,6 +120,9 @@ body {
     margin: 50px 0;
     font-size: 40px;
     text-align: center;
+    color: var(--color-text);
+    background-color: green;
+    padding: 10px;
 }
 
 .wrapper .login-section .login-category {
