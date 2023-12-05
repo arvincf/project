@@ -95,7 +95,6 @@ body {
 }
 
 .homepage .image-content img{
-    background-image: url('/assets/img/background.png'); 
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
