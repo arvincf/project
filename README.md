@@ -1,1 +1,0 @@
-Online Inventory Management System
