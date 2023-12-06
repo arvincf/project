@@ -11,7 +11,21 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <p>Schedule of Reservation</p>
+            <h1>Schedule Of Reservation</h1>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <th>Customer Id</th>
+                            <th>Product Name</th>
+                            <th>Details</th>
+                            <th>Quantity</th>
+                            <th>Reservation Date</th>
+                            <th>Reservation Status</th>
+                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                <th>Action</th>
+                            @endif
+                        </thead>
         </main>
     </div>
 

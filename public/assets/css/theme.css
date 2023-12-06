@@ -95,7 +95,7 @@ body {
 }
 
 .homepage {
-    background: url('/assets/img/background.png');
+   background-color: #C38154; 
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
@@ -121,7 +121,7 @@ font-family: Arial, sans-serif;
     font-size: 40px;
     text-align: center;
     color: var(--color-text);
-    background-color: green;
+    background-color: #DFA878;
     padding: 10px;
 }
 
