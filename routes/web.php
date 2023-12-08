@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ReservationRecordController;
 use Illuminate\Support\Facades\Route;
 
@@ -138,6 +139,10 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(ReservationRecordController::class)->group(function () {
             Route::get('/manager/reservationrecord', 'reservationrecord')->name('reservationrecord');
+        });
+
+        Route::controller(SalesController::class)->group(function () {
+            Route::get('/manager/managesales', 'sales')->name('managesales');
         });
     });
 });

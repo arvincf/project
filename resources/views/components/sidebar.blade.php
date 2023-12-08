@@ -102,7 +102,7 @@
                 <i class="bi bi-caret-down"></i>
             </button>
             <div class="dropdown-container">
-                <li><a href="#">Manage Sales</a></li>
+                <li><a href="{{ route('manager.managesales') }}">Manage Sales</a></li>
                 <li><a href="#">Search Sales</a></li>
             </div>
             <div class="nav-item">
