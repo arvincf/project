@@ -98,7 +98,21 @@ class UsersController extends Controller
         return back()->with('deleted', 'User Deleted!');
     }
 
+    public function searchUsers(Request $request)
+{
+    $query = $request->input('query');
+
     
+    $users = User::where('firstname', 'like', '%' . $query . '%')
+                 ->orWhere('lastname', 'like', '%' . $query . '%')
+                 ->orWhere('address', 'like', '%' . $query . '%')
+                 ->orWhere('email', 'like', '%' . $query . '%')
+                 ->orWhere('contact', 'like', '%' . $query . '%')
+                 ->paginate(5);  
+
+    return view('userpage.useraccount.manageusers', compact('users'));
+}
+
 
     public function profile()
     {

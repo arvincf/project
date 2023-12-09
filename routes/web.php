@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(UsersController::class)->group(function () {
             Route::get('/admin/profile', 'profile')->name('profile');
+            Route::get('/search-users', 'searchUsers')->name('search-users');
             Route::get('/admin/newapplicant', 'newapplicants')->name('newapplicant');
             Route::get('/admin/manageusers', 'manageusers')->name('manageusers');
             Route::post('/admin/manageusers', 'createAccount')->name('manageusers.create');
