@@ -98,6 +98,8 @@ class UsersController extends Controller
         return back()->with('deleted', 'User Deleted!');
     }
 
+    
+
     public function profile()
     {
         return view("userpage.profile");
