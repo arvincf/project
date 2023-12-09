@@ -10,7 +10,7 @@
     --color-red: #ef4444;
     --color-yellow: #fbbf24;
     --color-primary: #3b82f6;
-    --color-widget: #334155;
+    --color-widget: #abe207ac;
     --color-background: #f1f5f9;
 
     --color-nav-hover: #94a3b8;
@@ -95,7 +95,7 @@ body {
 }
 
 .homepage {
-   background-color: #C38154; 
+background: url('/assets/img/backgroundhome.png');
 background-size: cover;
 background-position: center;
 background-repeat: no-repeat;
