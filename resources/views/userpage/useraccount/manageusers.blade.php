@@ -12,8 +12,8 @@
         <main class="main-container">
             @include('components.header')
             <div class="input-group">
-            <input id="searchInput" class="form-control border-0 small" type="text" placeholder="Search for ..." />
-            <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                    <input id="searchInput" name="query" class="form-control border-0 small" type="text" placeholder="Search for ..." />
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>              
             </div>
             <h1>Users Account</h1>
             <div class="page-btn">
@@ -70,7 +70,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    @include('components.search')
+    @include('partials.search')
     @include('partials.toastr-script')
 </body>
 

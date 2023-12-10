@@ -11,10 +11,6 @@ class UsersController extends Controller
 {
     private $user;
 
-    public function __construct()
-    {
-        $this->user = new User;
-    }
     public function manageusers()
     {
         $users = User::where('id', '!=', auth()->user()->id)
@@ -110,9 +106,8 @@ class UsersController extends Controller
                  ->orWhere('contact', 'like', '%' . $query . '%')
                  ->paginate(5);  
 
-    return view('userpage.useraccount.manageusers', compact('users'));
+    return view('userpage.useraccount.manageusers', compact('users'))->render();
 }
-
 
     public function profile()
     {
