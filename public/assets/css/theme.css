@@ -10,7 +10,7 @@
     --color-red: #ef4444;
     --color-yellow: #fbbf24;
     --color-primary: #3b82f6;
-    --color-widget: #abe207ac;
+    --color-widget: #c2ac32ac;
     --color-background: #f1f5f9;
 
     --color-nav-hover: #94a3b8;
@@ -121,7 +121,6 @@ font-family: Arial, sans-serif;
     font-size: 40px;
     text-align: center;
     color: var(--color-text);
-    background-color: #DFA878;
     padding: 10px;
 }
 

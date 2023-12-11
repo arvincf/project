@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Delivery;
 use App\Models\Product;
 use App\Models\User;
 
@@ -11,8 +12,9 @@ class MainController extends Controller
     {
         $totalUsers = User::count();
         $totalProducts = Product::count();
+        $totalDelivery = Delivery::count();
 
-        return view("userpage.dashboard", compact("totalUsers", "totalProducts"));
+        return view("userpage.dashboard", compact("totalUsers", "totalProducts", "totalDelivery"));
     }
 
     public function settings()

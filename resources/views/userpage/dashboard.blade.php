@@ -54,7 +54,7 @@
                                 <i class="bi bi-cash"></i>
                             </div>
                             <div class="widget-details">
-                                <p>11</p>
+                                <p>{{ $totalDelivery}}</p>
                                 <span>Delivery</span>
                             </div>
                         </div>
