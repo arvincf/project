@@ -45,7 +45,7 @@
                                 <i class="bi bi-list-ul"></i>
                             </div>
                             <div class="widget-details">
-                                <p>12</p>
+                                <p>{{ $totalreservation }}</p>
                                 <span>Reservation</span>
                             </div>
                         </div>
