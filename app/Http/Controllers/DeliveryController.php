@@ -11,6 +11,6 @@ class DeliveryController extends Controller
     {
         $delivers = Delivery::all();
 
-        return view('userpage.delivery', compact('delivers'));
+        return view('userpage.delivery.delivery', compact('delivers'));
     }
 }
