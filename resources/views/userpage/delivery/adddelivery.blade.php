@@ -7,14 +7,15 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
+                    action="{{ route('member.delivery') }}"
                     method="POST">
                     @csrf
                     <label>Product</label></br>
                     <select name="type" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
-                        
-
+                        @foreach ($products as $product)
+                            <option value="{{ $product->id }}">{{ $product->prodname }}</option>
+                        @endforeach
                     </select></br>
                     <label for="birthday">Birthday:</label>
                     <input type="date" id="birthday" name="birthday" class="form-control"></br>

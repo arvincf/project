@@ -8,9 +8,10 @@ use App\Models\Product;
 class DeliveryController extends Controller
 {
     public function Deliver()
-    {
-        $delivers = Delivery::all();
+{
+    $delivers = Delivery::all();
+    $products = Product::all();
 
-        return view('userpage.delivery.delivery', compact('delivers'));
-    }
+    return view('userpage.delivery.delivery', compact('delivers', 'products'));
+}
 }
