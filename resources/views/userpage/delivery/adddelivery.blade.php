@@ -23,7 +23,7 @@
                     <input type="number" name="contact" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="[0-9]{11}" title="Please enter 11 digits" minlength="5" maxlength="5"
-                        placeholder="Contact Number" required><br>
+                        placeholder="Quantity" required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>

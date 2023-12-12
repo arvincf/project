@@ -14,4 +14,6 @@ class DeliveryController extends Controller
 
     return view('userpage.delivery.delivery', compact('delivers', 'products'));
 }
+
+
 }
