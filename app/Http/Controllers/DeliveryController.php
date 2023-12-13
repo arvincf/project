@@ -39,7 +39,7 @@ class DeliveryController extends Controller
     }
 
     $this->delivers->create([
-        'prodname' => trim($request->prodname),
+        'prodname' => trim($request->prodName),
         'dateofstoring' => now(),
         'quantity' => trim($request->quantity),
     ]);

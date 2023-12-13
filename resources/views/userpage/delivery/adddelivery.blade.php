@@ -11,7 +11,7 @@
                     method="POST">
                     @csrf
                     <label>Product</label></br>
-                    <select name="type" class="form-select" required>
+                    <select name="prodname" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
                         @foreach ($products as $product)
                             <option value="{{ $product->prodname }}">{{ $product->prodname }}</option>
@@ -22,7 +22,7 @@
                     <label>Quantity</label><br>
                     <input type="number" name="contact" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        pattern="[0-9]{11}" title="Please enter 11 digits" minlength="5" maxlength="5"
+                        pattern="[0-9]{11}" minlength="5" maxlength="5"
                         placeholder="Quantity" required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
