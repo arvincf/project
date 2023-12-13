@@ -13,15 +13,15 @@
             <section class="main-section">
                 @include('components.header')
                 <h1>Deliver</h1>
-                @if(auth()->user()->type == 'Member')
-                            <div class="page-btn">
-                                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
-                                        class="bi bi-plus-lg"></i>Add Delivery
-                                </button>
-                            </div>
-                            @include('userpage.delivery.adddelivery')
-                            @endif
-                
+                @if (auth()->user()->type == 'Member')
+                    <div class="page-btn">
+                        <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
+                                class="bi bi-plus-lg"></i>Add Delivery
+                        </button>
+                    </div>
+                    @include('userpage.delivery.adddelivery')
+                @endif
+
                 <div class="card">
                     <div class="card-body">
                         <table class="table">
@@ -31,8 +31,8 @@
                                 <th>Supplier Name</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                @if(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-                                <th>Action</th>
+                                @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                    <th>Action</th>
                                 @endif
                             </thead>
                             <tbody>
@@ -48,12 +48,12 @@
                                                 {{ $deliver->status }}
                                             </div>
                                         </td>
-                                        @if(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-                                        <td>
-                                            <button type="button" class="btn btn-primary">
-                                                Delivered
-                                            </button>
-                                        </td>
+                                        @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                            <td>
+                                                <button type="button" class="btn btn-primary">
+                                                    Delivered
+                                                </button>
+                                            </td>
                                         @endif
                                     </tr>
                                 @endforeach
