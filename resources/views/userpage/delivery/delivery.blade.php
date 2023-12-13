@@ -13,6 +13,15 @@
             <section class="main-section">
                 @include('components.header')
                 <h1>Deliver</h1>
+                @if(auth()->user()->type == 'Member')
+                            <div class="page-btn">
+                                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
+                                        class="bi bi-plus-lg"></i>Add Delivery
+                                </button>
+                            </div>
+                            @include('userpage.delivery.adddelivery')
+                            @endif
+                
                 <div class="card">
                     <div class="card-body">
                         <table class="table">
@@ -49,14 +58,6 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                            @if(auth()->user()->type == 'Member')
-                            <div class="page-btn">
-                                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
-                                        class="bi bi-plus-lg"></i>Add Delivery
-                                </button>
-                            </div>
-                            @include('userpage.delivery.adddelivery')
-                            @endif
                         </table>
                     </div>
                 </div>

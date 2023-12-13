@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(DeliveryController::class)->group(function () {
             Route::get('/member/delivery', 'Deliver')->name('delivery');
+            Route::post('/member/delivery', 'Adddeliver')->name('Adddeliver');
         });
 
     });

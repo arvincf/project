@@ -7,18 +7,18 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ route('member.delivery') }}"
+                    action="{{ route('member.adddelivery') }}"
                     method="POST">
                     @csrf
                     <label>Product</label></br>
                     <select name="type" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
                         @foreach ($products as $product)
-                            <option value="{{ $product->id }}">{{ $product->prodname }}</option>
+                            <option value="{{ $product->prodname }}">{{ $product->prodname }}</option>
                         @endforeach
                     </select></br>
                     <label for="birthday">Birthday:</label>
-                    <input type="date" id="birthday" name="birthday" class="form-control"></br>
+                    <input type="date" id="birthday" name="birthday" class="form-control" required></br>
                     <label>Quantity</label><br>
                     <input type="number" name="contact" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
