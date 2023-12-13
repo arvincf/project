@@ -48,14 +48,15 @@
                                                 {{ $deliver->status }}
                                             </div>
                                         </td>
+                                        <td>
                                         @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-                                            <td>
-                                                <button type="button" class="btn btn-primary">
-                                                    Delivered
-                                                </button>
-                                            </td>
+                                        <div class="action-btn">
+                                            <a href="#delivered{{ $deliver->id }}" class="btn-primary" title="Deliver" 
+                                                data-bs-toggle="modal"></i>Delivered</a>
                                         @endif
+                                        </td>
                                     </tr>
+                                    @include('userpage.delivery.deliverymodal')
                                 @endforeach
                             </tbody>
                         </table>

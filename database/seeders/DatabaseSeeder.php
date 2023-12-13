@@ -72,7 +72,17 @@ class DatabaseSeeder extends Seeder
         Product::create([
             "id" => 1,
             "prodname" =>  "Arabica",
-            "supplierName" => "Mae",
+            "supplierName" => "Jochelle Mae",
+            "quantity" => 100,
+            "unitprice" => 50,
+            "details" => "Lorem ipsum",
+            "dateofstoring" => "2023-03-12"
+        ]);
+
+        Product::create([
+            "id" => 2,
+            "prodname" =>  "Robusta",
+            "supplierName" => "Jochelle Mae",
             "quantity" => 100,
             "unitprice" => 50,
             "details" => "Lorem ipsum",
@@ -81,16 +91,16 @@ class DatabaseSeeder extends Seeder
 
         Delivery::create([
             "id" => 1,
-            "supplierName" => "Mae",
+            "supplierName" => "Jochelle Mae",
             "quantity" => 20,
-            "prodName" => "Barako",
+            "prodName" => "Robusta",
             "status" => "On Deliver",
             "deliverydate" => "2022-12-12",
         ]);
 
         Delivery::create([
             "id" => 2,
-            "supplierName" => "Mae",
+            "supplierName" => "Jochelle Mae",
             "quantity" => 20,
             "prodName" => "Arabica",
             "status" => "Delivered",

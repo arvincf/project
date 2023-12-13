@@ -29,8 +29,8 @@ class DeliveryController extends Controller
     public function Adddelivery(Request $request)
 {
     $validation = Validator::make($request->all(), [
-        'prodname' => 'required',
-        'Date' => 'required',
+        'prodName' => 'required',
+        'deliverydate' => 'required',
         'quantity' => 'required',
     ]);
 
@@ -39,11 +39,21 @@ class DeliveryController extends Controller
     }
 
     $this->delivers->create([
-        'prodname' => trim($request->prodName),
-        'dateofstoring' => now(),
+        'id' => $this->delivers->max('id') + 1,
+        'supplierName' => trim($request->supplierName),
+        'prodName' => trim($request->prodName),
+        'status' => trim($request->status),
+        'deliverydate' => trim($request->deliverydate),
         'quantity' => trim($request->quantity),
+        'dateofstoring' => now()
     ]);
 
     return back()->with('success', "Deliver product is successfully added!");
 }
+
+    public function updateDelivery()
+{
+
+}
+
 }

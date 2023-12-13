@@ -10,17 +10,19 @@
                     action="{{ route('member.adddelivery') }}"
                     method="POST">
                     @csrf
+                    <input type="hidden" name="supplierName" value="{{ auth()->user()->firstname }}" class="form-control">
                     <label>Product</label></br>
-                    <select name="prodname" class="form-select" required>
+                    <select name="prodName" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
                         @foreach ($products as $product)
                             <option value="{{ $product->prodname }}">{{ $product->prodname }}</option>
                         @endforeach
                     </select></br>
-                    <label for="birthday">Birthday:</label>
-                    <input type="date" id="birthday" name="birthday" class="form-control" required></br>
+                    <input type="hidden" name="status" value="On Deliver" class="form-control">
+                    <label for="deliverydate">Delivery Date:</label>
+                    <input type="date" id="deliverydate" name="deliverydate" class="form-control" required></br>
                     <label>Quantity</label><br>
-                    <input type="number" name="contact" class="form-control"
+                    <input type="number" name="quantity" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="[0-9]{11}" minlength="5" maxlength="5"
                         placeholder="Quantity" required><br>
