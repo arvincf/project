@@ -30,7 +30,6 @@ class DeliveryController extends Controller
 {
     $validation = Validator::make($request->all(), [
         'prodName' => 'required',
-        'deliverydate' => 'required',
         'quantity' => 'required',
     ]);
 
@@ -43,7 +42,7 @@ class DeliveryController extends Controller
         'supplierName' => trim($request->supplierName),
         'prodName' => trim($request->prodName),
         'status' => trim($request->status),
-        'deliverydate' => trim($request->deliverydate),
+        'deliverydate' => now(),
         'quantity' => trim($request->quantity),
         'dateofstoring' => now()
     ]);
@@ -51,9 +50,20 @@ class DeliveryController extends Controller
     return back()->with('success', "Deliver product is successfully added!");
 }
 
-    public function updateDelivery()
+public function updateDelivery(Request $request, $id)
 {
+    try {
+        $delivery = $this->delivers->findOrFail($id);
 
+        $delivery->update([
+            'status' => trim($request->status)
+        ]);
+
+        return back()->with('success', 'Delivery Updated!');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Failed to update delivery. ' . $e->getMessage());
+    }
 }
+
 
 }

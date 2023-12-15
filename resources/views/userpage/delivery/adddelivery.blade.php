@@ -19,8 +19,6 @@
                         @endforeach
                     </select></br>
                     <input type="hidden" name="status" value="On Deliver" class="form-control">
-                    <label for="deliverydate">Delivery Date:</label>
-                    <input type="date" id="deliverydate" name="deliverydate" class="form-control" required></br>
                     <label>Quantity</label><br>
                     <input type="number" name="quantity" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"

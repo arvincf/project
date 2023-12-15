@@ -2,17 +2,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">REMOVE PRODUCT</h5>
+                <h5 class="modal-title">DELIVERED PRODUCT</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form
-                    action=""
+                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.update.delivery', $deliver->id) : route('admin.update.delivery', $deliver->id) }}"
                     method="POST">
-                    @method('DELETE')
+                    @method('PUT')
                     @csrf
-                    <h4 class="text-center">Are yuo sure that this product is delivered</h4>
+                    <h4 class="text-center">Are you sure that this product is delivered</h4>
                     <h5 class="text-center">Product Name: {{ $deliver->prodName }}</h5>
+                    <input type="hidden" name="status" value="Delivered" class="form-control">
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-success">Delivered</button>

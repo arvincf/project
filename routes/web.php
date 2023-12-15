@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(DeliveryController::class)->group(function () {
             Route::get('/admin/delivery', 'Deliver')->name('delivery');
+            Route::put('/admin/delivery/{id}', 'updateDelivery')->name('update.delivery');
         });
 
         Route::controller(UsersController::class)->group(function () {
@@ -128,6 +129,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(DeliveryController::class)->group(function () {
             Route::get('/manager/delivery', 'Deliver')->name('delivery');
+            Route::put('/manager/delivery/{id}', 'updateDelivery')->name('update.delivery');
         });
 
         Route::controller(UsersController::class)->group(function () {
