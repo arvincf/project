@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/admin/manageusers', 'createAccount')->name('manageusers.create');
             Route::patch('/admin/manageusers/{id}', 'updateAccount')->name('manageusers.update');
             Route::delete('/admin/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
+            Route::patch('/admin/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {
@@ -139,6 +140,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/manager/manageusers', 'createAccount')->name('manageusers.create');
             Route::patch('/manager/manageusers/{id}', 'updateAccount')->name('manageusers.update');
             Route::delete('/manager/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
+            Route::patch('/manager/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {

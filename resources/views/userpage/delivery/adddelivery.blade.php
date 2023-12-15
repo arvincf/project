@@ -10,7 +10,7 @@
                     action="{{ route('member.adddelivery') }}"
                     method="POST">
                     @csrf
-                    <input type="hidden" name="supplierName" value="{{ auth()->user()->firstname }}" class="form-control">
+                    <input type="hidden" name="supplierName" value="{{ auth()->user()->firstname }}">
                     <label>Product</label></br>
                     <select name="prodName" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
@@ -18,7 +18,7 @@
                             <option value="{{ $product->prodname }}">{{ $product->prodname }}</option>
                         @endforeach
                     </select></br>
-                    <input type="hidden" name="status" value="On Deliver" class="form-control">
+                    <input type="hidden" name="status" value="On Deliver">
                     <label>Quantity</label><br>
                     <input type="number" name="quantity" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"

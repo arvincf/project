@@ -39,7 +39,7 @@
                                     <td>{{ $user->contact }}</td>
                                     <td style="width:30%;">
                                         <div class="action-btn">
-                                            <a href="#" class="btn-success" title="Approve"
+                                            <a href="#approve{{ $user->id }}" class="btn-success" title="Approve"
                                                 data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Approve
                                             </a>
                                             <a href="#show{{ $user->id }}" class="btn-warning" title="View"
@@ -49,6 +49,7 @@
                                     </td>
                                     @include('userpage.useraccount.useraccountmodal')
                                 </tr>
+                                @include('userpage.useraccount.approvemodal')
                             @endforeach
                         </tbody>
                     </table>

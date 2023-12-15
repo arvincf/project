@@ -91,6 +91,13 @@ class UsersController extends Controller
         return back()->with('success', 'User Updated!');
     }
 
+    public function approveaccount(Request $request, $id){
+        $this->user->find($id)->update([
+            'type' => trim($request->type),
+        ]);
+        return back()->with('success', 'User Updated!');
+    }
+
     public function removeAccount($id)
     {
         $this->user->destroy($id);
