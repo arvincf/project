@@ -18,6 +18,7 @@ class UsersController extends Controller
     public function manageusers()
     {
         $users = User::where('id', '!=', auth()->user()->id)
+                ->where('type', '!=', 'manager')
                 ->where('type', '!=', 'applicant')
                 ->simplePaginate(5);
     

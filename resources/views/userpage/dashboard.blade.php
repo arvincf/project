@@ -61,7 +61,7 @@
                     </section>
                 @elseif(auth()->user()->type == 'Applicant')
                     <h1>Dashboard</h1>
-                    <p>We will just email you to your account.</p>
+                    <p>We will just email you to your account: {{ auth()->user()->email }} .</p>
                     
                 @elseif(auth()->user()->type == 'Manager')
                     <h1 class="fw-medium">Dashboard,</h1>

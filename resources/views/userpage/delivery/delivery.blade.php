@@ -51,8 +51,9 @@
                                         <td>
                                         @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
                                         <div class="action-btn">
-                                            <a href="#delivered{{ $deliver->id }}" class="btn-primary" title="Deliver" 
-                                                data-bs-toggle="modal"></i>Delivered</a>
+                                            <a href="#delivered{{ $deliver->id }}" class="btn btn-primary{{ $deliver->status === 'delivered' ? ' disabled' : '' }}" title="Deliver"
+                                                data-bs-toggle="modal">Delivered</a>
+                                        </div>
                                         @endif
                                         </td>
                                     </tr>
