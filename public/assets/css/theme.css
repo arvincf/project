@@ -529,6 +529,12 @@ table td {
     color: rgb(148 163 184);
 }
 
+/* Styles for the grid view container */
+#grid-view {
+    padding: 20px;
+}
+
+/* Styles for the card profile */
 #grid-view .card-profile {
     border: 1px solid #dee2e6;
     border-radius: 10px;
@@ -536,34 +542,6 @@ table td {
     margin-bottom: 20px;
 }
 
-#grid-view .card-profile .card-header {
-    background-color: #f8f9fa;
-}
-
-#grid-view .card-profile .dropdown-dots {
-    color: #6c757d;
-}
-
-/* Styles for the profile photo */
-#grid-view .profile-photo {
-    margin-top: 20px;
-}
-
-/* Styles for the list group */
-#grid-view .list-group-item {
-    border: none;
-}
-
-/* Styles for the "Read More" button */
-#grid-view .btn-outline-primary {
-    color: #007bff;
-    border-color: #007bff;
-}
-
-#grid-view .btn-outline-primary:hover {
-    background-color: #007bff;
-    color: #fff;
-}
 
 /* Responsive styling for the profile card */
 @media (max-width: 768px) {
