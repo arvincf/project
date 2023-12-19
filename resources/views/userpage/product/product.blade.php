@@ -60,50 +60,50 @@
 @elseif (auth()->user()->type == 'Customer')
     <div class="panel">
         <div class="row">
-            @foreach($products as $product)
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                <div class="card card-profile">
-                    <div class="card-header justify-content-end pb-0">
-                        <div class="dropdown">
-                            <button class="btn btn-link" type="button" data-toggle="dropdown">
-                                <span class="dropdown-dots fs--1"></span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right border py-0">
-                                <div class="py-2">
-                                    <a class="dropdown-item" href="">Edit</a>
-                                    <a class="dropdown-item text-danger" href="">Delete</a>
-                                </div>
-                            </div>
-                            <div class="card-body pt-2">
-                                <div class="text-center">
-                                    <div class="profile-photo">
-                                        <img src="/assets/img/side-image.jpg" width="100"
-                                            class="img-fluid rounded circle">
+            @foreach ($products as $product)
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-profile">
+                        <div class="card-header justify-content-end pb-0">
+                            <div class="dropdown">
+                                <button class="btn btn-link" type="button" data-toggle="dropdown">
+                                    <span class="dropdown-dots fs--1"></span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right border py-0">
+                                    <div class="py-2">
+                                        <a class="dropdown-item" href="">Edit</a>
+                                        <a class="dropdown-item text-danger" href="">Delete</a>
                                     </div>
-                                    <h3 class="mt-4 mb-1">{{ $product->prodname }}</h3>
-                                    <p class="text-muted">example@gmail.com</p>
-                                    <ul class="list-group mb-3 list-group-flush">
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Roll No.</span><strong>0555</strong>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Phone No.</span><strong>06365456</strong>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Admission Date.</span><strong>22-04-2021</strong>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Email.</span><strong>example@gmail.com</strong>
-                                        </li>
-                                    </ul>
-                                    <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
-                                        More</a>
+                                </div>
+                                <div class="card-body pt-2">
+                                    <div class="text-center">
+                                        <div class="profile-photo">
+                                            <img src="/assets/img/side-image.jpg" width="100"
+                                                class="img-fluid rounded circle">
+                                        </div>
+                                        <h3 class="mt-4 mb-1">{{ $product->prodname }}</h3>
+                                        <p class="text-muted">example@gmail.com</p>
+                                        <ul class="list-group mb-3 list-group-flush">
+                                            <li class="list-group-item px-0 d-flex justify-content-between">
+                                                <span>Roll No.</span><strong>0555</strong>
+                                            </li>
+                                            <li class="list-group-item px-0 d-flex justify-content-between">
+                                                <span>Phone No.</span><strong>06365456</strong>
+                                            </li>
+                                            <li class="list-group-item px-0 d-flex justify-content-between">
+                                                <span>Admission Date.</span><strong>22-04-2021</strong>
+                                            </li>
+                                            <li class="list-group-item px-0 d-flex justify-content-between">
+                                                <span>Email.</span><strong>example@gmail.com</strong>
+                                            </li>
+                                        </ul>
+                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
+                                            More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
