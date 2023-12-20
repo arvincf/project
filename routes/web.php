@@ -18,137 +18,137 @@ Route::controller(AuthenticationController::class)->group(function () {
     Route::view('/customer/login-customer', 'authentication.customer.loginCustomer')->name('login.customer');
     Route::view('/member/login-member', 'authentication.member.loginMember')->name('login.member');
 
-
     Route::post('/', 'loginUser')->name('login');
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/registerUser', 'registerUser')->name('registerUser');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('check.admin')->name('admin.')->group(function () {
+    Route::middleware('check.admin')->prefix('/admin')->name('admin.')->group(function () {
         Route::controller(MainController::class)->group(function () {
-            Route::get('/admin/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/admin/settings', 'settings')->name('setting');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
         });
 
-        Route::controller(ProductController::class)->group(function () {
-            Route::get('/admin/product', 'product')->name('product');
-            Route::post('/admin/addproduct', 'addProduct')->name('add.product');
-            Route::put('/admin/editProduct/{productId}', 'editProduct')->name('edit.product');
-            Route::delete('/admin/removeProduct/{productId}', 'removeProduct')->name('remove.product');
+        Route::controller(ProductController::class)->name('product.')->group(function () {
+            Route::get('/product', 'displayProduct')->name('display');
+            Route::post('/addproduct', 'addProduct')->name('add');
+            Route::put('/editProduct/{productId}', 'editProduct')->name('edit');
+            Route::delete('/removeProduct/{productId}', 'removeProduct')->name('remove');
         });
 
-        Route::controller(DeliveryController::class)->group(function () {
-            Route::get('/admin/delivery', 'Deliver')->name('delivery');
-            Route::put('/admin/delivery/{id}', 'updateDelivery')->name('update.delivery');
+        Route::controller(DeliveryController::class)->name('delivery.')->group(function () {
+            Route::get('/delivery', 'displayDeliver')->name('display');
+            Route::put('/delivery/{id}', 'updateDelivery')->name('update');
         });
 
         Route::controller(UsersController::class)->group(function () {
-            Route::get('/admin/profile', 'profile')->name('profile');
-            Route::get('/admin/search', 'searchUsers')->name('search-users');
-            Route::get('/admin/newapplicant', 'newapplicants')->name('newapplicant');
-            Route::get('/admin/manageusers', 'manageusers')->name('manageusers');
-            Route::post('/admin/manageusers', 'createAccount')->name('manageusers.create');
-            Route::patch('/admin/manageusers/{id}', 'updateAccount')->name('manageusers.update');
-            Route::delete('/admin/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
-            Route::patch('/admin/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
+            Route::get('/profile', 'profile')->name('profile');
+            Route::get('/search', 'searchUsers')->name('search.users');
+            Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
+            Route::get('/manageusers', 'manageUsers')->name('manageusers');
+            Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
+            Route::post('/manageusers', 'createAccount')->name('manageusers.create');
+            Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');
+            Route::delete('/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
+            Route::patch('/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {
-            Route::get('/admin/reservationrecord', 'reservationrecord')->name('reservationrecord');
+            Route::get('/reservationrecord', 'manageReservation')->name('reservationrecord');
         });
-
     });
 
-    Route::middleware('check.applicant')->name('applicant.')->group(function () {
+    Route::middleware('check.applicant')->prefix('/applicant')->name('applicant.')->group(function () {
         Route::controller(MainController::class)->group(function () {
-            Route::get('/applicant/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/applicant/settings', 'settings')->name('setting');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
         });
 
         Route::controller(UsersController::class)->group(function () {
-            Route::get('/applicant/profile', 'profile')->name('profile');
+            Route::get('/profile', 'profile')->name('profile');
         });
     });
 
-    Route::middleware('check.customer')->name('customer.')->group(function () {
+    Route::middleware('check.customer')->prefix('/customer')->name('customer.')->group(function () {
         Route::controller(MainController::class)->group(function () {
-            Route::get('/customer/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/customer/settings', 'settings')->name('setting');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
         });
 
-        Route::controller(ProductController::class)->group(function () {
-            Route::get('/customer/product', 'product')->name('product');
+        Route::controller(ProductController::class)->name('product.')->group(function () {
+            Route::get('/product', 'displayProduct')->name('display');
         });
 
         Route::controller(UsersController::class)->group(function () {
-            Route::get('/customer/profile', 'profile')->name('profile');
+            Route::get('/profile', 'profile')->name('profile');
         });
 
-        Route::controller(ReservationRecordController::class)->group(function () {
-            Route::get('/customer/reservationrecord', 'reservationrecord')->name('reservationrecord');
+        Route::controller(ReservationRecordController::class)->name('reservation.')->group(function () {
+            Route::get('/reservation', 'manageReservation')->name('record');
+            Route::get('/viewProduct', 'viewProduct')->name('product');
+            Route::post('/reserveProduct', 'reserveProduct')->name('reserve.product');
         });
-
     });
 
-    Route::middleware('check.member')->name('member.')->group(function () {
+    Route::middleware('check.member')->prefix('/member')->name('member.')->group(function () {
         Route::controller(MainController::class)->group(function () {
-            Route::get('/member/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/member/settings', 'settings')->name('setting');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
         });
 
         Route::controller(MediaController::class)->group(function () {
-            Route::get('/member/media', 'media')->name('media');
+            Route::get('/media', 'media')->name('media');
         });
 
-        Route::controller(ProductController::class)->group(function () {
-            Route::get('/member/product', 'product')->name('product');
+        Route::controller(ProductController::class)->name('product.')->group(function () {
+            Route::get('/product', 'displayProduct')->name('display');
         });
 
         Route::controller(UsersController::class)->group(function () {
-            Route::get('/member/profile', 'profile')->name('profile');
+            Route::get('/profile', 'profile')->name('profile');
         });
 
-        Route::controller(DeliveryController::class)->group(function () {
-            Route::get('/member/delivery', 'Deliver')->name('delivery');
-            Route::post('/member/delivery', 'Adddelivery')->name('adddelivery');
+        Route::controller(DeliveryController::class)->prefix('/delivery')->name('delivery.')->group(function () {
+            Route::get('/', 'displayDeliver')->name('display');
+            Route::post('/addDelivery', 'addDelivery')->name('add');
         });
-
     });
-    Route::middleware('check.manager')->name('manager.')->group(function () {
+
+    Route::middleware('check.manager')->prefix('/manager')->name('manager.')->group(function () {
         Route::controller(MainController::class)->group(function () {
-            Route::get('/manager/dashboard', 'dashboard')->name('dashboard');
-            Route::get('/manager/settings', 'settings')->name('setting');
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
         });
 
-        Route::controller(ProductController::class)->group(function () {
-            Route::get('/manager/product', 'product')->name('product');
-            Route::post('/manager/addproduct', 'addProduct')->name('add.product');
-            Route::put('/manager/editProduct/{productId}', 'editProduct')->name('edit.product');
-            Route::delete('/manager/removeProduct/{productId}', 'removeProduct')->name('remove.product');
+        Route::controller(ProductController::class)->name('product.')->group(function () {
+            Route::get('/product', 'displayProduct')->name('display');
+            Route::post('/addproduct', 'addProduct')->name('add');
+            Route::put('/editProduct/{productId}', 'editProduct')->name('edit');
+            Route::delete('/removeProduct/{productId}', 'removeProduct')->name('remove');
         });
 
         Route::controller(DeliveryController::class)->group(function () {
-            Route::get('/manager/delivery', 'Deliver')->name('delivery');
-            Route::put('/manager/delivery/{id}', 'updateDelivery')->name('update.delivery');
+            Route::get('/delivery', 'displayDeliver')->name('delivery');
+            Route::put('/delivery/{id}', 'updateDelivery')->name('update.delivery');
         });
 
         Route::controller(UsersController::class)->group(function () {
-            Route::get('/manager/profile', 'profile')->name('profile');
-            Route::get('/manager/newapplicant', 'newapplicants')->name('newapplicant');
-            Route::get('/manager/manageusers', 'manageusers')->name('manageusers');
-            Route::post('/manager/manageusers', 'createAccount')->name('manageusers.create');
-            Route::patch('/manager/manageusers/{id}', 'updateAccount')->name('manageusers.update');
-            Route::delete('/manager/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
-            Route::patch('/manager/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
+            Route::get('/profile', 'profile')->name('profile');
+            Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
+            Route::get('/manageusers', 'manageusers')->name('manageusers');
+            Route::post('/manageusers', 'createAccount')->name('manageusers.create');
+            Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');
+            Route::delete('/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
+            Route::patch('/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {
-            Route::get('/manager/reservationrecord', 'reservationrecord')->name('reservationrecord');
+            Route::get('/reservationrecord', 'manageReservation')->name('reservationrecord');
         });
 
         Route::controller(SalesController::class)->group(function () {
-            Route::get('/manager/managesales', 'sales')->name('managesales');
+            Route::get('/managesales', 'sales')->name('managesales');
         });
     });
 });

@@ -8,7 +8,7 @@
         <div class="header-dropdown">
             <button class="toogle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="{{ asset('assets/img/no_image.png') }}" alt="Profile">
-                <span>{{ auth()->user()->firstname }} <i class="bi bi-caret-down-fill"></i></span>
+                <span>{{ auth()->user()->first_name }} <i class="bi bi-caret-down-fill"></i></span>
             </button>
             <ul class="dropdown-menu">
                 <li>

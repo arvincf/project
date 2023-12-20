@@ -12,7 +12,7 @@
                     @method('PATCH')
                     @csrf
                     <h4 class="text-center">Are you sure to make this user to become a member?</h4>
-                    <h5 class="text-center">Product Name: {{ $user->firstname }}</h5>
+                    <h5 class="text-center">Product Name: {{ $user->first_name }}</h5>
                     <input type="hidden" name="type" value="Member">
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>

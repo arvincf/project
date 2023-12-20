@@ -14,10 +14,10 @@ class Delivery extends Model
     protected $primaryKey = "id";
 
     protected $fillable = [
-        "supplierName",
+        "supplier_name",
         "quantity",
-        "prodName",
+        "product_name",
         "status",
-        "deliverydate",
+        "delivery_date",
     ];
 }

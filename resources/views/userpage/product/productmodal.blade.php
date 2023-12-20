@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.add.product') : route('admin.add.product') }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.product.add') : route('admin.product.add') }}"
                     method="post">
                     @csrf
                     <label for="product_name">Product Name</label><br>
@@ -44,21 +44,21 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.edit.product', $product->id) : route('admin.edit.product', $product->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.product.edit', $product->id) : route('admin.product.edit', $product->id) }}"
                     method="POST">
                     @method('PUT')
                     @csrf
                     <label for="product_name">Product Name</label><br>
-                    <input type="text" name="product_name" value="{{ $product->prodname }}" class="form-control"
+                    <input type="text" name="product_name" value="{{ $product->name }}" class="form-control"
                         placeholder="Product Name" autocomplete="off" required>
                     <label for="quantity">Quantity</label><br>
                     <input type="number" name="quantity" value="{{ $product->quantity }}" class="form-control"
                         placeholder="Quantity" autocomplete="off" required>
                     <label for="unit_price">Unit Price</label><br>
-                    <input type="text" name="unit_price" value="{{ $product->unitprice }}" class="form-control"
+                    <input type="text" name="unit_price" value="{{ $product->unit_price }}" class="form-control"
                         placeholder="Unit Price" autocomplete="off" required>
                     <label for="supplier_name">Supplier Name</label><br>
-                    <input type="text" name="supplier_name" value="{{ $product->supplierName }}" class="form-control"
+                    <input type="text" name="supplier_name" value="{{ $product->supplier_name }}" class="form-control"
                         placeholder="Supplier Name" autocomplete="off" required>
                     <label for="details">Details</label><br>
                     <input type="text" name="details" value="{{ $product->details }}" class="form-control"
@@ -82,12 +82,12 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.remove.product', $product->id) : route('admin.remove.product', $product->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.product.remove', $product->id) : route('admin.product.remove', $product->id) }}"
                     method="POST">
                     @method('DELETE')
                     @csrf
                     <h4 class="text-center">Are you sure you want to remove this product?</h4>
-                    <h5 class="text-center">Product Name: {{ $product->prodname }}</h5>
+                    <h5 class="text-center">Product Name: {{ $product->name }}</h5>
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-success">Remove</button>

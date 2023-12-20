@@ -26,6 +26,21 @@
                                 <th>Action</th>
                             @endif
                         </thead>
+                        <tbody>
+                            @foreach ($reserveProduct as $product)
+                                <tr>
+                                    <th>{{ auth()->user()->id }}</th>
+                                    <td>{{ $product->product_name }}</td>
+                                    <td>{{ $product->details }}</td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->date }}</td>
+                                    <td>{{ $product->status }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
 

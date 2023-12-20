@@ -38,7 +38,7 @@ class AuthenticationController extends Controller
     private function checkUser()
     {
         if (auth()->check()) {
-            return redirect("/" . Str::lower(auth()->user()->type) . "/dashboard")->with('success', "Welcome " . auth()->user()->firstname . ".");
+            return redirect("/" . Str::lower(auth()->user()->type) . "/dashboard")->with('success', "Welcome " . auth()->user()->first_name . ".");
         }
 
         return back();
@@ -62,8 +62,8 @@ class AuthenticationController extends Controller
 
         User::create([
             'type' => Str::ucfirst($request->type),
-            'lastname' => Str::title(trim($request->lastname)),
-            'firstname' => Str::title(trim($request->firstname)),
+            'last_name' => Str::title(trim($request->lastname)),
+            'first_name' => Str::title(trim($request->firstname)),
             'age' => trim($request->age),
             'address' => trim($request->address),
             'email' => trim($request->email),

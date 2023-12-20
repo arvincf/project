@@ -12,8 +12,8 @@
         <main class="main-container">
             @include('components.header')
             <p>Settings</p>
-            <span>{{ auth()->user()->firstname }}</span>
-            <span>{{ auth()->user()->lastname }}</span>
+            <span>{{ auth()->user()->first_name }}</span>
+            <span>{{ auth()->user()->last_name }}</span>
         </main>
     </div>
 

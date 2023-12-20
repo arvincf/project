@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $this->product = new Product;
     }
-    public function product()
+    public function displayProduct()
     {
         $products = $this->product->all();
 
@@ -37,12 +37,12 @@ class ProductController extends Controller
         }
 
         $this->product->create([
-            'prodname' => Str::title(trim($request->product_name)),
+            'name' => Str::title(trim($request->product_name)),
             'quantity' => trim($request->quantity),
-            'unitprice' => trim($request->unit_price),
-            'supplierName' => Str::title(trim($request->supplier_name)),
+            'unit_price' => trim($request->unit_price),
+            'supplier_name' => Str::title(trim($request->supplier_name)),
             'details' => trim($request->details),
-            'dateofstoring' => now()
+            'date_of_storing' => now()
         ]);
 
         return back()->with('success', "Product successfully added!");
@@ -63,10 +63,10 @@ class ProductController extends Controller
         }
 
         $this->product->find($productId)->update([
-            'prodname' => Str::title(trim($request->product_name)),
+            'name' => Str::title(trim($request->product_name)),
             'quantity' => trim($request->quantity),
-            'unitprice' => trim($request->unit_price),
-            'supplierName' => Str::title(trim($request->supplier_name)),
+            'unit_price' => trim($request->unit_price),
+            'supplier_name' => Str::title(trim($request->supplier_name)),
             'details' => trim($request->details)
         ]);
 

@@ -34,11 +34,11 @@
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>{{ $product->prodname }}</td>
+                                        <td>{{ $product->name }}</td>
                                         <td>{{ $product->quantity }}</td>
-                                        <td>{{ $product->unitprice }}</td>
-                                        <td>{{ $product->supplierName }}</td>
-                                        <td>{{ $product->dateofstoring }}</td>
+                                        <td>{{ $product->unit_price }}</td>
+                                        <td>{{ $product->supplier_name }}</td>
+                                        <td>{{ $product->date_of_storing }}</td>
                                         <td>{{ $product->details }}</td>
                                         <td>
                                             <div class="action-btn">
@@ -80,7 +80,7 @@
                                             <img src="/assets/img/side-image.jpg" width="100"
                                                 class="img-fluid rounded circle">
                                         </div>
-                                        <h3 class="mt-4 mb-1">{{ $product->prodname }}</h3>
+                                        <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
                                         <p class="text-muted">example@gmail.com</p>
                                         <ul class="list-group mb-3 list-group-flush">
                                             <li class="list-group-item px-0 d-flex justify-content-between">

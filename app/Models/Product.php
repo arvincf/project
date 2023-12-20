@@ -14,11 +14,11 @@ class Product extends Model
     protected $primaryKey = "id";
 
     protected $fillable = [
-        "prodname",
-        "supplierName",
+        "name",
+        "supplier_name",
         "quantity",
-        "unitprice",
+        "unit_price",
         "details",
-        "dateofstoring"
+        "date_of_storing"
     ];
 }

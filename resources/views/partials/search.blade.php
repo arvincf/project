@@ -2,24 +2,85 @@
 
 <script>
     $(document).ready(function() {
-        $("#searchForm").on("submit", function(e) {
+        $("#serachUserBtn").on("click", function(e) {
             e.preventDefault();
-            var value = $("#searchInput").val().toLowerCase();
 
-            
             $.ajax({
-                url: $(this).attr("action"),
+                url: "{{ route('admin.search.users') }}",
                 method: "GET",
-                data: { query: value },
-                success: function(response) {
-                    s
-                    $(".user-table-body").html(response);
+                data: {
+                    name: $("#searchInput").val()
                 },
-                error: function(xhr) {
-                    // Handle the error
-                    console.error(xhr.responseText);
+                success(response) {
+                    let userTableBody = $("#userTableBody");
+
+                    userTableBody.empty();
+                    response.userData.forEach(user => {
+                        userTableBody.append(`
+                            <tr>
+                                <td>${user.type}</td>
+                                <td>${user.first_name}</td>
+                                <td>${user.last_name}</td>
+                                <td>${user.age}</td>
+                                <td>${user.address}</td>
+                                <td>${user.contact}</td>
+                                <td class="action-btn">
+                                    <a href="#show${user.id}" class="btn-primary" title="View" data-bs-toggle="modal">
+                                        <i class="bi bi-eye"></i>View
+                                    </a>
+                                    <a href="#edit${user.id}" class="btn-warning" title="Edit" data-bs-toggle="modal">
+                                        <i class="bi bi-pencil-square"></i>Edit
+                                    </a>
+                                    <a href="#delete${user.id}" class="btn-danger" title="Remove" data-bs-toggle="modal">
+                                        <i class=" bi bi-trash"></i>Remove
+                                    </a>
+                                </td>
+                                @include('userpage.useraccount.useraccountmodal')
+                            </tr>
+                        `);
+                    });
                 }
             });
+        });
+
+        $('#searchInput').on('keyup', function() {
+            let userInput = $(this).val().trim();
+
+            if (userInput == "") {
+                $.ajax({
+                    url: "{{ route('admin.getUsersAccount') }}",
+                    method: "GET",
+                    success(response) {
+                        let userTableBody = $("#userTableBody");
+
+                        userTableBody.empty();
+                        response.userData.forEach(user => {
+                            userTableBody.append(`
+                            <tr>
+                                <td>${user.type}</td>
+                                <td>${user.first_name}</td>
+                                <td>${user.last_name}</td>
+                                <td>${user.age}</td>
+                                <td>${user.address}</td>
+                                <td>${user.contact}</td>
+                                <td class="action-btn">
+                                    <a href="#show${user.id}" class="btn-primary" title="View" data-bs-toggle="modal">
+                                        <i class="bi bi-eye"></i>View
+                                    </a>
+                                    <a href="#edit${user.id}" class="btn-warning" title="Edit" data-bs-toggle="modal">
+                                        <i class="bi bi-pencil-square"></i>Edit
+                                    </a>
+                                    <a href="#delete${user.id}" class="btn-danger" title="Remove" data-bs-toggle="modal">
+                                        <i class=" bi bi-trash"></i>Remove
+                                    </a>
+                                </td>
+                                @include('userpage.useraccount.useraccountmodal')
+                            </tr>
+                        `);
+                        });
+                    }
+                });
+            }
         });
     });
 </script>

@@ -21,7 +21,6 @@
                     </div>
                     @include('userpage.delivery.adddelivery')
                 @endif
-
                 <div class="card">
                     <div class="card-body">
                         <table class="table">
@@ -38,10 +37,10 @@
                             <tbody>
                                 @foreach ($delivers as $deliver)
                                     <tr>
-                                        <td>{{ $deliver->prodName }}</td>
+                                        <td>{{ $deliver->product_name }}</td>
                                         <td>{{ $deliver->quantity }}</td>
-                                        <td>{{ $deliver->supplierName }}</td>
-                                        <td>{{ $deliver->deliverydate }}</td>
+                                        <td>{{ $deliver->supplier_name }}</td>
+                                        <td>{{ $deliver->delivery_date }}</td>
                                         <td>
                                             <div
                                                 class="fw-bold text-{{ $deliver->status == 'On Deliver' ? 'warning' : 'success' }}">
@@ -49,12 +48,14 @@
                                             </div>
                                         </td>
                                         <td>
-                                        @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-                                        <div class="action-btn">
-                                            <a href="#delivered{{ $deliver->id }}" class="btn btn-primary{{ $deliver->status === 'delivered' ? ' disabled' : '' }}" title="Deliver"
-                                                data-bs-toggle="modal">Delivered</a>
-                                        </div>
-                                        @endif
+                                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                                <div class="action-btn">
+                                                    @if ($deliver->status == 'On Deliver')
+                                                        <a href="#delivered{{ $deliver->id }}" class="btn btn-primary"
+                                                            title="Deliver" data-bs-toggle="modal">Deliver</a>
+                                                    @endif
+                                                </div>
+                                            @endif
                                         </td>
                                     </tr>
                                     @include('userpage.delivery.deliverymodal')

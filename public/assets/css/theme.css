@@ -95,17 +95,16 @@ body {
 }
 
 .homepage {
-background: url('/assets/img/backgroundhome.png');
-background-size: 100% 100%;
-background-position: center;
-background-repeat: no-repeat;
-height: 100vh;
-width: 100%;
-margin: 0;
-padding: 0;
-font-family: Arial, sans-serif;
+    background: url('/assets/img/backgroundhome.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
-
 
 .wrapper .login-section {
     display: flex;
@@ -542,10 +541,98 @@ table td {
     margin-bottom: 20px;
 }
 
-
 /* Responsive styling for the profile card */
 @media (max-width: 768px) {
     #grid-view .card-profile {
         width: 100%;
     }
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.product-widget {
+    background: var(--color-text);
+    border-radius: 6px;
+    border: 1px solid #9ca3af;
+}
+
+.product-details-section {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.product-image {
+    display: flex;
+    justify-content: center;
+}
+
+.product-details-section label {
+    font-weight: 800;
+    padding: 10px 0;
+}
+
+.product-details-section span {
+    font-weight: 500;
+}
+
+.product-stock-container {
+    font-size: 14px;
+}
+
+.quantity {
+    text-align: right;
+    padding: 0 10px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.product-stock-container span {
+    color: var(--color-green);
+}
+
+.btn-add {
+    padding: 8px 16px;
+    background-color: var(--color-green);
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text);
+}
+
+.btn-minus {
+    padding: 8px 16px;
+    background-color: var(--color-red);
+    border: none;
+    border-radius: 6px;
+    color: var(--color-text);
+}
+
+#quantity {
+    border-radius: 4px;
+    border: 1px solid #9ca3af;
+    padding: 7px;
+}
+
+.product-quantity-container {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-reserve {
+    background: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: 6px 18px;
+    border-radius: 6px;
+}
+
+.product-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }

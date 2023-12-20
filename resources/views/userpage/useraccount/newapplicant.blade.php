@@ -32,8 +32,8 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->type }}</td>
-                                    <td>{{ $user->firstname }}</td>
-                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->first_name }}</td>
+                                    <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->age }}</td>
                                     <td>{{ $user->address }}</td>
                                     <td>{{ $user->contact }}</td>

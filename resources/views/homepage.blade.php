@@ -3,7 +3,6 @@
 
 <head>
     @include('partials.header-package')
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <body>

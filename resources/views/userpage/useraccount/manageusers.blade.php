@@ -12,10 +12,12 @@
         <main class="main-container">
             @include('components.header')
             <div class="input-group">
-                    <input id="searchInput" name="query" class="form-control border-0 small" type="text" placeholder="Search for ..." />
-                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>              
+                <input id="searchInput" name="name" class="form-control border-0 small" type="text"
+                    placeholder="Search for ..." />
+                <button class="btn btn-primary" id="serachUserBtn"><i class="bi bi-search"></i></button>
             </div>
             <h1>Users Account</h1>
+            <div class="user-table-body"></div>
             <div class="page-btn">
                 <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
                     <i class="bi bi-plus-lg"></i>Create User
@@ -34,12 +36,12 @@
                             <th>Contact</th>
                             <th>Actions</th>
                         </thead>
-                        <tbody>
+                        <tbody id="userTableBody">
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $user->type }}</td>
-                                    <td>{{ $user->firstname }}</td>
-                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->first_name }}</td>
+                                    <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->age }}</td>
                                     <td>{{ $user->address }}</td>
                                     <td>{{ $user->contact }}</td>

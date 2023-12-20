@@ -24,13 +24,13 @@
                     <li><a href="{{ route('admin.manageusers') }}">Manage Users</a></li>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('admin.product') }}">
+                    <a href="{{ route('admin.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('admin.delivery') }}">
+                    <a href="{{ route('admin.delivery.display') }}">
                         <i class="bi bi-truck"></i>
                         <span>Delivery</span>
                     </a>
@@ -43,13 +43,13 @@
                 </div>
             @elseif(auth()->user()->type == 'Member')
                 <div class="nav-item">
-                    <a href="{{ route('member.product') }}">
+                    <a href="{{ route('member.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('member.delivery') }}">
+                    <a href="{{ route('member.delivery.display') }}">
                         <i class="bi bi-truck"></i>
                         <span>Delivery</span>
                     </a>
@@ -57,13 +57,19 @@
                 
             @elseif (auth()->user()->type == 'Customer')
                 <div class="nav-item">
-                    <a href="{{ route('customer.product') }}">
+                    <a href="{{ route('customer.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('customer.reservationrecord') }}">
+                    <a href="{{ route('customer.reservation.product') }}">
+                        <i class="bi bi-cart-plus"></i>
+                        <span>Product Reservation</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{{ route('customer.reservation.record') }}">
                         <i class="bi bi-calendar-check"></i>
                         <span>Record of Reservation</span>
                     </a>
@@ -79,7 +85,7 @@
                 <li><a href="{{ route('manager.manageusers') }}">Manage Users</a></li>
             </div>
             <div class="nav-item">
-                <a href="{{ route('manager.product') }}">
+                <a href="{{ route('manager.product.display') }}">
                     <i class="bi bi-grid"></i>
                     <span>Products</span>
                 </a>

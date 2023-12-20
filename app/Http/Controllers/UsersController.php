@@ -15,23 +15,26 @@ class UsersController extends Controller
     {
         $this->user = new User;
     }
-    public function manageusers()
+    public function manageUsers()
     {
         $users = User::where('id', '!=', auth()->user()->id)
-                ->where('type', '!=', 'manager')
-                ->where('type', '!=', 'applicant')
-                ->simplePaginate(5);
-    
+            ->where('type', '!=', 'manager')
+            ->where('type', '!=', 'applicant')
+            ->simplePaginate(5);
+
+        if (request()->ajax()) {
+            return response(['userData' => $users]);
+        }
+
         return view('userpage.useraccount.manageusers', compact('users'));
     }
 
     public function newapplicants()
     {
         $users = User::where('type', 'applicant')->simplePaginate(5);
-    
+
         return view('userpage.useraccount.newapplicant', compact('users'));
     }
-    
 
     public function createAccount(Request $request)
     {
@@ -54,8 +57,8 @@ class UsersController extends Controller
         $this->user->create([
             'id' => $this->user->max('id') + 1,
             'type' => trim($request->type),
-            'lastname' => Str::title(trim($request->lastname)),
-            'firstname' => Str::title(trim($request->firstname)),
+            'last_name' => Str::title(trim($request->lastname)),
+            'first_name' => Str::title(trim($request->firstname)),
             'birthday' => $request->birthday,
             'age' => trim($request->age),
             'address' => trim($request->address),
@@ -82,8 +85,8 @@ class UsersController extends Controller
         }
 
         $this->user->find($id)->update([
-            'firstname' => Str::title(trim($request->firstname)),
-            'lastname' => Str::title(trim($request->lastname)),
+            'first_name' => Str::title(trim($request->firstname)),
+            'last_name' => Str::title(trim($request->lastname)),
             'address' => trim($request->address),
             'email' => trim($request->email),
             'contact' => trim($request->contact)
@@ -92,7 +95,8 @@ class UsersController extends Controller
         return back()->with('success', 'User Updated!');
     }
 
-    public function approveaccount(Request $request, $id){
+    public function approveaccount(Request $request, $id)
+    {
         $this->user->find($id)->update([
             'type' => trim($request->type),
         ]);
@@ -109,5 +113,26 @@ class UsersController extends Controller
     public function profile()
     {
         return view("userpage.profile");
+    }
+
+    public function searchUsers(Request $request)
+    {
+        $userData = $this->user
+            ->select('*')
+            ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
+            ->where('first_name', 'LIKE', "%{$request->name}%")
+            ->get();
+
+        return response(['userData' => $userData]);
+    }
+
+    public function getUsersAccount()
+    {
+        $users = User::where('id', '!=', auth()->user()->id)
+            ->where('type', '!=', 'manager')
+            ->where('type', '!=', 'applicant')
+            ->get();
+
+        return response(['userData' => $users]);
     }
 }

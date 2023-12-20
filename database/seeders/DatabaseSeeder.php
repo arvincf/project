@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         User::create([
             "type" => "Applicant",
-            "lastname" => "Faustino",
-            "firstname" => "Arvin",
+            "last_name" => "Faustino",
+            "first_name" => "Arvin",
             "age" => 22,
             "address" => "Pamantasan ng Cabuyao",
             "email" => "a@gmail.com",
@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             "type" => "Member",
-            "lastname" =>  "Pastor",
-            "firstname" => "Jochelle Mae",
+            "last_name" =>  "Pastor",
+            "first_name" => "Jochelle Mae",
             "age" => 22,
             "address" => "Pamantasan ng Cabuyao",
             "email" => "j@gmail.com",
@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             "type" => "Admin",
-            "lastname" =>  "Jumarang",
-            "firstname" => "Leo",
+            "last_name" =>  "Jumarang",
+            "first_name" => "Leo",
             "age" => 22,
             "address" => "Pamantasan ng Cabuyao",
             "email" => "admin@cgumc.com.ph",
@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             "type" => "Manager",
-            "lastname" =>  "Casile",
-            "firstname" => "Michelle",
+            "last_name" =>  "Casile",
+            "first_name" => "Michelle",
             "age" => 22,
             "address" => "Pamantasan ng Cabuyao",
             "email" => "manager@cgumc.com.ph",
@@ -60,8 +60,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             "type" => "Customer",
-            "lastname" =>"Batayon",
-            "firstname" => "Elisha",
+            "last_name" => "Batayon",
+            "first_name" => "Elisha",
             "age" => 22,
             "address" => "Pamantasan ng Cabuyao",
             "email" => "e@gmail.com",
@@ -71,41 +71,40 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             "id" => 1,
-            "prodname" =>  "Arabica",
-            "supplierName" => "Jochelle Mae",
+            "name" =>  "Arabica",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
-            "unitprice" => 50,
+            "unit_price" => 50,
             "details" => "Lorem ipsum",
-            "dateofstoring" => "2023-03-12"
+            "date_of_storing" => "2023-03-12"
         ]);
 
         Product::create([
             "id" => 2,
-            "prodname" =>  "Robusta",
-            "supplierName" => "Jochelle Mae",
+            "name" =>  "Robusta",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
-            "unitprice" => 50,
+            "unit_price" => 50,
             "details" => "Lorem ipsum",
-            "dateofstoring" => "2023-03-12"
+            "date_of_storing" => "2023-03-12"
         ]);
 
         Delivery::create([
             "id" => 1,
-            "supplierName" => "Jochelle Mae",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 20,
-            "prodName" => "Robusta",
+            "product_name" => "Robusta",
             "status" => "On Deliver",
-            "deliverydate" => "2022-12-12",
+            "delivery_date" => "2022-12-12",
         ]);
 
         Delivery::create([
             "id" => 2,
-            "supplierName" => "Jochelle Mae",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 20,
-            "prodName" => "Arabica",
+            "product_name" => "Arabica",
             "status" => "Delivered",
-            "deliverydate" => "2023-09-15",
+            "delivery_date" => "2023-09-15",
         ]);
-
     }
 }

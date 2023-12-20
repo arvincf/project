@@ -15,11 +15,12 @@ class ProductReserve extends Model
 
     protected $fillable = [
         "id",
-        "custId",
-        "prodId",
-        "prodName",
+        "customer_id",
+        "product_id",
+        "product_name",
         "details",
-        "Reservationdate",
-        "reservationstatus"
+        "quantity",
+        "date",
+        "status"
     ];
 }
