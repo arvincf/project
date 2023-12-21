@@ -27,7 +27,7 @@
                             @endif
                         </thead>
                         <tbody>
-                            @foreach ($reserveProduct as $product)
+                            @forelse ($reserveProduct as $product)
                                 <tr>
                                     <th>{{ auth()->user()->id }}</th>
                                     <td>{{ $product->product_name }}</td>
@@ -36,7 +36,11 @@
                                     <td>{{ $product->date }}</td>
                                     <td>{{ $product->status }}</td>
                                 </tr>
-                            @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">No reservations found.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
