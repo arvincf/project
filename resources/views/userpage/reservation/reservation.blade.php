@@ -56,6 +56,31 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
     @include('partials.toastr-script')
+    <script>
+        $(document).ready(() => {
+            $('.btn-add').click(function(e) {
+                e.preventDefault();
+                let productItem = $(this).closest('.product-widget'),
+                    stockText = productItem.find('.quantity span');
+
+                productItem.find('#quantity').val((i, val) => +val + 1);
+                stockText.text(parseInt(stockText.text()) - 1);
+            });
+
+            $('.btn-minus').click(function(e) {
+                e.preventDefault();
+                let productItem = $(this).closest('.product-widget'),
+                    quantityInput = productItem.find('#quantity'),
+                    stockText = productItem.find('.quantity span'),
+                    currentQuantity = parseInt(quantityInput.val());
+
+                if (currentQuantity > 0) {
+                    quantityInput.val(currentQuantity - 1);
+                    stockText.text(parseInt(stockText.text()) + 1);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
