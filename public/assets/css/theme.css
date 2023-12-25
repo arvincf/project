@@ -529,24 +529,7 @@ table td {
 }
 
 /* Styles for the grid view container */
-#grid-view {
-    padding: 20px;
-}
 
-/* Styles for the card profile */
-#grid-view .card-profile {
-    border: 1px solid #dee2e6;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-/* Responsive styling for the profile card */
-@media (max-width: 768px) {
-    #grid-view .card-profile {
-        width: 100%;
-    }
-}
 
 .product-container {
     display: grid;

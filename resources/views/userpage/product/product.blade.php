@@ -81,19 +81,16 @@
                                                 class="img-fluid rounded circle">
                                         </div>
                                         <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
-                                        <p class="text-muted">example@gmail.com</p>
+                                        <p class="text-muted">₱{{ $product->unit_price }}</p>
                                         <ul class="list-group mb-3 list-group-flush">
                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Roll No.</span><strong>0555</strong>
+                                                <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
                                             </li>
                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Phone No.</span><strong>06365456</strong>
+                                                <span>Unit Price:</span><strong>₱{{ $product->unit_price }}</strong>
                                             </li>
                                             <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Admission Date.</span><strong>22-04-2021</strong>
-                                            </li>
-                                            <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Email.</span><strong>example@gmail.com</strong>
+                                                <span>Description:</span><strong>{{ $product->details }}</strong>
                                             </li>
                                         </ul>
                                         <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
