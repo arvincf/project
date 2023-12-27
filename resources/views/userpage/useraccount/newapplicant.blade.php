@@ -29,7 +29,7 @@
                             <th>Actions</th>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @forelse ($users as $user)
                                 <tr>
                                     <td>{{ $user->type }}</td>
                                     <td>{{ $user->first_name }}</td>
@@ -50,7 +50,11 @@
                                     @include('userpage.useraccount.useraccountmodal')
                                 </tr>
                                 @include('userpage.useraccount.approvemodal')
-                            @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">No Applicant found.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     <div class="row">{{ $users->links() }}</div>
