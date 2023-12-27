@@ -18,9 +18,20 @@ class ReservationRecordController extends Controller
 
     public function manageReservation()
     {
-        $reserveProduct = $this->reserveProduct->where('customer_id', auth()->user()->id)->get();
+        $user = auth()->user();
 
-        return view("userpage.reservationrecord", compact('reserveProduct'));
+    // Check if the authenticated user is an admin or manager
+    if ($user->type=="Admin" || $user->type=="Manager") {
+        // Admins and managers can see all reservation records
+        $reserveProduct = $this->reserveProduct->get();
+    } else {
+        // Regular customers can only see their own reservation records
+        $reserveProduct = $this->reserveProduct
+            ->where('customer_id', $user->id)
+            ->get();
+    }
+
+    return view("userpage.reservationrecord", compact('reserveProduct'));
     }
 
     public function viewProduct()
