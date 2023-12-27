@@ -2,7 +2,7 @@
 
 <script>
     $(document).ready(function() {
-        $("#serachUserBtn").on("click", function(e) {
+        $("#searchUserBtn").on("click", function(e) {
             e.preventDefault();
 
             $.ajax({

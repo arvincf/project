@@ -14,7 +14,7 @@
             <div class="input-group">
                 <input id="searchInput" name="name" class="form-control border-0 small" type="text"
                     placeholder="Search for ..." />
-                <button class="btn btn-primary" id="serachUserBtn"><i class="bi bi-search"></i></button>
+                <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
             </div>
             <h1>Users Account</h1>
             <div class="user-table-body"></div>
