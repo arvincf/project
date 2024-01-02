@@ -114,10 +114,9 @@
             <div class="nav-item">
                 <a href="">
                     <i class="bi bi-graph-up"></i>
-                    <span>Sales Report</span>
+                    <span>Reports</span>
                 </a>
             </div>
-            @else
             @endif
         </div>
     </div>
