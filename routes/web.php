@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\MediaController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DeliveryController;
@@ -96,11 +95,6 @@ Route::middleware('auth')->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
         });
-
-        Route::controller(MediaController::class)->group(function () {
-            Route::get('/media', 'media')->name('media');
-        });
-
         Route::controller(ProductController::class)->name('product.')->group(function () {
             Route::get('/product', 'displayProduct')->name('display');
         });

@@ -36,7 +36,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="reservationrecord">
+                    <a href="{{ route('admin.reservationrecord') }}">
                         <i class="bi bi-calendar-check"></i>
                         <span>Product Reservation</span>
                     </a>
@@ -85,6 +85,12 @@
                 <li><a href="{{ route('manager.manageusers') }}">Manage Users</a></li>
             </div>
             <div class="nav-item">
+                <a href="">
+                    <i class="bi bi-bag-fill"></i>
+                    <span>Request Product</span>
+                </a>
+            </div>
+            <div class="nav-item">
                 <a href="{{ route('manager.product.display') }}">
                     <i class="bi bi-grid"></i>
                     <span>Products</span>
@@ -97,7 +103,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="reservationrecord">
+                <a href="{{ route('manager.reservationrecord') }}">
                     <i class="bi bi-calendar-check"></i>
                     <span>Product Reservation</span>
                 </a>
