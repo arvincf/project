@@ -24,6 +24,12 @@
                     <li><a href="{{ route('admin.manageusers') }}">Manage Users</a></li>
                 </div>
                 <div class="nav-item">
+                    <a href="">
+                        <i class="bi bi-bag-fill"></i>
+                        <span>Request Product</span>
+                    </a>
+                </div>
+                <div class="nav-item">
                     <a href="{{ route('admin.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
@@ -42,6 +48,12 @@
                     </a>
                 </div>
             @elseif(auth()->user()->type == 'Supplier')
+                <div class="nav-item">
+                    <a href="">
+                        <i class="bi bi-bag-fill"></i>
+                        <span>Request Product</span>
+                    </a>
+                </div>
                 <div class="nav-item">
                     <a href="{{ route('supplier.product.display') }}">
                         <i class="bi bi-grid"></i>

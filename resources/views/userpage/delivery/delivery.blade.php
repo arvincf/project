@@ -13,7 +13,7 @@
             <section class="main-section">
                 @include('components.header')
                 <h1>Deliver</h1>
-                @if (auth()->user()->type == 'Member')
+                @if (auth()->user()->type == 'Supplier')
                     <div class="page-btn">
                         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
                                 class="bi bi-plus-lg"></i>Add Delivery

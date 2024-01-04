@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('member.delivery.add') }}" method="POST">
+                <form action="{{ route('supplier.delivery.add') }}" method="POST">
                     @csrf
                     <input type="hidden" name="supplierName" value="{{ auth()->user()->first_name }}">
                     <label>Product</label></br>

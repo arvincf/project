@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "type" => "Member",
+            "type" => "Supplier",
             "last_name" =>  "Pastor",
             "first_name" => "Jochelle Mae",
             "age" => 22,
