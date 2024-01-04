@@ -109,6 +109,25 @@ Route::middleware('auth')->group(function () {
         });
     });
 
+    Route::middleware('check.supplier')->prefix('/supplier')->name('supplier.')->group(function () {
+        Route::controller(MainController::class)->group(function () {
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+            Route::get('/settings', 'settings')->name('setting');
+        });
+        Route::controller(ProductController::class)->name('product.')->group(function () {
+            Route::get('/product', 'displayProduct')->name('display');
+        });
+
+        Route::controller(UsersController::class)->group(function () {
+            Route::get('/profile', 'profile')->name('profile');
+        });
+
+        Route::controller(DeliveryController::class)->prefix('/delivery')->name('delivery.')->group(function () {
+            Route::get('/', 'displayDeliver')->name('display');
+            Route::post('/addDelivery', 'addDelivery')->name('add');
+        });
+    });
+
     Route::middleware('check.manager')->prefix('/manager')->name('manager.')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');

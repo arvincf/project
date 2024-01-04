@@ -12,7 +12,7 @@
         <main class="main-container">
             <section class="main-section">
                 @include('components.header')
-                @if (auth()->user()->type == 'Member')
+                @if (auth()->user()->type == 'Supplier')
                     <h1 class="fw-medium">Dashboard</h1>
                     <p>Member</p>
                 @elseif(auth()->user()->type == 'Admin')

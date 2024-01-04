@@ -41,15 +41,15 @@
                         <span>Product Reservation</span>
                     </a>
                 </div>
-            @elseif(auth()->user()->type == 'Member')
+            @elseif(auth()->user()->type == 'Supplier')
                 <div class="nav-item">
-                    <a href="{{ route('member.product.display') }}">
+                    <a href="{{ route('supplier.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('member.delivery.display') }}">
+                    <a href="{{ route('supplier.delivery.display') }}">
                         <i class="bi bi-truck"></i>
                         <span>Delivery</span>
                     </a>
