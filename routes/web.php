@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequestController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\MainController;
@@ -39,6 +40,10 @@ Route::middleware('auth')->group(function () {
         Route::controller(DeliveryController::class)->name('delivery.')->group(function () {
             Route::get('/delivery', 'displayDeliver')->name('display');
             Route::put('/delivery/{id}', 'updateDelivery')->name('update');
+        });
+
+        Route::controller(RequestController::class)->group(function () {
+            Route::get('/requestproduct', 'displayrequestProduct')->name('request');
         });
 
         Route::controller(UsersController::class)->group(function () {
@@ -101,6 +106,10 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(UsersController::class)->group(function () {
             Route::get('/profile', 'profile')->name('profile');
+        });
+
+        Route::controller(RequestController::class)->group(function () {
+            Route::get('/requestproduct', 'displayrequestProduct')->name('request');
         });
 
         Route::controller(DeliveryController::class)->prefix('/delivery')->name('delivery.')->group(function () {

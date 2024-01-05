@@ -24,21 +24,21 @@
                     <li><a href="{{ route('admin.manageusers') }}">Manage Users</a></li>
                 </div>
                 <div class="nav-item">
-                    <a href="">
+                    <a href="{{ route('admin.request') }}">
                         <i class="bi bi-bag-fill"></i>
                         <span>Request Product</span>
-                    </a>
-                </div>
-                <div class="nav-item">
-                    <a href="{{ route('admin.product.display') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
                     <a href="{{ route('admin.delivery.display') }}">
                         <i class="bi bi-truck"></i>
                         <span>Delivery</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="{{ route('admin.product.display') }}">
+                        <i class="bi bi-grid"></i>
+                        <span>Products</span>
                     </a>
                 </div>
                 <div class="nav-item">
@@ -49,7 +49,7 @@
                 </div>
             @elseif(auth()->user()->type == 'Supplier')
                 <div class="nav-item">
-                    <a href="">
+                    <a href="{{ route('supplier.request') }}">
                         <i class="bi bi-bag-fill"></i>
                         <span>Request Product</span>
                     </a>
