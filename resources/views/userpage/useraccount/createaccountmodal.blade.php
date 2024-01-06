@@ -12,7 +12,7 @@
                     <select name="type" class="form-select" required>
                         <option disabled selected hidden value="">Select Type</option>
                         <option value="Admin">Admin</option>
-                        <option value="Member">Member</option>
+                        <option value="Supplier">Supplier</option>
                         <option value="Customer">Customer</option>
                     </select></br>
                     <label>Last Name</label></br>

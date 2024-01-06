@@ -11,19 +11,15 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <div class="input-group">
-                <input id="searchInput" name="name" class="form-control border-0 small" type="text"
-                    placeholder="Search for ..." />
-                <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
-            </div>
+            
             <h1>Users Account</h1>
             <div class="user-table-body"></div>
             @include('userpage.useraccount.createaccountmodal')
             <div class="card">
                 <div class="card-body">
                     <form class="form-inline d-flex">
-                        <i class="bi bi-search" aria-hidden="true"></i>
-                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ..." aria-label="Search">
+                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
+                        <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <table class="table">
                         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">

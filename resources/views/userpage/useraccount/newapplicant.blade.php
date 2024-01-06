@@ -11,13 +11,14 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <div class="input-group">
-                <input class="form-control border-0 small" type="text" placeholder="Search for ..." />
-                <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
-            </div>
             <h1>Applicant</h1>
             <div class="card">
                 <div class="card-body">
+                    <form class="form-inline d-flex">
+                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
+                        <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
+                    </form>
+                    <br>
                     <table class="table">
                         <thead>
                             <th>User Type</th>
