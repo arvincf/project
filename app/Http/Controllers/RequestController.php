@@ -10,6 +10,6 @@ class RequestController extends Controller
     public function displayrequestProduct()
     {
 
-        return view('userpage.request');
+        return view('userpage.request.request');
     }
 }

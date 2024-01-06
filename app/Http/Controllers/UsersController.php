@@ -120,7 +120,10 @@ class UsersController extends Controller
         $userData = $this->user
             ->select('*')
             ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
-            ->where('first_name', 'LIKE', "%{$request->name}%")
+            ->where('last_name', 'LIKE', "%{$request->name}%")
+            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+            ->orWhere('address', 'LIKE', "%{$request->name}%")
+
             ->get();
 
         return response(['userData' => $userData]);
