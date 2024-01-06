@@ -153,5 +153,9 @@ Route::middleware('auth')->group(function () {
         Route::controller(SalesController::class)->group(function () {
             Route::get('/managesales', 'sales')->name('managesales');
         });
+
+        Route::controller(RequestController::class)->group(function () {
+            Route::get('/requestproduct', 'displayrequestProduct')->name('request');
+        });
     });
 });

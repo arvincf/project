@@ -97,7 +97,7 @@
                 <li><a href="{{ route('manager.manageusers') }}">Manage Users</a></li>
             </div>
             <div class="nav-item">
-                <a href="">
+                <a href="{{ route('manager.request') }}">
                     <i class="bi bi-bag-fill"></i>
                     <span>Request Product</span>
                 </a>

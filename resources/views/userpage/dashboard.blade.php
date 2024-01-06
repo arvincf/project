@@ -93,7 +93,7 @@
                                 <i class="bi bi-list-ul"></i>
                             </div>
                             <div class="widget-details">
-                                <p>12</p>
+                                <p>{{ $totalreservation }}</p>
                                 <span>Reservation</span>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                 <i class="bi bi-cash"></i>
                             </div>
                             <div class="widget-details">
-                                <p>11</p>
+                                <p>{{ $totalDelivery}}</p>
                                 <span>Delivery</span>
                             </div>
                         </div>

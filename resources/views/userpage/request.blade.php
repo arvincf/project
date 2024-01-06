@@ -25,13 +25,13 @@
                                 <th>Status</th>
                                 <th>Actions</th>
                             </thead>
-                            
+
                         </table>
                     </div>
                 </section>
         </main>
     </div>
-    @elseif(auth()->user()->type == 'Admin')
+    @elseif(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
     <div class="page-btn">
         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#addproduct"><i
                 class="bi bi-plus-lg"></i>Requesting Product

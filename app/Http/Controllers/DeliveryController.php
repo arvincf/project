@@ -55,7 +55,8 @@ class DeliveryController extends Controller
             $delivery = $this->deliver->findOrFail($id);
 
             $delivery->update([
-                'status' => trim($request->status)
+                'status' => trim($request->status),
+                'delivery_date' => now()
             ]);
 
             return back()->with('success', 'Delivery Updated!');

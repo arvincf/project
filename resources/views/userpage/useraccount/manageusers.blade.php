@@ -18,15 +18,13 @@
             </div>
             <h1>Users Account</h1>
             <div class="user-table-body"></div>
-            <div class="page-btn">
-                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
-                    <i class="bi bi-plus-lg"></i>Create User
-                </button>
-            </div>
             @include('userpage.useraccount.createaccountmodal')
             <div class="card">
                 <div class="card-body">
                     <table class="table">
+                        <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
+                            <i class="bi bi-plus-lg"></i>Create User
+                        </button>
                         <thead>
                             <th>User Type</th>
                             <th>First Name</th>
