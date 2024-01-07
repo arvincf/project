@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <form class="form-inline d-flex">
                         <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
-                        <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-primary" id="searchApplicantBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <br>
                     <table class="table">
@@ -67,6 +67,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
+    @include('partials.search')
     @include('partials.toastr-script')
 </body>
 

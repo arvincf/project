@@ -55,12 +55,6 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('supplier.product.display') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Products</span>
-                    </a>
-                </div>
-                <div class="nav-item">
                     <a href="{{ route('supplier.delivery.display') }}">
                         <i class="bi bi-truck"></i>
                         <span>Delivery</span>

@@ -43,12 +43,14 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::controller(RequestController::class)->group(function () {
-            Route::get('/requestproduct', 'displayrequestProduct')->name('request');
+            Route::get('/displayrequestproduct', 'displayrequestProduct')->name('request');
+            Route::post('/addrequestproduct', 'addrequest')->name('request.add');
         });
 
         Route::controller(UsersController::class)->group(function () {
             Route::get('/profile', 'profile')->name('profile');
             Route::get('/search', 'searchUsers')->name('search.users');
+            Route::get('/searchapplicant', 'searchApplicant')->name('search.applicant');
             Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
             Route::get('/manageusers', 'manageUsers')->name('manageusers');
             Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
