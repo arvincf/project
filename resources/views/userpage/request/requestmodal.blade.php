@@ -9,7 +9,7 @@
                 <form action="{{ route('admin.request.add') }}" method="POST">
                     @csrf
                     <label>Supplier</label></br>
-                    <select name="supplierName" class="form-select" required>
+                    <select name="supplier" class="form-select" required>
                         <option disabled selected hidden value="">Select Supplier</option>
                         @foreach ($user as $users)
                             @if ($users->type == 'Supplier')

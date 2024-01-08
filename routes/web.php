@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(ReservationRecordController::class)->group(function () {
             Route::get('/reservationrecord', 'manageReservation')->name('reservationrecord');
+            Route::patch('/reservationrecord{id}', 'claimed')->name('claim.confirm');
         });
     });
 
@@ -150,6 +151,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(ReservationRecordController::class)->group(function () {
             Route::get('/reservationrecord', 'manageReservation')->name('reservationrecord');
+            Route::patch('/reservationrecord{id}', 'claimed')->name('claim.confirm');
         });
 
         Route::controller(SalesController::class)->group(function () {

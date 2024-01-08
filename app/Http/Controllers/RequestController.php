@@ -35,7 +35,7 @@ class RequestController extends Controller
         $validation = Validator::make($request->all(), [
             'prodName' => 'required',
             'quantity' => 'required',
-            'supplierName'=> 'required'
+            'supplier'=> 'required'
         ]);
 
         if ($validation->fails()) {
@@ -45,7 +45,7 @@ class RequestController extends Controller
 
         $this->request->create([
             'id' => $this->request->max('id') + 1,
-            'supplier_name' => $request->input('supplierName'),
+            'supplier_name' => trim($request->supplier),
             'product_name' => trim($request->prodName),
             'status' => trim($request->status),
             'date' => now(),

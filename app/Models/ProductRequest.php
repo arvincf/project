@@ -17,7 +17,7 @@ class ProductRequest extends Model
         "id",
         "product_id",
         "product_name",
-        "Supplier_name",
+        "supplier_name",
         "quantity",
         "date",
         "status"

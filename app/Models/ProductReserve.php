@@ -15,7 +15,7 @@ class ProductReserve extends Model
 
     protected $fillable = [
         "id",
-        "customer_id",
+        "customer_name",
         "product_id",
         "product_name",
         "details",

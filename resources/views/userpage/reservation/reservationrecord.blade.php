@@ -16,7 +16,9 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Customer Id</th>
+                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                            <th>Customer Name</th>
+                            @endif
                             <th>Product Name</th>
                             <th>Details</th>
                             <th>Quantity</th>
@@ -29,15 +31,28 @@
                         <tbody>
                             @forelse ($reserveProduct as $product)
                                 <tr>
-                                    
-                                    <th>{{ $product->customer_id }}</th>
+                                    @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                    <td>{{ $product->customer_name }}</td>
+                                    @endif
                                     <td>{{ $product->product_name }}</td>
                                     <td>{{ $product->details }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->date }}</td>
                                     <td>{{ $product->status }}</td>
+                                    @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                        <td style="width:30%;">
+                                            <div class="action-btn">
+                                                @if ($product->status == 'Pending')
+                                                <a href="#claim{{ $product->id }}" class="btn-success" title="Claim"
+                                                    data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Claimed
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </td>
+                                    @endif
                                 </tr>
-                                @empty
+                                @include('userpage.reservation.claimed')
+                            @empty
                                 <tr>
                                     <td colspan="7" class="text-center">No reservations found.</td>
                                 </tr>

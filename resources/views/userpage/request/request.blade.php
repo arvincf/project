@@ -25,7 +25,22 @@
                                 <th>Status</th>
                                 <th>Actions</th>
                             </thead>
-
+                            <tbody>
+                                @foreach ($request as $requests)
+                                    <tr>
+                                        <td>{{ $requests->supplier_name }}</td>
+                                        <td>{{ $requests->product_name }}</td>
+                                        <td>{{ $requests->quantity }}</td>
+                                        <td>{{ $requests->date }}</td>
+                                        <td>
+                                            <div
+                                                class="fw-bold text-{{ $requests->status == 'Confirming...' ? 'warning' : 'success' }}">
+                                                {{ $requests->status }}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </section>
@@ -48,6 +63,22 @@
                     <th>Date</th>
                     <th>Status</th>
                 </thead>
+                <tbody>
+                    @foreach ($request as $requests)
+                        <tr>
+                            <td>{{ $requests->supplier_name }}</td>
+                            <td>{{ $requests->product_name }}</td>
+                            <td>{{ $requests->quantity }}</td>
+                            <td>{{ $requests->date }}</td>
+                            <td>
+                                <div
+                                    class="fw-bold text-{{ $requests->status == 'Confirming...' ? 'warning' : 'success' }}">
+                                    {{ $requests->status }}
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </section>

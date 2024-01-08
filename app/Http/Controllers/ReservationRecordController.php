@@ -27,11 +27,11 @@ class ReservationRecordController extends Controller
     } else {
         // Regular customers can only see their own reservation records
         $reserveProduct = $this->reserveProduct
-            ->where('customer_id', $user->id)
+            ->where('customer_name', $user->first_name)
             ->get();
     }
 
-    return view("userpage.reservationrecord", compact('reserveProduct'));
+    return view("userpage..reservation.reservationrecord", compact('reserveProduct'));
     }
 
     public function viewProduct()
@@ -48,7 +48,7 @@ class ReservationRecordController extends Controller
             'quantity' => $product->quantity - $request->quantity
         ]);
         $this->reserveProduct->create([
-            'customer_id' => auth()->user()->id,
+            'customer_name' => auth()->user()->first_name,
             'product_id' => $request->productId,
             'product_name' => $product->name,
             'details' => $product->details,
@@ -58,5 +58,13 @@ class ReservationRecordController extends Controller
         ]);
 
         return back()->with('success', "Product successfully reserved!");
+    }
+
+    public function claimed(Request $request, $id)
+    {
+        $this->reserveProduct->find($id)->update([
+            'status' => trim($request->status),
+        ]);
+        return back()->with('success', 'Product Claimed!');
     }
 }
