@@ -44,7 +44,7 @@
                                             <div class="action-btn">
                                                 @if ($product->status == 'Pending')
                                                 <a href="#claim{{ $product->id }}" class="btn-success" title="Claim"
-                                                    data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Claimed
+                                                    data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Claim
                                                 </a>
                                                 @endif
                                             </div>

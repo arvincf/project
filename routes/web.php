@@ -24,7 +24,7 @@ Route::controller(AuthenticationController::class)->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('check.admin')->prefix('/admin')->name('admin.')->group(function () {
+    Route::middleware('check.admin')->prefix('admin')->name('admin.')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
@@ -121,7 +121,7 @@ Route::middleware('auth')->group(function () {
         });
     });
 
-    Route::middleware('check.manager')->prefix('/manager')->name('manager.')->group(function () {
+    Route::middleware('check.manager')->prefix('manager')->name('manager.')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
@@ -142,6 +142,7 @@ Route::middleware('auth')->group(function () {
         Route::controller(UsersController::class)->group(function () {
             Route::get('/profile', 'profile')->name('profile');
             Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
+            Route::get('/searchapplicant/{option}', 'searchApplicant')->name('search.applicant');
             Route::get('/manageusers', 'manageusers')->name('manageusers');
             Route::post('/manageusers', 'createAccount')->name('manageusers.create');
             Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');

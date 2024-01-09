@@ -36,7 +36,7 @@
                                     <tr>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->quantity }}</td>
-                                        <td>{{ $product->unit_price }}</td>
+                                        <td>₱{{ $product->unit_price }}</td>
                                         <td>{{ $product->supplier_name }}</td>
                                         <td>{{ $product->date_of_storing }}</td>
                                         <td>{{ $product->details }}</td>
