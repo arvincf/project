@@ -95,9 +95,19 @@ class UsersController extends Controller
         return back()->with('success', 'User Updated!');
     }
 
-    public function searchApplicant(Request $request)
+    public function searchApplicant(Request $request, $option)
     {
-        $userData = $this->user
+        if($option == "applicant"){
+            $userData = $this->user
+            ->select('*')
+            ->where('type', 'Applicant')
+            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+            ->orWhere('address', 'LIKE', "%{$request->name}%")
+            ->get();
+
+        return response(['userData' => $userData]);
+        }
+        else{$userData = $this->user
             ->select('*')
             ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
             ->where('last_name', 'LIKE', "%{$request->name}%")
@@ -106,6 +116,9 @@ class UsersController extends Controller
             ->get();
 
         return response(['userData' => $userData]);
+
+        }
+        
     }
 
     public function approveaccount(Request $request, $id)

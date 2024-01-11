@@ -25,7 +25,7 @@
                         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
                             <i class="bi bi-plus-lg"></i>Create User
                         </button>
-                        <thead>
+                        <thead> 
                             <th>User Type</th>
                             <th>First Name</th>
                             <th>Last Name</th>

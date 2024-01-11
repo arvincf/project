@@ -54,7 +54,7 @@
                                 <i class="bi bi-cash"></i>
                             </div>
                             <div class="widget-details">
-                                <p>{{ $totalDelivery}}</p>
+                                <p>{{ $totalDelivery }}</p>
                                 <span>Delivery</span>
                             </div>
                         </div>
@@ -62,7 +62,6 @@
                 @elseif(auth()->user()->type == 'Applicant')
                     <h1>Dashboard</h1>
                     <p>We will just email you to your account: {{ auth()->user()->email }} .</p>
-                    
                 @elseif(auth()->user()->type == 'Manager')
                     <h1 class="fw-medium">Dashboard,</h1>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -102,7 +101,7 @@
                                 <i class="bi bi-cash"></i>
                             </div>
                             <div class="widget-details">
-                                <p>{{ $totalDelivery}}</p>
+                                <p>{{ $totalDelivery }}</p>
                                 <span>Delivery</span>
                             </div>
                         </div>

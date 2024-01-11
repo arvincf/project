@@ -54,4 +54,10 @@ class RequestController extends Controller
 
         return back()->with('success', "Product Requesting is successfully added!");
     }
+    
+    public function displaybeans()
+    {
+
+        return view('userpage.rawmat.coffeebeans');
+    }
 }

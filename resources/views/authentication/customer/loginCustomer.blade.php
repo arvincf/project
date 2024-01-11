@@ -26,7 +26,7 @@
                     <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
                 </div>
                 <div class="form-link">
-                    <a href="{{ route('register.customer') }}">Create a reservation</a>
+                    <a href="{{ route('register.customer') }}">Do you have an account? Create new account.</a>
                 </div>
             </br>
                 <div class="authentication-button-container">

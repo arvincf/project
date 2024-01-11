@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('reserveproducts', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id');
+            $table->string('customer_name');
             $table->integer('product_id');
             $table->string('product_name');
             $table->string('details');

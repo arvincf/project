@@ -31,7 +31,7 @@ class ReservationRecordController extends Controller
             ->get();
     }
 
-    return view("userpage..reservation.reservationrecord", compact('reserveProduct'));
+    return view("userpage.reservation.reservationrecord", compact('reserveProduct'));
     }
 
     public function viewProduct()

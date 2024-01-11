@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
         Route::controller(RequestController::class)->group(function () {
             Route::get('/displayrequestproduct', 'displayrequestProduct')->name('request');
             Route::post('/addrequestproduct', 'addrequest')->name('request.add');
+            Route::get('/displaybeans', 'displaybeans')->name('coffeebeans');
         });
 
         Route::controller(UsersController::class)->group(function () {
@@ -141,9 +142,11 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(UsersController::class)->group(function () {
             Route::get('/profile', 'profile')->name('profile');
+            Route::get('/search', 'searchUsers')->name('search.users');
             Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
             Route::get('/searchapplicant/{option}', 'searchApplicant')->name('search.applicant');
             Route::get('/manageusers', 'manageusers')->name('manageusers');
+            Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
             Route::post('/manageusers', 'createAccount')->name('manageusers.create');
             Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');
             Route::delete('/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
@@ -161,6 +164,8 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(RequestController::class)->group(function () {
             Route::get('/requestproduct', 'displayrequestProduct')->name('request');
+            Route::post('/addrequestproduct', 'addrequest')->name('request.add');
+            Route::get('/displaybeans', 'displaybeans')->name('coffeebeans');
         });
     });
 });

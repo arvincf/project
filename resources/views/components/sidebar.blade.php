@@ -36,6 +36,12 @@
                     </a>
                 </div>
                 <div class="nav-item">
+                    <a href="{{ route('admin.coffeebeans') }}">
+                        <i class="bi bi-database-fill"></i>
+                        <span>Coffee Beans Stock</span>
+                    </a>
+                </div>
+                <div class="nav-item">
                     <a href="{{ route('admin.product.display') }}">
                         <i class="bi bi-grid"></i>
                         <span>Products</span>
@@ -94,6 +100,12 @@
                 <a href="{{ route('manager.request') }}">
                     <i class="bi bi-bag-fill"></i>
                     <span>Request Product</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="">
+                    <i class="bi bi-database-fill"></i>
+                    <span>Stored Coffee beans</span>
                 </a>
             </div>
             <div class="nav-item">

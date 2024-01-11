@@ -30,9 +30,7 @@
                                     <label for="product-name">Product Name:
                                         <span class="product-name">{{ $product->name }}</span>
                                     </label>
-                                    <label for="product-detail">Description:
-                                        <span class="product-details">{{ $product->details }}</span>
-                                    </label>
+                                    
                                 </div>
                                 <div class="product-quantity-container">
                                     <button class="btn-add" title="Add Quantity">+</button>
