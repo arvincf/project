@@ -114,6 +114,7 @@ Route::middleware('auth')->group(function () {
 
         Route::controller(RequestController::class)->group(function () {
             Route::get('/requestproduct', 'displayrequestProduct')->name('request');
+            Route::patch('/requestproduct{id}', 'updatestatus')->name('request.confirm');
         });
 
         Route::controller(DeliveryController::class)->prefix('/delivery')->name('delivery.')->group(function () {

@@ -18,7 +18,6 @@
                     <div class="card-body">
                         <table class="table">
                             <thead>
-                                <th>Supplier Name</th>
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Date</th>
@@ -28,7 +27,6 @@
                             <tbody>
                                 @foreach ($request as $requests)
                                     <tr>
-                                        <td>{{ $requests->supplier_name }}</td>
                                         <td>{{ $requests->product_name }}</td>
                                         <td>{{ $requests->quantity }}</td>
                                         <td>{{ $requests->date }}</td>
@@ -36,6 +34,16 @@
                                             <div
                                                 class="fw-bold text-{{ $requests->status == 'Confirming...' ? 'warning' : 'success' }}">
                                                 {{ $requests->status }}
+                                            </div>
+                                        </td>
+                                        <td style="width:30%;">
+                                            <div class="action-btn">
+                                                @if ($requests->status == 'Confirming...')
+                                                <a href="#confirm{{ $requests->id }}" class="btn-success" title="Confirm"
+                                                    data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Confirm
+                                                </a>
+                                                @include('userpage.request.confirmation')
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -46,6 +54,7 @@
                 </section>
         </main>
     </div>
+
     @elseif(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
     <div class="page-btn">
         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#request"><i

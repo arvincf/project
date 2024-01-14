@@ -54,6 +54,14 @@ class RequestController extends Controller
 
         return back()->with('success', "Product Requesting is successfully added!");
     }
+
+    public function updatestatus(Request $request, $id)
+    {
+        $this->request->find($id)->update([
+            'status' => trim($request->status),
+        ]);
+        return back()->with('success', 'Request Confirmed!');
+    }
     
     public function displaybeans()
     {
