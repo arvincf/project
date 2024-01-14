@@ -46,6 +46,9 @@
                                             <a href="#show{{ $user->id }}" class="btn-warning" title="View"
                                                 data-bs-toggle="modal"><i class="bi bi-eye"></i>View
                                             </a>
+                                            <a href="" class="btn-danger" title="View"
+                                                data-bs-toggle="modal"><i class="bi bi-eye"></i>Disapproved
+                                            </a>
                                         </div>
                                     </td>
                                     @include('userpage.useraccount.useraccountmodal')
