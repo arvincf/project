@@ -46,14 +46,14 @@
                                             <a href="#show{{ $user->id }}" class="btn-warning" title="View"
                                                 data-bs-toggle="modal"><i class="bi bi-eye"></i>View
                                             </a>
-                                            <a href="" class="btn-danger" title="View"
+                                            <a href="" class="btn-danger" title="Disapproved"
                                                 data-bs-toggle="modal"><i class="bi bi-eye"></i>Disapproved
                                             </a>
                                         </div>
+                                        @include('userpage.useraccount.approvemodal')
                                     </td>
                                     @include('userpage.useraccount.useraccountmodal')
                                 </tr>
-                                @include('userpage.useraccount.approvemodal')
                                 @empty
                                 <tr>
                                     <td colspan="7" class="text-center">No Applicant found.</td>
