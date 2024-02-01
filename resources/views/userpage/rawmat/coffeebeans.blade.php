@@ -14,10 +14,7 @@
             <h1>Stored Beans</h1>
             <div class="card">
                 <div class="card-body">
-                    <form class="form-inline d-flex">
-                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
-                        <button class="btn btn-primary" id="searchApplicantBtn"><i class="bi bi-search"></i></button>
-                    </form>
+                    
                     <br>
                     <table class="table">
                         <thead>
