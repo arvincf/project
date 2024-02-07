@@ -9,7 +9,8 @@
     <main class="homepage">
         <div class="wrapper">
             <section class="login-section">
-                <h1>Online Inventory Management with Product Reservation</h1>
+                <h1>CGUMC PORTAL</h1>
+                <br>
                 <div class="login-category">
                     <a href="{{ route('login.customer') }}" class="login-widget">
                         <img src="{{ asset('assets/img/new-user.png') }}" alt="Customer">

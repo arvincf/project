@@ -10,7 +10,7 @@
     --color-red: #ef4444;
     --color-yellow: #fbbf24;
     --color-primary: #3b82f6;
-    --color-widget: #c2ac32ac;
+    --color-widget: #65451F;
     --color-background: #f1f5f9;
 
     --color-nav-hover: #94a3b8;
@@ -95,7 +95,7 @@ body {
 }
 
 .homepage {
-    background: url('/assets/img/backgroundhome.png');
+    background: url('/assets/img/homepage.png');
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -112,6 +112,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 50px;
+   
 }
 
 .wrapper .login-section h1 {
@@ -129,6 +130,7 @@ body {
     justify-content: center;
     gap: 20px;
     transition: 0.1s all ease-out;
+   
 }
 
 .wrapper .login-section .login-category .login-widget {
@@ -145,6 +147,7 @@ body {
 
 .wrapper .login-section .login-category .login-widget:hover {
     transform: scale(1.1);
+    opacity: 0.5;
 }
 
 .wrapper .login-section .login-category .login-widget img {
@@ -152,6 +155,7 @@ body {
     max-width: 100%;
     height: 150px;
     margin-bottom: 20px;
+    opacity: 1.0;
 }
 
 .wrapper .login-section .login-category .login-widget p {

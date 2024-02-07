@@ -8,7 +8,7 @@
 <body>
     <main class="authentication-container">
         <section class="side-image-content">
-            <img src="{{ asset('assets/img/side-image.jpg') }}" alt="Picture">
+            <img src="{{ asset('assets/img/login.jpg') }}" alt="Picture">
         </section>
         <section class="authentication-form-container">
             <form action="{{ route('registerUser') }}" method="GET">
