@@ -22,6 +22,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <section class="wigdet-container">
+
                         <div class="widget">
                             <div class="widget-logo-user">
                                 <i class="bi bi-person-fill"></i>
@@ -31,15 +32,20 @@
                                 <span>Users</span>
                             </div>
                         </div>
+
                         <div class="widget">
                             <div class="widget-logo-categories">
                                 <i class="bi bi-cart-fill"></i>
                             </div>
+                            <a href="{{ route('admin.product.display') }}" style="color:black;">
                             <div class="widget-details">
+                                <br>
                                 <p>{{ $totalProducts }}</p>
-                                <span>Products</span>
+                                Products
                             </div>
+                            </a>
                         </div>
+
                         <div class="widget">
                             <div class="widget-logo-product">
                                 <i class="bi bi-list-ul"></i>
@@ -49,6 +55,7 @@
                                 <span>Reservation</span>
                             </div>
                         </div>
+                        
                         <div class="widget">
                             <div class="widget-logo-sales">
                                 <i class="bi bi-cash"></i>
