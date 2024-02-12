@@ -33,29 +33,30 @@
                             </div>
                         </div>
 
-                        <div class="widget">
-                            <div class="widget-logo-categories">
-                                <i class="bi bi-cart-fill"></i>
+                        <a href="{{ route('admin.product.display') }}" style="color:black;">
+                            <div class="widget">
+                                <div class="widget-logo-categories">
+                                    <i class="bi bi-cart-fill"></i>
+                                </div>
+                                <div class="widget-details">
+                                    <p>{{ $totalProducts }}</p>
+                                    Products
+                                </div>
                             </div>
-                            <a href="{{ route('admin.product.display') }}" style="color:black;">
-                            <div class="widget-details">
-                                <br>
-                                <p>{{ $totalProducts }}</p>
-                                Products
-                            </div>
-                            </a>
-                        </div>
+                        </a>
 
-                        <div class="widget">
-                            <div class="widget-logo-product">
-                                <i class="bi bi-list-ul"></i>
+                        <a href="{{ route('admin.reservationrecord') }}" style="color:black;//">
+                            <div class="widget">
+                                <div class="widget-logo-product">
+                                    <i class="bi bi-list-ul"></i>
+                                </div>
+                                <div class="widget-details">
+                                    <p>{{ $totalreservation }}</p>
+                                    <span>Reservation</span>
+                                </div>
                             </div>
-                            <div class="widget-details">
-                                <p>{{ $totalreservation }}</p>
-                                <span>Reservation</span>
-                            </div>
-                        </div>
-                        
+                        </a>
+
                         <div class="widget">
                             <div class="widget-logo-sales">
                                 <i class="bi bi-cash"></i>
