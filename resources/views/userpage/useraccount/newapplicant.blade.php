@@ -47,7 +47,7 @@
                                                 data-bs-toggle="modal"><i class="bi bi-eye"></i>View
                                             </a>
                                             <a href="" class="btn-danger" title="Disapproved"
-                                                data-bs-toggle="modal"><i class="bi bi-eye"></i>Disapproved
+                                                data-bs-toggle="modal"><i class="bi bi-x-lg"></i>Disapproved
                                             </a>
                                         </div>
                                         @include('userpage.useraccount.approvemodal')
