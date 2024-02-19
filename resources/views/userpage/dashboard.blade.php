@@ -57,6 +57,7 @@
                             </div>
                         </a>
 
+                        <a href="{{ route('admin.delivery.display') }}" style="color:black;//">
                         <div class="widget">
                             <div class="widget-logo-sales">
                                 <i class="bi bi-cash"></i>
@@ -66,6 +67,8 @@
                                 <span>Delivery</span>
                             </div>
                         </div>
+                        </a>
+
                     </section>
                 @elseif(auth()->user()->type == 'Applicant')
                     <h1>Dashboard</h1>
@@ -86,6 +89,8 @@
                                 <span>Users</span>
                             </div>
                         </div>
+
+                        <a href="{{ route('manager.product.display') }}" style="color:black;">
                         <div class="widget">
                             <div class="widget-logo-categories">
                                 <i class="bi bi-cart-fill"></i>
@@ -95,6 +100,9 @@
                                 <span>Products</span>
                             </div>
                         </div>
+                        </a>
+
+                        <a href="{{ route('manager.reservationrecord') }}" style="color:black;//">
                         <div class="widget">
                             <div class="widget-logo-product">
                                 <i class="bi bi-list-ul"></i>
@@ -104,6 +112,9 @@
                                 <span>Reservation</span>
                             </div>
                         </div>
+                        </a>
+
+                        <a href="{{ route('manager.delivery') }}" style="color:black;//">
                         <div class="widget">
                             <div class="widget-logo-sales">
                                 <i class="bi bi-cash"></i>
@@ -113,6 +124,7 @@
                                 <span>Delivery</span>
                             </div>
                         </div>
+                        </a>
                     </section>
                 @else
                     <h1>Dashboard</h1>
