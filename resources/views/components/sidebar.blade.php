@@ -103,7 +103,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="">
+                <a href="{{ route('manager.coffeebeans') }}">
                     <i class="bi bi-database-fill"></i>
                     <span>Stored Coffee beans</span>
                 </a>
