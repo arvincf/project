@@ -142,6 +142,10 @@
                 </a>
             </div>
             @endif
+            
+            <div class="text-center d-none d-md-inline">
+                <button id="sidebarToggle" class="btn rounded-circle border-0" type="button"></button>
+            </div>
         </div>
     </div>
 </div>

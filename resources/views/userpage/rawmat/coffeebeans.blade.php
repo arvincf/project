@@ -18,12 +18,8 @@
                     <br>
                     <table class="table">
                         <thead>
-                            <th>User Type</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Age</th>
-                            <th>Address</th>
-                            <th>Contact</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
                             <th>Actions</th>
                         </thead>
         </main>
