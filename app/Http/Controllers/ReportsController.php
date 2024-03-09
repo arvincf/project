@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
-    //
+    public function displayReports()
+    {
+        return view('userpage.report.reports');
+    }
 }

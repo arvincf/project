@@ -8,6 +8,7 @@ use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\ReservationRecordController;
+use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -167,6 +168,10 @@ Route::middleware('auth')->group(function () {
             Route::get('/requestproduct', 'displayrequestProduct')->name('request');
             Route::post('/addrequestproduct', 'addrequest')->name('request.add');
             Route::get('/displaybeans', 'displaybeans')->name('coffeebeans');
+        });
+
+        Route::controller(ReportsController::class)->group(function () {
+            Route::get('/reports', 'displayReports')->name('report');
         });
     });
 });

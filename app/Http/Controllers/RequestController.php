@@ -65,7 +65,7 @@ class RequestController extends Controller
     
     public function displaybeans()
     {
-
-        return view('userpage.rawmat.coffeebeans');
+        $products = $this->product->all();
+        return view('userpage.rawmat.coffeebeans', compact('products'));
     }
 }
