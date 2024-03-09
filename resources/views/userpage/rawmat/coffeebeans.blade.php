@@ -35,14 +35,9 @@
                                                         class="img-fluid rounded circle">
                                                 </div>
                                                 <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
-                                                <p class="text-muted">₱{{ $product->unit_price }}</p>
                                                 <ul class="list-group mb-3 list-group-flush">
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
-                                                    </li>
-                                                    <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Unit
-                                                            Price:</span><strong>₱{{ $product->unit_price }}</strong>
+                                                        <span>Quantity:</span><strong>{{ $product->quantity }}KG</strong>
                                                     </li>
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                                         <span>Description:</span><strong>{{ $product->details }}</strong>
