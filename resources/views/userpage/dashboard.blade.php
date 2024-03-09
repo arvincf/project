@@ -13,8 +13,20 @@
             <section class="main-section">
                 @include('components.header')
                 @if (auth()->user()->type == 'Supplier')
-                    <h1 class="fw-medium">Dashboard</h1>
-                    <p>Member</p>
+                    <h1 class="fw-medium">News Dashboard</h1>
+                    <div>
+                       <p> #AgriInterventions | VALIDATION NG PAGTATAYUAN NG BAGONG COFFEE BEANS STORAGE SA CASILE COFFEE PROCESSING CENTER
+                Sinamahan kanina ng Cabuyao Agriculture Office ang validation team mula sa DA-Calabarzon Regional Agricultural Engineering Division (RAED) at High-Value Crops Development Program (HVCDP) na sina Engr. Marianne San Buenaventura, Darwin Bigyan, at Maximo Factor sa lugar kung saan itatayo ang proposed coffee beans storage sa Brgy. Casile. Ang coffee beans storage na ito na project grant sa Casile-Guinting Upland Marketing Cooperative ay nagkakahalaga ng ₱750,000.00 mula sa Department of Agriculture Region 4A HVCDP.
+                Target na ma-construct ang nasabing storage o warehouse sa mga susunod na buwan.
+                Hindi pa man naitatayo ang storage facility, mainit na po agad ang aming pasasalamat sa DA sa patuloy at walang sawang pag-agapay sa ating mga magsasaka. 🙌🏼
+                #HVCDP
+                #Coffee
+                #CafeDeCabuyao
+                #MasaganangAgrikulturaMaunladNaEkonomiya
+                #BagongCabuyao</p>
+                <img src="{{ asset('assets/img/1.jpg') }}" alt="Supplier">
+
+                    </div>
                 @elseif(auth()->user()->type == 'Admin')
                     <h1 class="fw-medium">Dashboard,</h1>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
