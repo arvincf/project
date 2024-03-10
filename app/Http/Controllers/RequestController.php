@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductRequest;
-use App\Models\Product;
 use App\Models\User;
 use App\Models\Coffeebeans;
 use Illuminate\Http\Request;
@@ -13,12 +12,11 @@ use Illuminate\Support\Facades\Validator;
 class RequestController extends Controller
 {
 
-    private $request, $product, $user, $coffeebeans;
+    private $request, $user, $coffeebeans;
 
     public function __construct()
     {
         $this->request = new ProductRequest;
-        $this->product = new Product;
         $this->user = new User;
         $this->coffeebeans = new Coffeebeans;
 
