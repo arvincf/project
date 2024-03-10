@@ -14,7 +14,7 @@
             <h1>Stored Beans</h1>
             <div id="grid-view" class="panel">
                 <div class="row">
-                    @foreach ($products as $product)
+                    @foreach ($coffeebeans as $coffeebean)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="card card-profile">
                                 <div class="card-header justify-content-end pb-0">
@@ -34,13 +34,13 @@
                                                     <img src="/assets/img/side-image.jpg" width="100"
                                                         class="img-fluid rounded circle">
                                                 </div>
-                                                <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
+                                                <h3 class="mt-4 mb-1">{{ $coffeebean->coffee_name }}</h3>
                                                 <ul class="list-group mb-3 list-group-flush">
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Quantity:</span><strong>{{ $product->quantity }}KG</strong>
+                                                        <span>Quantity:</span><strong>{{ $coffeebean->quantity }}KG</strong>
                                                     </li>
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Description:</span><strong>{{ $product->details }}</strong>
+                                                        <span>Date Stored:</span><strong>{{ $coffeebean->date }}</strong>
                                                     </li>
                                                 </ul>
                                                 <a class="btn btn-outline-primary btn-rounded mt-3 px-4"

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class coffeebeans extends Model
+class Coffeebeans extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,6 @@ class coffeebeans extends Model
     protected $fillable = [
         "coffee_name",
         "quantity",
-        "supplier_name",
         "date"
     ];
 }

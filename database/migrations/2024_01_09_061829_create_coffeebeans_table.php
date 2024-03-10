@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('coffee_name');
             $table->string('quantity');
-            $table->date('supplier_name');
             $table->date('date');
             $table->timestamps();
         });

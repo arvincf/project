@@ -21,8 +21,8 @@
                     <label>Product</label></br>
                     <select name="prodName" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
-                        @foreach ($products as $product)
-                            <option value="{{ $product->name }}">{{ $product->name }}</option>
+                        @foreach ($coffeebeans as $coffeebean)
+                            <option value="{{ $coffeebean->coffee_name }}">{{ $coffeebean->coffee_name }}</option>
                         @endforeach
                     </select></br>
                     <input type="hidden" name="status" value="Confirming...">

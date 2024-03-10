@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\coffeebeans;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Delivery;
@@ -105,6 +106,20 @@ class DatabaseSeeder extends Seeder
             "product_name" => "Arabica",
             "status" => "Delivered",
             "delivery_date" => "2023-09-15",
+        ]);
+
+        Coffeebeans::create([
+            "id" => 1,
+            "coffee_name" =>  "Arabica",
+            "quantity" => 100,
+            "date" => "2023-12-15"
+        ]);
+
+        Coffeebeans::create([
+            "id" => 2,
+            "coffee_name" =>  "Robusta",
+            "quantity" => 100,
+            "date" => "2023-12-15"
         ]);
     }
 }

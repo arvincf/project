@@ -6,28 +6,30 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductRequest;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Coffeebeans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RequestController extends Controller
 {
 
-    private $request, $product, $user;
+    private $request, $product, $user, $coffeebeans;
 
     public function __construct()
     {
         $this->request = new ProductRequest;
         $this->product = new Product;
         $this->user = new User;
+        $this->coffeebeans = new Coffeebeans;
 
     }
     public function displayrequestProduct()
     {
         $request =  $this->request->all();
-        $products = $this->product->all();
+        $coffeebeans = $this->coffeebeans->all();
         $user = $this->user->all();
 
-        return view('userpage.request.request',  compact('request', 'products', 'user'));
+        return view('userpage.request.request',  compact('request', 'coffeebeans', 'user'));
     }
 
     public function addrequest(Request $request)
@@ -65,7 +67,7 @@ class RequestController extends Controller
     
     public function displaybeans()
     {
-        $products = $this->product->all();
-        return view('userpage.rawmat.coffeebeans', compact('products'));
+        $coffeebeans = $this->coffeebeans->all();
+        return view('userpage.rawmat.coffeebeans', compact('coffeebeans'));
     }
 }
