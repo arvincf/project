@@ -1,8 +1,17 @@
 <div class="sidebar">
     <header class="sidebar-header">
-        <p>INVENTORY SYSTEM</p>
+        <div class= "image-text">
+            <a href="dashboard">
+            <span class="image">
+                <img src="{{ asset('assets/img/cgumc.png') }}" alt="logo">
+            </span>
+            </a>
+        </div>
     </header>
     <div class="sidebar-container">
+        <div class="sidebar-text-container">
+            <p>INVENTORY SYSTEM</p>
+        </div>
         <div class="sidebar-user-details">
             <p>{{ strtoupper(auth()->user()->type) }}</p>
         </div>
