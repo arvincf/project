@@ -25,18 +25,23 @@
                             <div class="product-details-container">
                                 <div class="product-stock-container">
                                     <p class="quantity">Available Stocks: <span>{{ $product->quantity }}</span></p>
+                                    @if ($product->quantity <= 0)
+                                        <p class="no-stock-message">No stock available</p>
+                                    @endif
                                 </div>
                                 <div class="product-details-section">
                                     <label for="product-name">Product Name:
                                         <span class="product-name">{{ $product->name }}</span>
                                     </label>
-                                    
+
                                 </div>
                                 <div class="product-quantity-container">
-                                    <button class="btn-add" title="Add Quantity">+</button>
+                                    <button class="btn-add" title="Add Quantity"
+                                        {{ $product->quantity <= 0 ? 'disabled' : '' }}>+</button>
                                     <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity"
-                                        min="1" required>
-                                    <button class="btn-minus" title="Minus Quantity">-</button>
+                                        min="1" readonly>
+                                    <button class="btn-minus" title="Minus Quantity"
+                                        {{ $product->quantity <= 0 ? 'disabled' : '' }}>-</button>
                                 </div>
                                 <div class="product-btn-container">
                                     <button class="btn-reserve" title="Reserve">Reserve</button>
