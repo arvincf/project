@@ -8,6 +8,7 @@ use App\Models\coffeebeans;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Delivery;
+use App\Models\Sales;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -119,6 +120,14 @@ class DatabaseSeeder extends Seeder
             "id" => 2,
             "coffee_name" =>  "Robusta",
             "quantity" => 100,
+            "date" => "2023-12-15"
+        ]);
+
+        Sales::create([
+            "id" => 1,
+            "customer_name" =>  "Elisha",
+            "product_name" => "Robusta",
+            "product_quantity" => "10",
             "date" => "2023-12-15"
         ]);
     }

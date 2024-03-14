@@ -16,14 +16,12 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Id</th>
+                            <th>Sales Date</th>
                             <th>Customer Name</th>
                             <th>Product Name</th>
+                            <th>Product Price</th>
                             <th>Product Quantity</th>
-                            <th>Sales Date</th>
-                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-                                <th>Action</th>
-                            @endif
+                            <th>Total Sales</th>
                         </thead>
         </main>
     </div>
