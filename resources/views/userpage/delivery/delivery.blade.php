@@ -40,7 +40,7 @@
                                         <td>{{ $deliver->product_name }}</td>
                                         <td>{{ $deliver->quantity }}</td>
                                         <td>{{ $deliver->supplier_name }}</td>
-                                        <td>{{ $deliver->delivery_date }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($deliver->delivery_date)->format('F j, Y') }}</td>
                                         <td>
                                             <div
                                                 class="fw-bold text-{{ $deliver->status == 'On Deliver' ? 'warning' : 'success' }}">

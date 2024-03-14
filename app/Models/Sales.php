@@ -17,6 +17,7 @@ class Sales extends Model
         "customer_name",
         "product_name",
         "product_quantity",
+        "price",
         "date"
     ];
 }

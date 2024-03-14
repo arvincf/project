@@ -23,6 +23,20 @@
                             <th>Product Quantity</th>
                             <th>Total Sales</th>
                         </thead>
+                        <tbody>
+                            @foreach ($sales as $sale)
+                                <tr>
+                                    <td>{{ \Carbon\Carbon::parse($sale->date)->format('F j, Y') }}</td>
+                                    <td>{{ $sale->customer_name }}</td>
+                                    <td>{{ $sale->product_name }}</td>
+                                    <td>{{ $sale->product_quantity }}</td>
+                                    <td>{{ $sale->price }}</td>
+                                </tr>
+                                @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
 

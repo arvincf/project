@@ -37,7 +37,7 @@
                                     <td>{{ $product->product_name }}</td>
                                     <td>{{ $product->details }}</td>
                                     <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->date }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($product->date)->format('F j, Y') }}</td>
                                     <td>{{ $product->status }}</td>
                                     @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
                                         <td style="width:30%;">

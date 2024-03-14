@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('customer_name');
             $table->string('product_name');
             $table->integer('product_quantity');
+            $table->integer('price');
             $table->date('date');
             $table->timestamps();
         });

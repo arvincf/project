@@ -128,6 +128,7 @@ class DatabaseSeeder extends Seeder
             "customer_name" =>  "Elisha",
             "product_name" => "Robusta",
             "product_quantity" => "10",
+            "price" => "20",
             "date" => "2023-12-15"
         ]);
     }

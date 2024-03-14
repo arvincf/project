@@ -40,7 +40,7 @@
                                                         <span>Quantity:</span><strong>{{ $coffeebean->quantity }}KG</strong>
                                                     </li>
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Date Stored:</span><strong>{{ $coffeebean->date }}</strong>
+                                                        <span>Date Stored:</span><strong>{{ \Carbon\Carbon::parse($coffeebean->date)->format('F j, Y') }}</strong>
                                                     </li>
                                                 </ul>
                                                 <a class="btn btn-outline-primary btn-rounded mt-3 px-4"

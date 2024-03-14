@@ -38,7 +38,7 @@
                                         <td>{{ $product->quantity }}</td>
                                         <td>₱{{ $product->unit_price }}</td>
                                         <td>{{ $product->supplier_name }}</td>
-                                        <td>{{ $product->date_of_storing }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($product->date_of_storing)->format('F j, Y') }}</td>
                                         <td>{{ $product->details }}</td>
                                         <td>
                                             <div class="action-btn">
