@@ -6,21 +6,21 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('supplier.delivery.add') }}" method="POST">
+                <form id="deliveryForm" action="{{ route('supplier.delivery.add') }}" method="POST">
                     @csrf
                     <input type="hidden" name="supplierName" value="{{ auth()->user()->first_name }}">
-                    <label>Product</label></br>
+                    <label>Product</label><br>
                     <select name="prodName" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
-                        @foreach ($products as $product)
-                            <option value="{{ $product->name }}">{{ $product->name }}</option>
+                        @foreach ($coffeebeans as $coffeebean)
+                            <option value="{{ $coffeebean->coffee_name }}">{{ $coffeebean->coffee_name }}</option>
                         @endforeach
-                    </select></br>
+                    </select><br>
                     <input type="hidden" name="status" value="On Deliver">
                     <label>Quantity</label><br>
-                    <input type="number" name="quantity" class="form-control"
+                    <input id="quantityInput" type="number" name="quantity" class="form-control" value="1"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        pattern="[0-9]{11}" minlength="5" maxlength="5" placeholder="Quantity" required><br>
+                        pattern="[0-9]{11}" minlength="1" min="1" required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>
@@ -30,3 +30,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    // jQuery is used here, make sure to include it before this script
+    $('#adddeliver').on('show.bs.modal', function (event) {
+        // Set the value of the quantity input field to 1 when the modal is shown
+        $('#quantityInput').val('1');
+    });
+</script>

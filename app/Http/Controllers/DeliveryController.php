@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Delivery;
-use App\Models\Product;
+use App\Models\Coffeebeans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class DeliveryController extends Controller
 {
 
-    private $deliver, $product;
+    private $deliver, $coffeebeans;
 
     public function __construct()
     {
         $this->deliver = new Delivery;
-        $this->product = new Product;
+        $this->coffeebeans = new Coffeebeans;
     }
 
     public function displayDeliver()
     {
         $delivers =  $this->deliver->all();
-        $products = $this->product->all();
+        $coffeebeans = $this->coffeebeans->all();
 
-        return view('userpage.delivery.delivery', compact('delivers', 'products'));
+        return view('userpage.delivery.delivery', compact('delivers', 'coffeebeans'));
     }
 
     public function addDelivery(Request $request)

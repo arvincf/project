@@ -10,7 +10,7 @@
     </header>
     <div class="sidebar-container">
         <div class="sidebar-text-container">
-            <p>INVENTORY SYSTEM</p>
+            <p>INVENTORY MANAGEMENT SYSTEM</p>
         </div>
         <div class="sidebar-user-details">
             <p>{{ strtoupper(auth()->user()->type) }}</p>
