@@ -33,16 +33,16 @@
                     method="POST">
                     @method('PATCH')
                     @csrf
-                    <input type="hidden" name="id" value="{{ $user->id }}">
+                    <label> {{ $user->id }} </label><br>
                     <label>First Name</label><br>
                     <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control">
                     <label>Last Name</label><br>
                     <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control">
-                    <label>Address</label></br>
+                    <label>Address</label><br>
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control">
-                    <label>Email Address</label></br>
+                    <label>Email Address</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control">
-                    <label>Contact Number</label></br>
+                    <label>Contact Number</label><br>
                     <input type="number" name="contact" value="{{ $user->contact }}"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         maxlength="11" class="form-control">

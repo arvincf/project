@@ -11,9 +11,19 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <p>Settings</p>
-            <span>{{ auth()->user()->first_name }}</span>
-            <span>{{ auth()->user()->last_name }}</span>
+            <h1>Settings</h1><br>
+            <b>First Name:</b><br>
+            <input type="text" name="firstname" value="{{ auth()->user()->first_name }}" class="form-control"><br>
+            <b>Last Name:</b><br>
+            <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control"><br>
+            <b>Address:</b></br>
+            <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control"><br>
+            <b>Email Address:</b></br>
+            <input type="text" name="email" value="{{ auth()->user()->email }}" class="form-control"><br>
+            <b>Contact Number:</b><br>
+            <input type="number" name="contact" value="{{ auth()->user()->contact }}"
+                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                maxlength="11" class="form-control">
         </main>
     </div>
 

@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('first_name');
             $table->string('last_name');
+            $table->date('birthdate');
             $table->integer('age');
             $table->string('address');
             $table->string('email')->unique();

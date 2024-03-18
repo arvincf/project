@@ -235,7 +235,7 @@ body {
 
 .wrapper .header-content p {
     margin: 0;
-    padding-left: 15px;
+    padding-left: 10px;
     color: var(--color-text);
     font-weight: 600;
 }
