@@ -18,8 +18,7 @@
                     </select><br>
                     <input type="hidden" name="status" value="On Deliver">
                     <label>Quantity</label><br>
-                    <input id="quantityInput" type="number" name="quantity" class="form-control" value="1"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    <input id="quantityInput" type="number" name="quantity" class="form-control"
                         pattern="[0-9]{11}" minlength="1" min="1" required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -33,7 +32,7 @@
 
 <script>
     // jQuery is used here, make sure to include it before this script
-    $('#adddeliver').on('show.bs.modal', function (event) {
+    $('#adddeliver').on('show.bs.modal', function(event) {
         // Set the value of the quantity input field to 1 when the modal is shown
         $('#quantityInput').val('1');
     });
