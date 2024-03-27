@@ -6,7 +6,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}" method="POST">
+                <form
+                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
+                    method="POST">
                     @csrf
                     <label>Type</label></br>
                     <select name="type" class="form-select" required>
@@ -24,7 +26,7 @@
                         value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="First Name"
                         required></br>
                     <label for="birthday">Birthday:</label>
-                    <input type="date" id="birthday" name="birthday" class="form-control"></br>
+                    <input type="date" id="birthdayInput" name="birthday" class="form-control" required></br>
                     <label>Age</label></br>
                     <input type="number" name="age" class="form-control"
                         value="{{ !empty(old('age')) ? old('age') : null }}"placeholder="Age" required></br>
@@ -51,3 +53,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Calculate minimum and maximum dates
+    var currentDate = new Date();
+    var maxDate = new Date(currentDate);
+    maxDate.setFullYear(maxDate.getFullYear() - 18); // 18 years ago
+
+    var minDate = new Date(currentDate);
+    minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
+
+    // Format dates for input
+    var formattedMaxDate = maxDate.toISOString().split('T')[0];
+    var formattedMinDate = minDate.toISOString().split('T')[0];
+
+    // Set minimum and maximum dates for the input field
+    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
+    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+</script>
