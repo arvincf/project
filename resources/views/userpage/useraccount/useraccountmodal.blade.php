@@ -43,9 +43,11 @@
                     <label>Email Address</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control">
                     <label>Contact Number</label><br>
-                    <input type="number" name="contact" value="{{ $user->contact }}"
+                    <input type="text" name="contact" class="form-control" value="{{ auth()->user()->contact }}"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        maxlength="11" class="form-control">
+                        pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
+                        placeholder="Contact Number" required
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-warning">Update</button>
@@ -80,4 +82,3 @@
         </div>
     </div>
 </div>
-

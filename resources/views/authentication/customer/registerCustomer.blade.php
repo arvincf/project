@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<link rel="icon" href="{{asset('assets/img/cgumc.png')}}" type="image">
+<link rel="icon" href="{{ asset('assets/img/cgumc.png') }}" type="image">
 
 <head>
     @include('partials.header-package')
@@ -18,12 +18,14 @@
                 <div class="field-container">
                     <label for="lastname" class="form-label">Last Name</label>
                     <input type="text" name="lastname" class="form-control"
-                        value="{{ !empty(old('lastname')) ? old('lastname') : null }}" placeholder="Enter Last Name" required>
+                        value="{{ !empty(old('lastname')) ? old('lastname') : null }}" placeholder="Enter Last Name"
+                        required>
                 </div>
                 <div class="field-container">
                     <label for="firstname" class="form-label">First Name</label>
                     <input type="text" name="firstname" class="form-control"
-                        value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="Enter First Name" required>
+                        value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="Enter First Name"
+                        required>
                 </div>
                 <div class="field-container">
                     <label for="age" class="form-label">Age</label>
@@ -45,8 +47,10 @@
                 <div class="field-container">
                     <label for="contact" class="form-label">Contact Number</label>
                     <input type="text" name="contact" class="form-control"
-                        value="{{ !empty(old('contact')) ? old('contact') : null }}" placeholder="Enter Contact Number"
-                        required>
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
+                        placeholder="Contact Number" required
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                 </div>
                 <div class="field-container">
                     <label for="password" class="form-label">Password</label>
@@ -57,7 +61,8 @@
                 </div>
                 <div class="authentication-button-container">
                     <a href="{{ route('home') }}" class="btn-danger">Back</a>
-                    <button type="submit" class="btn-success" onclick="return confirm('Are you sure to register this information?')">Register</button>
+                    <button type="submit" class="btn-success"
+                        onclick="return confirm('Are you sure to register this information?')">Register</button>
                 </div>
             </form>
         </section>
