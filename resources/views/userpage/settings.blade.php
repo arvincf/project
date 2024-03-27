@@ -22,7 +22,7 @@
             <b>Last Name:</b><br>
             <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control" required><br>
             <b>Birthday:</b>
-            <input type="date" name="birthday" value="{{ auth()->user()->birthdate }}" class="form-control" required><br>
+            <input type="date" name="birthday" value="{{ auth()->user()->birthdate }}" class="form-control" required id="birthdayInput"><br>
             <b>Address:</b></br>
             <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control" required><br>
             <b>Email Address:</b></br>
@@ -45,3 +45,21 @@
 </body>
 
 </html>
+
+<script>
+    // Calculate minimum and maximum dates
+    var currentDate = new Date();
+    var maxDate = new Date(currentDate);
+    maxDate.setFullYear(maxDate.getFullYear() - 18); // 18 years ago
+
+    var minDate = new Date(currentDate);
+    minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
+
+    // Format dates for input
+    var formattedMaxDate = maxDate.toISOString().split('T')[0];
+    var formattedMinDate = minDate.toISOString().split('T')[0];
+
+    // Set minimum and maximum dates for the input field
+    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
+    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+</script>

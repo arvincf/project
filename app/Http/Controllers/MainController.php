@@ -42,7 +42,7 @@ class MainController extends Controller
                 'date',
                 // Use a custom validation rule to ensure the user is between 18 and 60 years old
                 function ($attribute, $value, $fail) {
-                    $minAge = now()->subYears(60);
+                    $minAge = now()->subYears(70);
                     $maxAge = now()->subYears(18);
                     if ($value > $maxAge || $value < $minAge) {
                         $fail("The $attribute must be between 18 and 60 years old.");
