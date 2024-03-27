@@ -12,18 +12,29 @@
         <main class="main-container">
             @include('components.header')
             <h1>Settings</h1><br>
+            <form
+                action="{{ route ('admin.settings.update', ['id' => $user->id])}}"
+                method="POST">
+                @method('PATCH')
+                @csrf
             <b>First Name:</b><br>
-            <input type="text" name="firstname" value="{{ auth()->user()->first_name }}" class="form-control"><br>
+            <input type="text" name="firstname" value="{{ auth()->user()->first_name }}" class="form-control" required><br>
             <b>Last Name:</b><br>
-            <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control"><br>
+            <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control" required><br>
+            <b>Birthday:</b>
+            <input type="date" name="birthday" value="{{ auth()->user()->birthdate }}" class="form-control" required><br>
             <b>Address:</b></br>
-            <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control"><br>
+            <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control" required><br>
             <b>Email Address:</b></br>
-            <input type="text" name="email" value="{{ auth()->user()->email }}" class="form-control"><br>
+            <input type="text" name="email" value="{{ auth()->user()->email }}" class="form-control" required><br>
             <b>Contact Number:</b><br>
             <input type="number" name="contact" value="{{ auth()->user()->contact }}"
                 oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                maxlength="11" class="form-control">
+                maxlength="11" class="form-control" required><br>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn-success">Edit</button>
+            </div>
+            </form>
         </main>
     </div>
 
