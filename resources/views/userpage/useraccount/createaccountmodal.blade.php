@@ -38,10 +38,11 @@
                         value="{{ !empty(old('email')) ? old('email') : null }}" placeholder="Email Address"
                         required></br>
                     <label>Contact Number</label><br>
-                    <input type="number" name="contact" class="form-control"
+                    <input type="text" name="contact" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
-                        placeholder="Contact Number" required><br>
+                        placeholder="Contact Number" required
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                     <label>Password</label></br>
                     <input type="password" name="password" class="form-control" required></br>
                     <div class="modal-footer">
