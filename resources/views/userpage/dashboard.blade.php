@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="widget-details">
                                     <p>{{ $totalProducts }}</p>
-                                    Products
+                                    <span>Products</span>
                                 </div>
                             </div>
                         </a>

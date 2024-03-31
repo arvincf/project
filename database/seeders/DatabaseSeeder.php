@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             "id" => 1,
-            "name" =>  "Arabica",
+            "name" =>  "Brewed Arabica",
             "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
             "unit_price" => 50,
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             "id" => 2,
-            "name" =>  "Robusta",
+            "name" =>  "Powdered Robusta",
             "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
             "unit_price" => 50,

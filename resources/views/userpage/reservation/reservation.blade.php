@@ -26,11 +26,11 @@
                                 <div class="product-stock-container">
                                     <p class="quantity">Available Stocks: <span>{{ $product->quantity }}</span></p>
                                     @if ($product->quantity <= 0)
-                                        <p class="no-stock-message">No stock available</p>
+                                        <span class="no-stock-message">No stock available</span>
                                     @endif
                                 </div>
                                 <div class="product-details-section">
-                                    <label for="product-name">Product Name:
+                                    <label for="product-name">Product Name: <br>
                                         <span class="product-name">{{ $product->name }}</span>
                                     </label>
 
@@ -39,7 +39,7 @@
                                     <button class="btn-add" title="Add Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>+</button>
                                     <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity"
-                                        min="1" readonly>
+                                        min="1" required readonly>
                                     <button class="btn-minus" title="Minus Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>-</button>
                                 </div>
@@ -77,7 +77,7 @@
                     stockText = productItem.find('.quantity span'),
                     currentQuantity = parseInt(quantityInput.val());
 
-                if (currentQuantity > 0) {
+                if (currentQuantity > 1) {
                     quantityInput.val(currentQuantity - 1);
                     stockText.text(parseInt(stockText.text()) + 1);
                 }

@@ -38,7 +38,7 @@
                         value="{{ !empty(old('email')) ? old('email') : null }}" placeholder="Email Address"
                         required></br>
                     <label>Contact Number</label><br>
-                    <input type="text" name="contact" class="form-control"
+                    <input type="number" name="contact" class="form-control"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
                         placeholder="Contact Number" required
