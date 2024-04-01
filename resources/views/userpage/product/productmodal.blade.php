@@ -17,7 +17,7 @@
                     <input type="number" name="quantity" class="form-control" placeholder="Quantity" autocomplete="off"
                         required>
                     <label for="unit_price">Unit Price</label><br>
-                    <input type="text" name="unit_price" class="form-control" placeholder="Unit Price"
+                    <input type="number" name="unit_price" class="form-control" placeholder="Unit Price"
                         autocomplete="off" required>
                     <label for="supplier_name">Supplier Name</label><br>
                     <input type="text" name="supplier_name" class="form-control" placeholder="Supplier Name"

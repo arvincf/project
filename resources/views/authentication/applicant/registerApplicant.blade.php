@@ -44,9 +44,11 @@
                 </div>
                 <div class="field-container">
                     <label for="contact" class="form-label">Contact Number</label>
-                    <input type="number" name="contact" class="form-control"
-                        value="{{ !empty(old('contact')) ? old('contact') : null }}" placeholder="Enter Contact Number"
-                        required>
+                    <input type="text" name="contact" class="form-control"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
+                        placeholder="Contact Number" required
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                 </div>
                 <div class="field-container">
                     <label for="password" class="form-label">Password</label>

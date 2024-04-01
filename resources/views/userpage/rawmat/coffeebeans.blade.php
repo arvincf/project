@@ -19,15 +19,6 @@
                             <div class="card card-profile">
                                 <div class="card-header justify-content-end pb-0">
                                     <div class="dropdown">
-                                        <button class="btn btn-link" type="button" data-toggle="dropdown">
-                                            <span class="dropdown-dots fs--1"></span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right border py-0">
-                                            <div class="py-2">
-                                                <a class="dropdown-item" href="">Edit</a>
-                                                <a class="dropdown-item text-danger" href="">Delete</a>
-                                            </div>
-                                        </div>
                                         <div class="card-body pt-2">
                                             <div class="text-center">
                                                 <div class="profile-photo">
@@ -43,13 +34,14 @@
                                                         <span>Date Stored:</span><strong>{{ \Carbon\Carbon::parse($coffeebean->date)->format('F j, Y') }}</strong>
                                                     </li>
                                                 </ul>
-                                                <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                    href="">Use</a>
+                                                <a href="#show{{ $coffeebean->id }}" class="btn btn-outline-primary btn-rounded mt-3 px-4" title="View"
+                                                    data-bs-toggle="modal">Use</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            @include('userpage.rawmat.coffeebeanmodal')
                         </div>
                     @endforeach
                 </div>

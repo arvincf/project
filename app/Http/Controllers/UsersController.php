@@ -59,7 +59,7 @@ class UsersController extends Controller
             'type' => trim($request->type),
             'last_name' => Str::title(trim($request->lastname)),
             'first_name' => Str::title(trim($request->firstname)),
-            'birthday' => $request->birthday,
+            'birthdate' => $request->birthday,
             'age' => trim($request->age),
             'address' => trim($request->address),
             'email' => trim($request->email),

@@ -33,19 +33,22 @@
                     method="POST">
                     @method('PATCH')
                     @csrf
+                    <label>Id:</label>
                     <label> {{ $user->id }} </label><br>
-                    <label>First Name</label><br>
+                    <label>First Name:</label><br>
                     <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control">
-                    <label>Last Name</label><br>
+                    <label>Last Name:</label><br>
                     <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control">
-                    <label>Address</label><br>
+                    <label>Address:</label><br>
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control">
-                    <label>Email Address</label><br>
+                    <label>Email Address:</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control">
-                    <label>Contact Number</label><br>
-                    <input type="number" name="contact" value="{{ $user->contact }}"
+                    <label>Contact Number:</label><br>
+                    <input type="text" name="contact" class="form-control" value="{{ auth()->user()->contact }}"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        maxlength="11" class="form-control">
+                        pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
+                        placeholder="Contact Number" required
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-warning">Update</button>
@@ -80,4 +83,3 @@
         </div>
     </div>
 </div>
-

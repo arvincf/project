@@ -635,7 +635,7 @@ table td {
 .product-quantity-container {
     margin: 10px 0;
     display: flex;
-    justify-content: space-evenly;
+    
 }
 
 .btn-reserve {
