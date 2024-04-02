@@ -47,15 +47,20 @@ class UsersController extends Controller
             'address' => 'required',
             'email' => 'required',
             'contact' => 'required',
-            'password' => 'required'
         ]);
 
         if ($validation->fails()) {
             return back()->withInput()->with('warning', $validation->errors()->first());
         }
 
-        $this->user->create([
-            'id' => $this->user->max('id') + 1,
+        // Generate a random password
+        $password = Str::random(8);
+
+        // Hash the password using bcrypt
+        $hashedPassword = bcrypt($password);
+
+        // Create the user data array
+        $userData = [
             'type' => trim($request->type),
             'last_name' => Str::title(trim($request->lastname)),
             'first_name' => Str::title(trim($request->firstname)),
@@ -64,61 +69,40 @@ class UsersController extends Controller
             'address' => trim($request->address),
             'email' => trim($request->email),
             'contact' => trim($request->contact),
-            'password' => str::title(trim($request->password))
-        ]);
+            'password' => $hashedPassword, // Hash the password for security
+        ];
 
-        return back()->with('success', 'User Added!');
-    }
+        // Create the user with the generated password
+        $this->user->create($userData);
 
-    public function updateAccount(Request $request, $id)
-    {
-        $validation = Validator::make($request->all(), [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'contact' => 'required'
-        ]);
-
-        if ($validation->fails()) {
-            return back()->withInput()->with('warning', $validation->errors()->first());
-        }
-
-        $this->user->find($id)->update([
-            'first_name' => Str::title(trim($request->firstname)),
-            'last_name' => Str::title(trim($request->lastname)),
-            'address' => trim($request->address),
-            'email' => trim($request->email),
-            'contact' => trim($request->contact)
-        ]);
-
-        return back()->with('success', 'User Updated!');
+        // Return a success message
+        return back()->with('success', 'User Added!')->with('password', $password);
     }
 
     public function searchApplicant(Request $request, $option)
     {
-        if($option == "applicant"){
+        if ($option == "applicant") {
             $userData = $this->user
-            ->select('*')
-            ->where('type', 'Applicant')
-            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('address', 'LIKE', "%{$request->name}%")
-            ->get();
+                ->select('*')
+                ->where('type', 'Applicant')
+                ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+                ->orWhere('address', 'LIKE', "%{$request->name}%")
+                ->get();
 
-        return response(['userData' => $userData]);
+            return response(['userData' => $userData]);
+        } else {
+            $userData = $this->user
+                ->select('*')
+                ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
+                ->where('last_name', 'LIKE', "%{$request->name}%")
+                ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+                ->orWhere('address', 'LIKE', "%{$request->name}%")
+                ->get();
+
+            return response(['userData' => $userData]);
+
         }
-        else{$userData = $this->user
-            ->select('*')
-            ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
-            ->where('last_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('address', 'LIKE', "%{$request->name}%")
-            ->get();
 
-        return response(['userData' => $userData]);
-
-        }
-        
     }
 
     public function approveaccount(Request $request, $id)
@@ -145,14 +129,18 @@ class UsersController extends Controller
     {
         $userData = $this->user
             ->select('*')
-            ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
-            ->where('last_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('address', 'LIKE', "%{$request->name}%")
+            ->where('id', '!=', auth()->user()->id)
+            ->whereNotIn('type', ['Manager', 'Applicant']) // Exclude Admin, Manager, and Applicant
+            ->where(function ($query) use ($request) {
+                $query->where('last_name', 'LIKE', "%{$request->name}%")
+                    ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+                    ->orWhere('address', 'LIKE', "%{$request->name}%");
+            })
             ->get();
 
         return response(['userData' => $userData]);
     }
+
 
     public function getUsersAccount()
     {
