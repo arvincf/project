@@ -15,7 +15,7 @@
             <hr>
             <section class="product-container">
                 @forelse ($products as $product)
-                    <form action="{{ route('customer.reservation.reserve.product') }}" method="POST">
+                    <form action="{{ route('customer.reservation.reserve.product') }}" method="POST" class="reservation-form">
                         @csrf
                         <div class="product-widget">
                             <input type="text" name="productId" value="{{ $product->id }}" hidden>
@@ -44,7 +44,10 @@
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>-</button>
                                 </div>
                                 <div class="product-btn-container">
-                                    <button class="btn-reserve" title="Reserve">Reserve</button>
+                                    <div class="reservation-btn-wrapper">
+                                        <button class="btn-reserve" title="Reserve">Reserve</button>
+                                        <p class="reservation-msg" style="color: red; margin-top: 5px; display: none;">Click the "+" button to have a reservation</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +83,18 @@
                 if (currentQuantity > 1) {
                     quantityInput.val(currentQuantity - 1);
                     stockText.text(parseInt(stockText.text()) + 1);
+                }
+            });
+
+            $('.reservation-form').submit(function(e) {
+                e.preventDefault();
+                let quantityInput = $(this).find('#quantity'),
+                    reservationMsg = $(this).find('.reservation-msg');
+
+                if (quantityInput.val() === '') {
+                    reservationMsg.show();
+                } else {
+                    $(this).unbind('submit').submit();
                 }
             });
         });

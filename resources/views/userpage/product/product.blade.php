@@ -15,7 +15,7 @@
             <h1>Products</h1>
             @if (auth()->user()->type == 'Manager' || auth()->user()->type == 'Admin')
                 <div class="page-btn">
-                    <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#addproduct"><i
+                    <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
                             class="bi bi-plus-lg"></i>Add Product
                     </button>
                 </div>
@@ -42,7 +42,7 @@
                                         <td>{{ $product->details }}</td>
                                         <td>
                                             <div class="action-btn">
-                                                <a href="#edit{{ $product->id }}" class="btn-warning" title="Edit"
+                                                <a href="#edit{{ $product->id }}" class="btn-success" title="Edit"
                                                     data-bs-toggle="modal"><i class="bi bi-pencil-square"></i>Edit</a>
                                                 <a href="#remove{{ $product->id }}" data-bs-toggle="modal"
                                                     class="btn-danger" title="Remove"><i

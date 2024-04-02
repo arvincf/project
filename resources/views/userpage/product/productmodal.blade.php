@@ -12,18 +12,19 @@
                     @csrf
                     <label for="product_name">Product Name</label><br>
                     <input type="text" name="product_name" class="form-control" placeholder="Product Name"
-                        autocomplete="off" required>
+                         required>
                     <label for="quantity">Quantity</label><br>
-                    <input type="number" name="quantity" class="form-control" placeholder="Quantity" autocomplete="off"
-                        required>
+                    <input type="number" name="quantity" class="form-control" placeholder="Quantity"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="unit_price">Unit Price</label><br>
                     <input type="number" name="unit_price" class="form-control" placeholder="Unit Price"
-                        autocomplete="off" required>
+                        pattern="[0-9]{11}" minlength="1" min="1"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="supplier_name">Supplier Name</label><br>
                     <input type="text" name="supplier_name" class="form-control" placeholder="Supplier Name"
-                        autocomplete="off" required>
+                         required>
                     <label for="details">Details</label><br>
-                    <input type="text" name="details" class="form-control" placeholder="Details" autocomplete="off"
+                    <input type="text" name="details" class="form-control" placeholder="Details"
                         required>
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
@@ -38,7 +39,7 @@
 <div class="modal fade" id="edit{{ $product->id }}" tabindex="-1" aria-hidden="true" aria-labelledby="editModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-warning text-white">
+            <div class="modal-header bg-success text-white">
                 <h5 class="modal-title">EDIT PRODUCT</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -50,22 +51,24 @@
                     @csrf
                     <label for="product_name">Product Name</label><br>
                     <input type="text" name="product_name" value="{{ $product->name }}" class="form-control"
-                        placeholder="Product Name" autocomplete="off" required>
+                        placeholder="Product Name" required>
                     <label for="quantity">Quantity</label><br>
                     <input type="number" name="quantity" value="{{ $product->quantity }}" class="form-control"
-                        placeholder="Quantity" autocomplete="off" required>
+                        placeholder="Quantity"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="unit_price">Unit Price</label><br>
                     <input type="text" name="unit_price" value="{{ $product->unit_price }}" class="form-control"
-                        placeholder="Unit Price" autocomplete="off" required>
+                        placeholder="Unit Price"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="supplier_name">Supplier Name</label><br>
                     <input type="text" name="supplier_name" value="{{ $product->supplier_name }}" class="form-control"
-                        placeholder="Supplier Name" autocomplete="off" required>
+                        placeholder="Supplier Name" required>
                     <label for="details">Details</label><br>
                     <input type="text" name="details" value="{{ $product->details }}" class="form-control"
-                        placeholder="Details" autocomplete="off" required>
+                        placeholder="Details" required>
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn-warning">Edit</button>
+                        <button type="submit" class="btn-success">Save</button>
                     </div>
                 </form>
             </div>
