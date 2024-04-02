@@ -18,36 +18,41 @@
                         <option value="Customer">Customer</option>
                     </select></br>
                     <label>Last Name</label></br>
-                    <input type="text" name="lastname" class="form-control"
+                    <input type="text" name="lastname" class="form-control" autocomplete="off"
                         value="{{ !empty(old('lastname')) ? old('lastname') : null }}" placeholder="Last Name"
                         required></br>
                     <label>First Name</label></br>
-                    <input type="text" name="firstname" class="form-control"
+                    <input type="text" name="firstname" class="form-control" autocomplete="off"
                         value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="First Name"
                         required></br>
                     <label for="birthday">Birthday:</label>
                     <input type="date" id="birthdayInput" name="birthday" class="form-control" required></br>
                     <label>Age</label></br>
-                    <input type="number" name="age" class="form-control"
-                        value="{{ !empty(old('age')) ? old('age') : null }}"placeholder="Age" required></br>
+                    <input type="number" name="age" class="form-control" autocomplete="off"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        value="{{ !empty(old('age')) ? old('age') : null }}"placeholder="Age"
+                        pattern="[0-9]{2}"minlength="1" min="1" maxlength="2" minlength="2"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"
+                        required></br>
                     <label>Address</label></br>
-                    <input type="text" name="address" class="form-control"
+                    <input type="text" name="address" class="form-control" autocomplete="off"
                         value="{{ !empty(old('address')) ? old('address') : null }}"placeholder="Address" required></br>
                     <label>Email Address</label></br>
                     <input type="email" name="email" class="form-control"
                         value="{{ !empty(old('email')) ? old('email') : null }}" placeholder="Email Address"
                         required></br>
                     <label>Contact Number</label><br>
-                    <input type="number" name="contact" class="form-control"
+                    <input type="text" name="contact" class="form-control" autocomplete="off"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         pattern="[0-9]{11}" title="Please enter 11 digits" minlength="11" maxlength="11"
                         placeholder="Contact Number" required
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
-                    <label>Password</label></br>
-                    <input type="password" name="password" class="form-control" required></br>
+                    <div id="notification" style="display:none; color:red;">Need to have 11 digits for contact before
+                        continuing</div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                        <button type="submit" class="btn btn-success btn-sm" onclick="validateContact()">Save</button>
                     </div>
                 </form>
             </div>
@@ -71,4 +76,21 @@
     // Set minimum and maximum dates for the input field
     document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
     document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+
+
+    // Function to generate a random password
+    function randomPassword(length) {
+        var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var password = "";
+        for (var i = 0; i < length; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return password;
+    }
+
+    // Set the generated password to the password input field when the form is submitted
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+        var passwordInput = document.getElementById("password");
+        passwordInput.value = randomPassword(8); // Generate an 8-character random password
+    });
 </script>
