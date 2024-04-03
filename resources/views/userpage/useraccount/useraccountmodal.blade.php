@@ -12,6 +12,7 @@
                 <p class="fw-bold">Address:<span class="fw-normal"> {{ $user->address }}</span></p>
                 <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Contact:<span class="fw-normal"> {{ $user->contact }}</span></p>
+                <p class="fw-bold">Password:<span class="fw-normal"> {{ $user->plain_password }}</span></p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -33,8 +34,6 @@
                     method="POST">
                     @method('PATCH')
                     @csrf
-                    <label>Id:</label>
-                    <label> {{ $user->id }} </label><br>
                     <label>First Name:</label><br>
                     <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control">
                     <label>Last Name:</label><br>

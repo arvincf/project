@@ -26,14 +26,12 @@
                         value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="First Name"
                         required></br>
                     <label for="birthday">Birthday:</label>
-                    <input type="date" id="birthdayInput" name="birthday" class="form-control" required></br>
-                    <label>Age</label></br>
-                    <input type="number" name="age" class="form-control" autocomplete="off"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        value="{{ !empty(old('age')) ? old('age') : null }}"placeholder="Age"
-                        pattern="[0-9]{2}"minlength="1" min="1" maxlength="2" minlength="2"
-                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"
-                        required></br>
+                    <input type="date" id="birthdayInput" name="birthday" class="form-control" required
+                        onchange="calculateAge()">
+                    <br>
+                    <label>Age</label><br>
+                    <input type="number" id="ageInput" name="age" class="form-control" autocomplete="off"
+                        placeholder="Age" min="1" max="120" readonly>
                     <label>Address</label></br>
                     <input type="text" name="address" class="form-control" autocomplete="off"
                         value="{{ !empty(old('address')) ? old('address') : null }}"placeholder="Address" required></br>
@@ -49,7 +47,7 @@
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                     <div id="notification" style="display:none; color:red;">Need to have 11 digits for contact before
                         continuing</div>
-                    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm" onclick="validateContact()">Save</button>
@@ -93,4 +91,15 @@
         var passwordInput = document.getElementById("password");
         passwordInput.value = randomPassword(8); // Generate an 8-character random password
     });
+
+    function calculateAge() {
+        var birthday = new Date(document.getElementById('birthdayInput').value);
+        var today = new Date();
+        var age = today.getFullYear() - birthday.getFullYear();
+        var monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        }
+        document.getElementById('ageInput').value = age;
+    }
 </script>
