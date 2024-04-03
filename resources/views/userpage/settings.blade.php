@@ -12,7 +12,13 @@
         <main class="main-container">
             @include('components.header')
             <h1>Settings</h1><br>
-            <form action="{{ route('admin.settings.update', ['id' => $user->id]) }}" method="POST">
+            <form
+                action="{{ auth()->check() && auth()->user()->type === 'Admin' ? route('admin.settings.update', ['id' => $user->id]) : 
+                (auth()->check() && auth()->user()->type === 'Supplier' ? route('supplier.settings.update', ['id' => $user->id]) : 
+                (auth()->check() && auth()->user()->type === 'Manager' ? route('manager.settings.update', ['id' => $user->id]) : 
+                (auth()->check() && auth()->user()->type === 'Applicant' ? route('applicant.settings.update', ['id' => $user->id]) : 
+                route('customer.settings.update', ['id' => $user->id])))) }}"
+                method="POST">
                 @method('PATCH')
                 @csrf
                 <b>First Name:</b><br>

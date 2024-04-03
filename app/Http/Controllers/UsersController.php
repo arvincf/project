@@ -37,38 +37,42 @@ class UsersController extends Controller
     }
 
     public function createAccount(Request $request)
-    {
-        $validation = Validator::make($request->all(), [
-            'type' => 'required',
-            'lastname' => 'required',
-            'firstname' => 'required',
-            'birthday' => 'required',
-            'age' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'contact' => 'required',
-            'password' => 'required'
-        ]);
+{
+    $validation = Validator::make($request->all(), [
+        'type' => 'required',
+        'lastname' => 'required',
+        'firstname' => 'required',
+        'birthday' => 'required',
+        'age' => 'required',
+        'address' => 'required',
+        'email' => 'required',
+        'contact' => 'required',
+    ]);
 
-        if ($validation->fails()) {
-            return back()->withInput()->with('warning', $validation->errors()->first());
-        }
-
-        $this->user->create([
-            'id' => $this->user->max('id') + 1,
-            'type' => trim($request->type),
-            'last_name' => Str::title(trim($request->lastname)),
-            'first_name' => Str::title(trim($request->firstname)),
-            'birthdate' => $request->birthday,
-            'age' => trim($request->age),
-            'address' => trim($request->address),
-            'email' => trim($request->email),
-            'contact' => trim($request->contact),
-            'password' => str::title(trim($request->password))
-        ]);
-
-        return back()->with('success', 'User Added!');
+    if ($validation->fails()) {
+        return back()->withInput()->with('warning', $validation->errors()->first());
     }
+
+    // Generate a random password
+    $password = Str::random(10); // Generates a random string of 10 characters
+
+    $this->user->create([
+        'id' => $this->user->max('id') + 1,
+        'type' => trim($request->type),
+        'last_name' => Str::title(trim($request->lastname)),
+        'first_name' => Str::title(trim($request->firstname)),
+        'birthdate' => $request->birthday,
+        'age' => trim($request->age),
+        'address' => trim($request->address),
+        'email' => trim($request->email),
+        'contact' => trim($request->contact),
+        'password' => $password, 
+        'plain_password' => $password
+    ]);
+
+    return back()->with('success', 'User Added!')->with('password', $password); // Pass the generated password back to the view
+}
+
 
     public function updateAccount(Request $request, $id)
     {
@@ -142,17 +146,21 @@ class UsersController extends Controller
     }
 
     public function searchUsers(Request $request)
-    {
-        $userData = $this->user
-            ->select('*')
-            ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
-            ->where('last_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-            ->orWhere('address', 'LIKE', "%{$request->name}%")
-            ->get();
+{
+    $userData = $this->user
+        ->select('*')
+        ->whereNotIn('type', ['Manager', 'Applicant'])
+        ->where('id', '!=', auth()->user()->id)
+        ->where(function ($query) use ($request) {
+            $query->where('last_name', 'LIKE', "%{$request->name}%")
+                  ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+                  ->orWhere('address', 'LIKE', "%{$request->name}%");
+        })
+        ->get();
 
-        return response(['userData' => $userData]);
-    }
+    return response(['userData' => $userData]);
+}
+
 
     public function getUsersAccount()
     {

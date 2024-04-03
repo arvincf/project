@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <form class="form-inline d-flex">
-                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
+                        <input id="searchApplicantInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
                         <button class="btn btn-primary" id="searchApplicantBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <br>
@@ -40,11 +40,11 @@
                                     <td>{{ $user->contact }}</td>
                                     <td style="width:30%;">
                                         <div class="action-btn">
+                                            <a href="#show{{ $user->id }}" class="btn-primary" title="View"
+                                                data-bs-toggle="modal"><i class="bi bi-eye"></i>View
+                                            </a>
                                             <a href="#approve{{ $user->id }}" class="btn-success" title="Approve"
                                                 data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Approve
-                                            </a>
-                                            <a href="#show{{ $user->id }}" class="btn-warning" title="View"
-                                                data-bs-toggle="modal"><i class="bi bi-eye"></i>View
                                             </a>
                                             <a href="" class="btn-danger" title="Disapproved"
                                                 data-bs-toggle="modal"><i class="bi bi-x-lg"></i>Disapproved

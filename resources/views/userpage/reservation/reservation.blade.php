@@ -15,7 +15,8 @@
             <hr>
             <section class="product-container">
                 @forelse ($products as $product)
-                    <form action="{{ route('customer.reservation.reserve.product') }}" method="POST" class="reservation-form">
+                    <form action="{{ route('customer.reservation.reserve.product') }}" method="POST"
+                        class="reservation-form">
                         @csrf
                         <div class="product-widget">
                             <input type="text" name="productId" value="{{ $product->id }}" hidden>
@@ -46,7 +47,8 @@
                                 <div class="product-btn-container">
                                     <div class="reservation-btn-wrapper">
                                         <button class="btn-reserve" title="Reserve">Reserve</button>
-                                        <p class="reservation-msg" style="color: red; margin-top: 5px; display: none;">Click the "+" button to have a reservation</p>
+                                        <p class="reservation-msg" style="color: red; margin-top: 5px; display: none;">
+                                            Click the "+" button to have a reservation</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,10 +69,16 @@
             $('.btn-add').click(function(e) {
                 e.preventDefault();
                 let productItem = $(this).closest('.product-widget'),
-                    stockText = productItem.find('.quantity span');
+                    stockText = productItem.find('.quantity span'),
+                    currentStock = parseInt(stockText.text());
 
-                productItem.find('#quantity').val((i, val) => +val + 1);
-                stockText.text(parseInt(stockText.text()) - 1);
+                if (currentStock > 0) {
+                    productItem.find('#quantity').val((i, val) => +val + 1);
+                    stockText.text(currentStock - 1);
+                } else {
+                    // Optionally, you can provide some feedback to the user
+                    alert('Sorry, the stock is insufficient.');
+                }
             });
 
             $('.btn-minus').click(function(e) {

@@ -11,7 +11,6 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            
             <h1>Users Account</h1>
             <div class="user-table-body"></div>
             @include('userpage.useraccount.createaccountmodal')

@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             "address" => "Pamantasan ng Cabuyao",
             "email" => "a@gmail.com",
             "contact" => "12345678910",
-            "password" => Hash::make("a")
+            "password" => Hash::make("a"),
+            "plain_password" => "a"
         ]);
 
         User::create([
@@ -37,7 +38,8 @@ class DatabaseSeeder extends Seeder
             "address" => "Pamantasan ng Cabuyao",
             "email" => "j@gmail.com",
             "contact" => "12345678910",
-            "password" => Hash::make("j")
+            "password" => Hash::make("j"),
+            "plain_password" => "j"
         ]);
 
         User::create([
@@ -49,7 +51,8 @@ class DatabaseSeeder extends Seeder
             "address" => "Pamantasan ng Cabuyao",
             "email" => "admin@cgumc.com.ph",
             "contact" => "12345678910",
-            "password" => Hash::make("Admin")
+            "password" => Hash::make("Admin"),
+            "plain_password" => "Admin"
         ]);
 
         User::create([
@@ -61,7 +64,8 @@ class DatabaseSeeder extends Seeder
             "address" => "Pamantasan ng Cabuyao",
             "email" => "manager@cgumc.com.ph",
             "contact" => "12345678910",
-            "password" => Hash::make("Manager")
+            "password" => Hash::make("Manager"),
+            "plain_password" => "Manager"
         ]);
 
         User::create([
@@ -73,7 +77,8 @@ class DatabaseSeeder extends Seeder
             "address" => "Pamantasan ng Cabuyao",
             "email" => "e@gmail.com",
             "contact" => "12345678910",
-            "password" => Hash::make("e")
+            "password" => Hash::make("e"),
+            "plain_password" => "e"
         ]);
 
         Product::create([
@@ -90,7 +95,7 @@ class DatabaseSeeder extends Seeder
             "id" => 2,
             "name" =>  "Powdered Robusta",
             "supplier_name" => "Jochelle Mae",
-            "quantity" => 100,
+            "quantity" => 5,
             "unit_price" => 50,
             "details" => "Lorem ipsum",
             "date_of_storing" => "2023-03-12"
