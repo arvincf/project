@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->unsignedBigInteger('contact');
             $table->string('password');
+            $table->string('plain_password');
         });
     }
 

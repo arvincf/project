@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
-            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update'); // Route for updating settings
+            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update');
 
         });
 
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
-            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update'); // Route for updating settings
+            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update'); 
         });
 
         Route::controller(ProductController::class)->name('product.')->group(function () {

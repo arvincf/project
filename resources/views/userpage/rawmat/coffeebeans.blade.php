@@ -28,7 +28,7 @@
                                                 <h3 class="mt-4 mb-1">{{ $coffeebean->coffee_name }}</h3>
                                                 <ul class="list-group mb-3 list-group-flush">
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
-                                                        <span>Quantity:</span><strong>{{ $coffeebean->quantity }}KG</strong>
+                                                        <span>Quantity:</span><strong>{{ $coffeebean->quantity }} KG</strong>
                                                     </li>
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                                         <span>Date Stored:</span><strong>{{ \Carbon\Carbon::parse($coffeebean->date)->format('F j, Y') }}</strong>

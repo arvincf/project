@@ -1,4 +1,3 @@
-<!-- Modal for REQUESTING PRODUCT -->
 <div class="modal fade" id="request" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,9 +27,8 @@
                     </select><br>
                     <input type="hidden" name="status" value="Confirming...">
                     <label>Quantity</label><br>
-                    <input id="requestQuantityInput" type="number" name="quantity" class="form-control" value="1"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        pattern="[0-9]{11}" minlength="1" min="1" required><br>
+                    <input type="number" class="form-control" name="quantity"
+                    onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Request Product</button>
@@ -64,7 +62,8 @@
                     <label>Quantity</label><br>
                     <input id="deliverQuantityInput" type="number" name="quantity" class="form-control" value="1"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                        pattern="[0-9]{11}" minlength="5" maxlength="5" min="1" required><br>
+                        pattern="[0-9]{11}" minlength="5" maxlength="5" min="1"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>
