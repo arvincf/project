@@ -76,3 +76,61 @@
 </body>
 
 </html>
+
+<script>
+    // Calculate minimum and maximum dates
+    var currentDate = new Date();
+    var maxDate = new Date(currentDate);
+    maxDate.setFullYear(maxDate.getFullYear() - 18); // 18 years ago
+
+    var minDate = new Date(currentDate);
+    minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
+
+    // Format dates for input
+    var formattedMaxDate = maxDate.toISOString().split('T')[0];
+    var formattedMinDate = minDate.toISOString().split('T')[0];
+
+    // Set minimum and maximum dates for the input field
+    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
+    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+
+
+    // Function to generate a random password
+    function randomPassword(length) {
+        var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var password = "";
+        for (var i = 0; i < length; i++) {
+            password += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return password;
+    }
+
+    // Set the generated password to the password input field when the form is submitted
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+        var passwordInput = document.getElementById("password");
+        passwordInput.value = randomPassword(8); // Generate an 8-character random password
+    });
+
+    function calculateAge() {
+        var birthday = new Date(document.getElementById('birthdayInput').value);
+        var today = new Date();
+        var age = today.getFullYear() - birthday.getFullYear();
+        var monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        }
+        document.getElementById('ageInput').value = age;
+    }
+
+    function calcAge() {
+        var birthday = document.getElementById('birthInput').value;
+        var today = new Date();
+        var birthDate = new Date(birthday);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        document.getElementById('countageInput').value = age;
+    }
+</script>

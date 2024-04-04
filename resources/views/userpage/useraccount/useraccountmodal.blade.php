@@ -12,6 +12,7 @@
                 <p class="fw-bold">Address:<span class="fw-normal"> {{ $user->address }}</span></p>
                 <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Contact:<span class="fw-normal"> {{ $user->contact }}</span></p>
+                <p class="fw-bold">Password:<span class="fw-normal"> {{ $user->plain_password }}</span></p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
@@ -33,16 +34,20 @@
                     method="POST">
                     @method('PATCH')
                     @csrf
-                    <label>Id:</label>
-                    <label> {{ $user->id }} </label><br>
                     <label>First Name:</label><br>
-                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control">
+                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control" required>
                     <label>Last Name:</label><br>
-                    <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control">
+                    <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control" required>
                     <label>Address:</label><br>
-                    <input type="text" name="address" value="{{ $user->address }}" class="form-control">
+                    <input type="text" name="address" value="{{ $user->address }}" class="form-control" required>
+                    <label for="birthday">Birthday:</label><br>
+                    <input type="date" id="birthInput" value="{{ $user->birthdate }}" name="birthday" class="form-control" required
+                        onclick="calcAge()">
+                    <label>Age:</label><br>
+                    <input type="number" id="countageInput" name="age" value="{{$user->age}}" class="form-control" autocomplete="off"
+                        placeholder="Age" min="1" max="120" readonly></br>
                     <label>Email Address:</label><br>
-                    <input type="text" name="email" value="{{ $user->email }}" class="form-control">
+                    <input type="text" name="email" value="{{ $user->email }}" class="form-control" required>
                     <label>Contact Number:</label><br>
                     <input type="text" name="contact" class="form-control" value="{{ $user->contact }}"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -83,3 +88,4 @@
         </div>
     </div>
 </div>
+
