@@ -11,8 +11,10 @@
                     method="POST">
                     @method('PATCH')
                     @csrf
+                    
                     <h4 class="text-center">Are you sure you confirm this request?</h4>
                     <input type="hidden" name="status" value="Confirmed">
+                    <input type="hidden" name="supplierName" value="{{ auth()->user()->first_name }}">
                     <div class="modal-footer">
                         <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-success">Confirm</button>

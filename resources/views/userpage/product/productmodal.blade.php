@@ -14,7 +14,7 @@
                     <input type="text" name="product_name" class="form-control" placeholder="Product Name"
                          required>
                     <label for="quantity">Quantity</label><br>
-                    <input type="number" name="quantity" class="form-control" placeholder="Quantity"
+                    <input type="number" name="quantity" class="form-control" placeholder="Quantity" min="1"
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="unit_price">Unit Price</label><br>
                     <input type="number" name="unit_price" class="form-control" placeholder="Unit Price"
@@ -51,7 +51,7 @@
                         placeholder="Product Name" required>
                     <label for="quantity">Quantity</label><br>
                     <input type="number" name="quantity" value="{{ $product->quantity }}" class="form-control"
-                        placeholder="Quantity"
+                        placeholder="Quantity" min="1"
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
                     <label for="unit_price">Unit Price</label><br>
                     <input type="text" name="unit_price" value="{{ $product->unit_price }}" class="form-control"

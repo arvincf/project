@@ -19,8 +19,10 @@
                     <input type="hidden" name="status" value="On Deliver">
                     <label>Quantity</label><br>
                     <input id="quantityInput" type="number" name="quantity" class="form-control"
-                        pattern="[0-9]{11}" minlength="1" min="1"
-                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required><br>
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        minlength="1" min="1" maxlength="6"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"
+                        required><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>

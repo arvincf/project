@@ -59,6 +59,7 @@ class RequestController extends Controller
     {
         $this->request->find($id)->update([
             'status' => trim($request->status),
+            'supplier_name' => trim($request->supplierName)
         ]);
         return back()->with('success', 'Request Confirmed!');
     }
