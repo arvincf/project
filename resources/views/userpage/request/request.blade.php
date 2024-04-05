@@ -78,7 +78,7 @@
                             <td>{{ $requests->supplier_name }}</td>
                             <td>{{ $requests->product_name }}</td>
                             <td>{{ $requests->quantity }}</td>
-                            <td>{{ $requests->date }}</td>
+                            <td>{{ \Carbon\Carbon::parse($requests->date)->format('F j, Y') }}</td>
                             <td>
                                 <div
                                     class="fw-bold text-{{ $requests->status == 'Confirming...' ? 'warning' : 'success' }}">

@@ -33,6 +33,9 @@
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                                         <span>Date Stored:</span><strong>{{ \Carbon\Carbon::parse($coffeebean->date)->format('F j, Y') }}</strong>
                                                     </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span>Supplier Name:</span><strong>{{ $coffeebean->supplier_name }}</strong>
+                                                    </li>
                                                 </ul>
                                                 <a href="#show{{ $coffeebean->id }}" class="btn btn-outline-primary btn-rounded mt-3 px-4" title="View"
                                                     data-bs-toggle="modal">Use</a>

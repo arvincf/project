@@ -1,7 +1,7 @@
 <div class="modal fade" id="addproduct" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-success text-white">
+            <div class="modal-header bg-primary text-white">
                 <h5 class="modal-title">ADD PRODUCT</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -20,9 +20,6 @@
                     <input type="number" name="unit_price" class="form-control" placeholder="Unit Price"
                         pattern="[0-9]{11}" minlength="1" min="1"
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
-                    <label for="supplier_name">Supplier Name</label><br>
-                    <input type="text" name="supplier_name" class="form-control" placeholder="Supplier Name"
-                         required>
                     <label for="details">Details</label><br>
                     <input type="text" name="details" class="form-control" placeholder="Details"
                         required>
@@ -60,9 +57,6 @@
                     <input type="text" name="unit_price" value="{{ $product->unit_price }}" class="form-control"
                         placeholder="Unit Price"
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required>
-                    <label for="supplier_name">Supplier Name</label><br>
-                    <input type="text" name="supplier_name" value="{{ $product->supplier_name }}" class="form-control"
-                        placeholder="Supplier Name" required>
                     <label for="details">Details</label><br>
                     <input type="text" name="details" value="{{ $product->details }}" class="form-control"
                         placeholder="Details" required>

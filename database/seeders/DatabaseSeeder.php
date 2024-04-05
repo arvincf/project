@@ -84,7 +84,6 @@ class DatabaseSeeder extends Seeder
         Product::create([
             "id" => 1,
             "name" =>  "Brewed Arabica",
-            "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
             "unit_price" => 50,
             "details" => "Lorem ipsum",
@@ -94,7 +93,6 @@ class DatabaseSeeder extends Seeder
         Product::create([
             "id" => 2,
             "name" =>  "Powdered Robusta",
-            "supplier_name" => "Jochelle Mae",
             "quantity" => 5,
             "unit_price" => 50,
             "details" => "Lorem ipsum",
@@ -122,6 +120,7 @@ class DatabaseSeeder extends Seeder
         Coffeebeans::create([
             "id" => 1,
             "coffee_name" =>  "Arabica",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
             "date" => "2023-12-15"
         ]);
@@ -129,6 +128,7 @@ class DatabaseSeeder extends Seeder
         Coffeebeans::create([
             "id" => 2,
             "coffee_name" =>  "Robusta",
+            "supplier_name" => "Jochelle Mae",
             "quantity" => 100,
             "date" => "2023-12-15"
         ]);

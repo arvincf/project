@@ -34,7 +34,6 @@
                                     <label for="product-name">Product Name: <br>
                                         <span class="product-name">{{ $product->name }}</span>
                                     </label>
-
                                 </div>
                                 <div class="product-quantity-container">
                                     <button class="btn-add" title="Add Quantity"
