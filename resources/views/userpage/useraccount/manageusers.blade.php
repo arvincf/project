@@ -12,6 +12,9 @@
         <main class="main-container">
             @include('components.header')
             <h1>Users Account</h1>
+            <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
+                <i class="bi bi-plus-lg"></i>Create User
+            </button><br><br>
             <div class="user-table-body"></div>
             @include('userpage.useraccount.createaccountmodal')
             <div class="card">
@@ -21,9 +24,6 @@
                         <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <table class="table">
-                        <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
-                            <i class="bi bi-plus-lg"></i>Create User
-                        </button>
                         <thead> 
                             <th>User Type</th>
                             <th>First Name</th>
@@ -122,8 +122,8 @@
         document.getElementById('ageInput').value = age;
     }
 
-    function calcAge() {
-        var birthday = document.getElementById('birthInput').value;
+    function calcAge(userId) {
+        var birthday = new Date(document.getElementById('birthInput' + userId).value);
         var today = new Date();
         var birthDate = new Date(birthday);
         var age = today.getFullYear() - birthDate.getFullYear();
@@ -131,6 +131,6 @@
         if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
-        document.getElementById('countageInput').value = age;
+        document.getElementById('countageInput' + userId).value = age;
     }
 </script>

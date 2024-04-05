@@ -41,11 +41,10 @@
                     <label>Address:</label><br>
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control" required>
                     <label for="birthday">Birthday:</label><br>
-                    <input type="date" id="birthInput" value="{{ $user->birthdate }}" name="birthday" class="form-control" required
-                        onclick="calcAge()">
+                    <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}" name="birthday" class="form-control" required
+                        onchange="calcAge({{ $user->id }})">
                     <label>Age:</label><br>
-                    <input type="number" id="countageInput" name="age" value="{{$user->age}}" class="form-control" autocomplete="off"
-                        placeholder="Age" min="1" max="120" readonly></br>
+                    <input type="number" id="countageInput{{ $user->id }}" name="age" value="{{ $user->age }}" class="form-control" min="1" max="120" readonly>
                     <label>Email Address:</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control" required>
                     <label>Contact Number:</label><br>
