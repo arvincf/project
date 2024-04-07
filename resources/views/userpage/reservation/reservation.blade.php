@@ -27,7 +27,9 @@
                                 <div class="product-stock-container">
                                     <p class="quantity">Available Stocks: <span>{{ $product->quantity }}</span></p>
                                     @if ($product->quantity <= 0)
-                                        <span class="no-stock-message">No stock available</span>
+                                        <div class="alert alert-warning" role="alert">
+                                            No stock available
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="product-details-section">
@@ -45,9 +47,12 @@
                                 </div>
                                 <div class="product-btn-container">
                                     <div class="reservation-btn-wrapper">
-                                        <button class="btn-reserve" title="Reserve">Reserve</button>
-                                        <p class="reservation-msg" style="color: red; margin-top: 5px; display: none;">
-                                            Click the "+" button to have a reservation</p>
+                                        <button class="btn-reserve" title="Reserve"
+                                            {{ $product->quantity <= 0 ? 'disabled' : '' }}>Reserve</button>
+                                        <div class="alert alert-danger reservation-msg" role="alert"
+                                            style="display: none;">
+                                            Click the "+" button to have a reservation
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,8 +79,9 @@
                 if (currentStock > 0) {
                     productItem.find('#quantity').val((i, val) => +val + 1);
                     stockText.text(currentStock - 1);
+                    updateReservationButton(productItem, currentStock - 1);
                 } else {
-                    // Optionally, you can provide some feedback to the user
+                    // Display out-of-stock alert
                     alert('Sorry, the stock is insufficient.');
                 }
             });
@@ -90,6 +96,7 @@
                 if (currentQuantity > 1) {
                     quantityInput.val(currentQuantity - 1);
                     stockText.text(parseInt(stockText.text()) + 1);
+                    updateReservationButton(productItem, parseInt(stockText.text()) + 1);
                 }
             });
 
@@ -99,11 +106,21 @@
                     reservationMsg = $(this).find('.reservation-msg');
 
                 if (quantityInput.val() === '') {
-                    reservationMsg.show();
+                    // Display reservation alert
+                    alert('Click the "+" button to have a reservation');
                 } else {
                     $(this).unbind('submit').submit();
                 }
             });
+
+            function updateReservationButton(productItem, stock) {
+                let reserveBtn = productItem.find('.btn-reserve');
+                if (stock <= 0) {
+                    reserveBtn.attr('disabled', 'disabled');
+                } else {
+                    reserveBtn.removeAttr('disabled');
+                }
+            }
         });
     </script>
 </body>
