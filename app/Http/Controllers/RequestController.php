@@ -23,9 +23,17 @@ class RequestController extends Controller
     }
     public function displayrequestProduct()
     {
-        $request =  $this->request->all();
-        $coffeebeans = $this->coffeebeans->all();
-        $user = $this->user->all();
+        $user = auth()->user();
+        if ($user->type == "Supplier") {
+            $request =  $this->request
+            ->where('supplier_name', $user->first_name)->get();
+            $coffeebeans = $this->coffeebeans->all();
+            $user = $this->user->all();
+        } else{
+            $request =  $this->request->all();
+            $coffeebeans = $this->coffeebeans->all();
+            $user = $this->user->all();
+        }
 
         return view('userpage.request.request',  compact('request', 'coffeebeans', 'user'));
     }

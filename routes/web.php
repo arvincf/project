@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/profile', 'profile')->name('profile');
             Route::get('/search', 'searchUsers')->name('search.users');
             Route::get('/searchapplicant', 'searchApplicant')->name('search.applicant');
+            Route::get('/getApplicant', 'getApplicant')->name('getApplicant');
             Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
             Route::get('/manageusers', 'manageUsers')->name('manageusers');
             Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
@@ -152,7 +153,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/profile', 'profile')->name('profile');
             Route::get('/search', 'searchUsers')->name('search.users');
             Route::get('/newapplicant', 'newapplicants')->name('newapplicant');
-            Route::get('/searchapplicant/{option}', 'searchApplicant')->name('search.applicant');
+            Route::get('/searchapplicant', 'searchApplicant')->name('search.applicant');
+            Route::get('/getApplicant', 'getApplicant')->name('getApplicant');
             Route::get('/manageusers', 'manageusers')->name('manageusers');
             Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
             Route::post('/manageusers', 'createAccount')->name('manageusers.create');

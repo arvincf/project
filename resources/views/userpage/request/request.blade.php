@@ -13,20 +13,35 @@
         <main class="main-container">
             @include('components.header')
             <h1>Request Product</h1>
-            @if (auth()->user()->type == 'Supplier')
+            @if(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+            <div class="page-btn">
+                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#request"><i
+                        class="bi bi-plus-lg"></i>Requesting Product
+                </button>
+            </div>
+            @include('userpage.request.requestmodal')
+            @endif
                 <section class="card">
                     <div class="card-body">
                         <table class="table">
                             <thead>
+                                @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                <th>Supplier Name</th>
+                                @endif
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Date</th>
                                 <th>Status</th>
+                                @if (auth()->user()->type == 'Supplier')
                                 <th>Actions</th>
+                                @endif
                             </thead>
                             <tbody>
-                                @foreach ($request as $requests)
+                                @forelse ($request as $requests)
                                     <tr>
+                                        @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                        <td>{{ $requests->supplier_name }}</td>
+                                        @endif
                                         <td>{{ $requests->product_name }}</td>
                                         <td>{{ $requests->quantity }}</td>
                                         <td>{{ \Carbon\Carbon::parse($requests->date)->format('F j, Y') }}</td>
@@ -36,6 +51,7 @@
                                                 {{ $requests->status }}
                                             </div>
                                         </td>
+                                        @if (auth()->user()->type == 'Supplier')
                                         <td style="width:30%;">
                                             <div class="action-btn">
                                                 @if ($requests->status == 'Confirming...')
@@ -46,54 +62,19 @@
                                                 @endif
                                             </div>
                                         </td>
+                                        @endif
                                     </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">No request found.</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
                 </section>
         </main>
     </div>
-
-    @elseif(auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
-    <div class="page-btn">
-        <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#request"><i
-                class="bi bi-plus-lg"></i>Requesting Product
-        </button>
-    </div>
-    @include('userpage.request.requestmodal')
-    <section class="card">
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <th>Supplier Name</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                </thead>
-                <tbody>
-                    @foreach ($request as $requests)
-                        <tr>
-                            <td>{{ $requests->supplier_name }}</td>
-                            <td>{{ $requests->product_name }}</td>
-                            <td>{{ $requests->quantity }}</td>
-                            <td>{{ \Carbon\Carbon::parse($requests->date)->format('F j, Y') }}</td>
-                            <td>
-                                <div
-                                    class="fw-bold text-{{ $requests->status == 'Confirming...' ? 'warning' : 'success' }}">
-                                    {{ $requests->status }}
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-    </section>
-</main>
-</div>
-    @endif
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
