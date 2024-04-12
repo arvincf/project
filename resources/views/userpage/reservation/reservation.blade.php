@@ -41,7 +41,7 @@
                                     <button class="btn-add" title="Add Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>+</button>
                                     <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity"
-                                        min="1" required readonly>
+                                        min="1" class="form-control" required readonly>
                                     <button class="btn-minus" title="Minus Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>-</button>
                                 </div>
@@ -49,10 +49,6 @@
                                     <div class="reservation-btn-wrapper">
                                         <button class="btn-reserve" title="Reserve"
                                             {{ $product->quantity <= 0 ? 'disabled' : '' }}>Reserve</button>
-                                        <div class="alert alert-danger reservation-msg" role="alert"
-                                            style="display: none;">
-                                            Click the "+" button to have a reservation
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -70,6 +66,34 @@
     @include('partials.toastr-script')
     <script>
         $(document).ready(() => {
+            let pressTimer;
+            let longPressDuration = 500;
+
+            function startIncrement(productItem, stockText) {
+                pressTimer = setInterval(function() {
+                    let currentStock = parseInt(stockText.text());
+                    if (currentStock > 0) {
+                        let quantityInput = productItem.find('#quantity'),
+                            currentQuantity = parseInt(quantityInput.val());
+                        quantityInput.val(currentQuantity + 1);
+                        stockText.text(currentStock - 1);
+                        updateReservationButton(productItem, currentStock - 1);
+                    }
+                }, 200);
+            }
+
+            function startDecrement(productItem, stockText) {
+                pressTimer = setInterval(function() {
+                    let quantityInput = productItem.find('#quantity'),
+                        currentQuantity = parseInt(quantityInput.val());
+                    if (currentQuantity > 1) {
+                        let currentStock = parseInt(stockText.text());
+                        quantityInput.val(currentQuantity - 1);
+                        stockText.text(currentStock + 1);
+                        updateReservationButton(productItem, currentStock + 1);
+                    }
+                }, 200); // Change the delay (in milliseconds) for the first decrement
+            }
             $('.btn-add').click(function(e) {
                 e.preventDefault();
                 let productItem = $(this).closest('.product-widget'),
@@ -77,6 +101,9 @@
                     currentStock = parseInt(stockText.text());
 
                 if (currentStock > 0) {
+                    let quantityInput = productItem.find('#quantity'),
+                        currentQuantity = parseInt(quantityInput.val());
+                        
                     productItem.find('#quantity').val((i, val) => +val + 1);
                     stockText.text(currentStock - 1);
                     updateReservationButton(productItem, currentStock - 1);
@@ -115,7 +142,7 @@
 
             function updateReservationButton(productItem, stock) {
                 let reserveBtn = productItem.find('.btn-reserve');
-                if (stock <= 0) {
+                if (stock <= -1) {
                     reserveBtn.attr('disabled', 'disabled');
                 } else {
                     reserveBtn.removeAttr('disabled');

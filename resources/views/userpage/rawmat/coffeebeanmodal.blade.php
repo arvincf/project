@@ -44,8 +44,9 @@
                     KG<br>
                     <label><b>Quantity: </b></label>
                     <input type="number" class="form-control" name="quantity" min="1"
-                    onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"><br>
-
+                    onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
+                    <label><b>Expiration Date:</b></label>
+                    <input type="date" id="birthdayInput" name="expdate" class="form-control" required><br>
             <br><br>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
