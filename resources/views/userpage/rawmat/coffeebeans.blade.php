@@ -12,10 +12,11 @@
         <main class="main-container">
             @include('components.header')
             <h1>Stored Beans</h1>
+            <hr>
             <div id="grid-view" class="panel">
                 <div class="row">
                     @foreach ($coffeebeans as $coffeebean)
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="col-lg-4 col-md-3 col-sm-3 col-12">
                             <div class="card card-profile">
                                 <div class="card-header justify-content-end pb-0">
                                     <div class="dropdown">
@@ -32,6 +33,9 @@
                                                     </li>
                                                     <li class="list-group-item px-0 d-flex justify-content-between">
                                                         <span>Date Stored:</span><strong>{{ \Carbon\Carbon::parse($coffeebean->date)->format('F j, Y') }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span>Supplier Name:</span><strong>{{ $coffeebean->supplier_name }}</strong>
                                                     </li>
                                                 </ul>
                                                 <a href="#show{{ $coffeebean->id }}" class="btn btn-outline-primary btn-rounded mt-3 px-4" title="View"

@@ -28,7 +28,6 @@ class ProductController extends Controller
             'product_name' => 'required',
             'quantity' => 'required',
             'unit_price' => 'required',
-            'supplier_name' => 'required',
             'details' => 'required'
         ]);
 
@@ -40,7 +39,6 @@ class ProductController extends Controller
             'name' => Str::title(trim($request->product_name)),
             'quantity' => trim($request->quantity),
             'unit_price' => trim($request->unit_price),
-            'supplier_name' => Str::title(trim($request->supplier_name)),
             'details' => trim($request->details),
             'date_of_storing' => now()
         ]);
@@ -54,7 +52,6 @@ class ProductController extends Controller
             'product_name' => 'required',
             'quantity' => 'required',
             'unit_price' => 'required',
-            'supplier_name' => 'required',
             'details' => 'required'
         ]);
 
@@ -66,7 +63,6 @@ class ProductController extends Controller
             'name' => Str::title(trim($request->product_name)),
             'quantity' => trim($request->quantity),
             'unit_price' => trim($request->unit_price),
-            'supplier_name' => Str::title(trim($request->supplier_name)),
             'details' => trim($request->details)
         ]);
 

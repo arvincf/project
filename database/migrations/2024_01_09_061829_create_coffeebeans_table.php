@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('coffeebeans', function (Blueprint $table) {
             $table->id();
             $table->string('coffee_name');
+            $table->string('supplier_name');
             $table->string('quantity');
             $table->date('date');
             $table->timestamps();

@@ -17,7 +17,6 @@
                             @endif
                         @endforeach
                     </select><br>
-
                     <label>Product</label><br>
                     <select name="prodName" class="form-select" required>
                         <option disabled selected hidden value="">Select Product</option>
@@ -27,7 +26,7 @@
                     </select><br>
                     <input type="hidden" name="status" value="Confirming...">
                     <label>Quantity</label><br>
-                    <input type="number" class="form-control" name="quantity"
+                    <input type="number" class="form-control" name="quantity" min="1"
                     onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

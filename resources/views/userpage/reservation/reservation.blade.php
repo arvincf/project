@@ -27,28 +27,28 @@
                                 <div class="product-stock-container">
                                     <p class="quantity">Available Stocks: <span>{{ $product->quantity }}</span></p>
                                     @if ($product->quantity <= 0)
-                                        <span class="no-stock-message">No stock available</span>
+                                        <div class="alert alert-warning" role="alert">
+                                            No stock available
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="product-details-section">
                                     <label for="product-name">Product Name: <br>
                                         <span class="product-name">{{ $product->name }}</span>
                                     </label>
-
                                 </div>
                                 <div class="product-quantity-container">
                                     <button class="btn-add" title="Add Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>+</button>
                                     <input type="number" name="quantity" id="quantity" placeholder="Enter Quantity"
-                                        min="1" required readonly>
+                                        min="1" class="form-control" required readonly>
                                     <button class="btn-minus" title="Minus Quantity"
                                         {{ $product->quantity <= 0 ? 'disabled' : '' }}>-</button>
                                 </div>
                                 <div class="product-btn-container">
                                     <div class="reservation-btn-wrapper">
-                                        <button class="btn-reserve" title="Reserve">Reserve</button>
-                                        <p class="reservation-msg" style="color: red; margin-top: 5px; display: none;">
-                                            Click the "+" button to have a reservation</p>
+                                        <button class="btn-reserve" title="Reserve"
+                                            {{ $product->quantity <= 0 ? 'disabled' : '' }}>Reserve</button>
                                     </div>
                                 </div>
                             </div>
@@ -66,6 +66,34 @@
     @include('partials.toastr-script')
     <script>
         $(document).ready(() => {
+            let pressTimer;
+            let longPressDuration = 500;
+
+            function startIncrement(productItem, stockText) {
+                pressTimer = setInterval(function() {
+                    let currentStock = parseInt(stockText.text());
+                    if (currentStock > 0) {
+                        let quantityInput = productItem.find('#quantity'),
+                            currentQuantity = parseInt(quantityInput.val());
+                        quantityInput.val(currentQuantity + 1);
+                        stockText.text(currentStock - 1);
+                        updateReservationButton(productItem, currentStock - 1);
+                    }
+                }, 200);
+            }
+
+            function startDecrement(productItem, stockText) {
+                pressTimer = setInterval(function() {
+                    let quantityInput = productItem.find('#quantity'),
+                        currentQuantity = parseInt(quantityInput.val());
+                    if (currentQuantity > 1) {
+                        let currentStock = parseInt(stockText.text());
+                        quantityInput.val(currentQuantity - 1);
+                        stockText.text(currentStock + 1);
+                        updateReservationButton(productItem, currentStock + 1);
+                    }
+                }, 200); // Change the delay (in milliseconds) for the first decrement
+            }
             $('.btn-add').click(function(e) {
                 e.preventDefault();
                 let productItem = $(this).closest('.product-widget'),
@@ -73,10 +101,14 @@
                     currentStock = parseInt(stockText.text());
 
                 if (currentStock > 0) {
+                    let quantityInput = productItem.find('#quantity'),
+                        currentQuantity = parseInt(quantityInput.val());
+                        
                     productItem.find('#quantity').val((i, val) => +val + 1);
                     stockText.text(currentStock - 1);
+                    updateReservationButton(productItem, currentStock - 1);
                 } else {
-                    // Optionally, you can provide some feedback to the user
+                    // Display out-of-stock alert
                     alert('Sorry, the stock is insufficient.');
                 }
             });
@@ -91,6 +123,7 @@
                 if (currentQuantity > 1) {
                     quantityInput.val(currentQuantity - 1);
                     stockText.text(parseInt(stockText.text()) + 1);
+                    updateReservationButton(productItem, parseInt(stockText.text()) + 1);
                 }
             });
 
@@ -100,11 +133,21 @@
                     reservationMsg = $(this).find('.reservation-msg');
 
                 if (quantityInput.val() === '') {
-                    reservationMsg.show();
+                    // Display reservation alert
+                    alert('Click the "+" button to have a reservation');
                 } else {
                     $(this).unbind('submit').submit();
                 }
             });
+
+            function updateReservationButton(productItem, stock) {
+                let reserveBtn = productItem.find('.btn-reserve');
+                if (stock <= -1) {
+                    reserveBtn.attr('disabled', 'disabled');
+                } else {
+                    reserveBtn.removeAttr('disabled');
+                }
+            }
         });
     </script>
 </body>

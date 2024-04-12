@@ -102,30 +102,30 @@ class UsersController extends Controller
         return back()->with('success', 'User Updated!');
     }
 
-    public function searchApplicant(Request $request, $option)
+    public function searchApplicant(Request $request)
     {
-        if ($option == "applicant") {
-            $userData = $this->user
-                ->select('*')
-                ->where('type', 'Applicant')
-                ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-                ->orWhere('address', 'LIKE', "%{$request->name}%")
-                ->get();
+        $userData = $this->user
+            ->select('*')
+            ->where('type', 'Applicant')
+            ->where('id', '!=', auth()->user()->id)
+            ->where(function ($query) use ($request) {
+                $query->where('last_name', 'LIKE', "%{$request->name}%")
+                    ->orWhere('first_name', 'LIKE', "%{$request->name}%")
+                    ->orWhere('address', 'LIKE', "%{$request->name}%");
+            })
+            ->get();
 
-            return response(['userData' => $userData]);
-        } else {
-            $userData = $this->user
-                ->select('*')
-                ->whereNotIn('type', ['Admin', 'Manager', 'Applicant'])
-                ->where('last_name', 'LIKE', "%{$request->name}%")
-                ->orWhere('first_name', 'LIKE', "%{$request->name}%")
-                ->orWhere('address', 'LIKE', "%{$request->name}%")
-                ->get();
+        return response(['userData' => $userData]);
+    }
+    
 
-            return response(['userData' => $userData]);
+    public function getApplicant()
+    {
+        $users = User::where('id', '!=', auth()->user()->id)
+            ->where('type', '=', 'Applicant')
+            ->get();
 
-        }
-
+        return response(['userData' => $users]);
     }
 
     public function approveaccount(Request $request, $id)

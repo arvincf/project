@@ -26,7 +26,6 @@
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
-                                <th>Supplier Name</th>
                                 <th>Date of Storing</th>
                                 <th>Details</th>
                                 <th>Actions</th>
@@ -37,8 +36,8 @@
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         <td>₱{{ $product->unit_price }}</td>
-                                        <td>{{ $product->supplier_name }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($product->date_of_storing)->format('F j, Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($product->date_of_storing)->format('F j, Y') }}
+                                        </td>
                                         <td>{{ $product->details }}</td>
                                         <td>
                                             <div class="action-btn">
@@ -64,40 +63,30 @@
                 <div class="col-lg-4 col-md-6 col-sm-6 col-12">
                     <div class="card card-profile">
                         <div class="card-header justify-content-end pb-0">
-                            <div class="dropdown">
-                                <button class="btn btn-link" type="button" data-toggle="dropdown">
-                                    <span class="dropdown-dots fs--1"></span>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right border py-0">
-                                    <div class="py-2">
-                                        <a class="dropdown-item" href="">Edit</a>
-                                        <a class="dropdown-item text-danger" href="">Delete</a>
+                            <div class="card-body pt-2">
+                                <div class="text-center">
+                                    <div class="profile-photo">
+                                        <img src="/assets/img/side-image.jpg" width="100"
+                                            class="img-fluid rounded circle">
                                     </div>
-                                </div>
-                                <div class="card-body pt-2">
-                                    <div class="text-center">
-                                        <div class="profile-photo">
-                                            <img src="/assets/img/side-image.jpg" width="100"
-                                                class="img-fluid rounded circle">
-                                        </div>
-                                        <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
-                                        <p class="text-muted">₱{{ $product->unit_price }}</p>
-                                        <ul class="list-group mb-3 list-group-flush">
-                                            <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
-                                            </li>
-                                            <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Unit Price:</span><strong>₱{{ $product->unit_price }}</strong>
-                                            </li>
-                                            <li class="list-group-item px-0 d-flex justify-content-between">
-                                                <span>Description:</span><strong>{{ $product->details }}</strong>
-                                            </li>
-                                        </ul>
-                                        <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
-                                            More</a>
-                                    </div>
+                                    <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
+                                    <p class="text-muted">₱{{ $product->unit_price }}</p>
+                                    <ul class="list-group mb-3 list-group-flush">
+                                        <li class="list-group-item px-0 d-flex justify-content-between">
+                                            <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
+                                        </li>
+                                        <li class="list-group-item px-0 d-flex justify-content-between">
+                                            <span>Unit Price:</span><strong>₱{{ $product->unit_price }}</strong>
+                                        </li>
+                                        <li class="list-group-item px-0 d-flex justify-content-between">
+                                            <span>Description:</span><strong>{{ $product->details }}</strong>
+                                        </li>
+                                    </ul>
+                                    <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
+                                        More</a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

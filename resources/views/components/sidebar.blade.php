@@ -22,11 +22,11 @@
                     <span>Dashboard</span>
                 </a>
             </div>
-            @if (auth()->user()->type == 'Admin')
+            @if(auth()->user()->type == 'Admin')
                 <button class="dropdown-btn" data-bs-toggle="dropdown">
                     <i class="bi bi-person"></i>
-                    <span>User Management</span>
-                    <i class="bi bi-caret-down"></i>
+                    <span style="margin-right: 10px;">User Management</span>
+                    <span class="bi bi-caret-down-fill"></span>
                 </button>
                 <div class="dropdown-container">
                     <li><a href="{{ route('admin.newapplicant') }}">New Applicant</a></li>
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 
-            @elseif (auth()->user()->type == 'Customer')
+            @elseif(auth()->user()->type == 'Customer')
                 <div class="nav-item">
                     <a href="{{ route('customer.product.display') }}">
                         <i class="bi bi-grid"></i>
@@ -98,8 +98,8 @@
             @elseif(auth()->user()->type == 'Manager')
             <button class="dropdown-btn" data-bs-toggle="dropdown">
                 <i class="bi bi-person"></i>
-                <span>User Management</span>
-                <i class="bi bi-caret-down"></i>
+                <span style="margin-right: 10px;">User Management </span>
+                <span class="bi bi-caret-down-fill"></span>
             </button>
             <div class="dropdown-container">
                 <li><a href="{{ route('manager.newapplicant') }}">New Applicant</a></li>
@@ -137,8 +137,8 @@
             </div>
             <button class="dropdown-btn" data-bs-toggle="dropdown">
                 <i class="bi bi-table"></i>
-                <span>Sales</span>
-                <i class="bi bi-caret-down"></i>
+                <span style="margin-right: 10px;">Sales </span>
+                <span class="bi bi-caret-down-fill"></span>
             </button>
             <div class="dropdown-container">
                 <li><a href="{{ route('manager.managesales') }}">Manage Sales</a></li>
