@@ -489,6 +489,54 @@ img.img-size-2 {
     border: none;
 }
 
+.info-menu li.profile {
+    position: relative;
+}
+.profile a.toggle{
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(150, 150, 158, 1.0);
+    position: relative;
+    padding: 10px 10px 10px 0;
+    margin: 0;
+    background: #f9f9f9;
+    border-radius: 30px;
+  }
+  .jumbotron{
+    margin-bottom: 0;
+  }.list-group-item:first-child,.list-group-item:last-child{
+    border-radius: 0;
+  }.profile .jumbotron{
+    border-radius: 3px 3px 0 0;
+  }.profile .jumbotron h3{
+    color: white;
+  }img.img-size-2{
+    width: 125px;
+    height: 125px;
+  }
+
+/* Custom CSS for nav pills */
+.nav.flex-column {
+    padding-left: 0; /* Remove default padding */
+}
+
+.nav.flex-column .nav-item {
+    margin-bottom: 5px; /* Add margin between nav items */
+}
+
+.nav.flex-column .nav-link {
+    color: #333; /* Text color */
+}
+
+.nav.flex-column .nav-link:hover {
+    color: #a17e7e; /* Hover text color */
+}
+
+.nav.flex-column .nav-link i {
+    margin-right: 5px; /* Add space between icon and text */
+}
+
 table th,
 table td {
     vertical-align: middle !important;
