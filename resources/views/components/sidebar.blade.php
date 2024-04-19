@@ -135,14 +135,11 @@
                     <span>Product Reservation</span>
                 </a>
             </div>
-            <button class="dropdown-btn" data-bs-toggle="dropdown">
-                <i class="bi bi-table"></i>
-                <span style="margin-right: 10px;">Sales </span>
-                <span class="bi bi-caret-down-fill"></span>
-            </button>
-            <div class="dropdown-container">
-                <li><a href="{{ route('manager.managesales') }}">Manage Sales</a></li>
-                <li><a href="#">Search Sales</a></li>
+            <div class="nav-item">
+                <a href="{{ route('manager.managesales') }}">
+                    <i class="bi bi-table"></i>
+                    <span>Sales </span>
+                </a>
             </div>
             <div class="nav-item">
                 <a href="{{route('manager.report')}}">

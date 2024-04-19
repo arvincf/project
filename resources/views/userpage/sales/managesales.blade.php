@@ -16,17 +16,14 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Sales Date</th>
                             <th>Customer Name</th>
                             <th>Product Name</th>
-                            <th>Product Price</th>
                             <th>Product Quantity</th>
-                            <th>Total Sales</th>
+                            <th>Action</th>
                         </thead>
                         <tbody>
                             @foreach ($sales as $sale)
                                 <tr>
-                                    <td>{{ \Carbon\Carbon::parse($sale->date)->format('F j, Y') }}</td>
                                     <td>{{ $sale->customer_name }}</td>
                                     <td>{{ $sale->product_name }}</td>
                                     <td>{{ $sale->product_quantity }}</td>

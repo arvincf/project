@@ -18,4 +18,9 @@ class SalesController extends Controller
         $sales = $this->sales->all();
         return view("userpage.sales.managesales", compact('sales'));
     }
+
+    public function salesrep()
+    {
+        return view("userpage.report.salesreport");
+    }
 }
