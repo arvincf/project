@@ -27,9 +27,14 @@
                                     <td>{{ $sale->customer_name }}</td>
                                     <td>{{ $sale->product_name }}</td>
                                     <td>{{ $sale->product_quantity }}</td>
-                                    <td>{{ $sale->price }}</td>
+                                    <td>
+                                        <div class="action-btn">
+                                            <a href="#" data-bs-toggle="modal" class="btn btn-secondary"
+                                                title="Remove"><i class="bi bi-plus-circle"></i> Add</a>
+                                        </div>
+                                    </td>
                                 </tr>
-                                @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

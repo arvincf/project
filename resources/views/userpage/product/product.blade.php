@@ -46,6 +46,7 @@
                                                 <a href="#remove{{ $product->id }}" data-bs-toggle="modal"
                                                     class="btn-danger" title="Remove"><i
                                                         class="bi bi-trash"></i>Remove</a>
+                                                </td>
                                             </div>
                                     </tr>
                                     @include('userpage.product.productmodal')
