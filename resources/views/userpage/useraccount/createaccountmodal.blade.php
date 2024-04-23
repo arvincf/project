@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
                     method="POST">
                     @csrf
                     <label>Type</label></br>

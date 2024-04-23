@@ -30,7 +30,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.manageusers.update', $user->id) : route('admin.manageusers.update', $user->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'manager' ? route('manager.manageusers.update', $user->id) : route('admin.manageusers.update', $user->id) }}"
                     method="POST">
                     @method('PATCH')
                     @csrf
@@ -72,7 +72,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.delete', $user->id) : route('admin.manageusers.delete', $user->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.manageusers.delete', $user->id) : route('admin.manageusers.delete', $user->id) }}"
                     method="POST">
                     @method('DELETE')
                     @csrf

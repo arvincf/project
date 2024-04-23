@@ -13,7 +13,7 @@
         <main class="main-container">
             @include('components.header')
             <h1>Products</h1>
-            @if (auth()->user()->type == 'Manager' || auth()->user()->type == 'Admin')
+            @if (auth()->user()->type == 'manager' || auth()->user()->type == 'admin')
                 <div class="page-btn">
                     <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
                             class="bi bi-plus-lg"></i>Add Product

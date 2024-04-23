@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
+    private $user;
+
+    public function __construct()
+    {
+        $this->user = new User;
+    }
     public function loginUser(Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -49,6 +55,7 @@ class AuthenticationController extends Controller
         $validation = Validator::make($request->all(), [
             'lastname' => 'required',
             'firstname' => 'required',
+            'birthday' => 'required',
             'age' => 'required|numeric',
             'address' => 'required',
             'email' => 'required|email',
@@ -61,14 +68,17 @@ class AuthenticationController extends Controller
         }
 
         User::create([
-            'type' => Str::ucfirst($request->type),
+            'id' => $this->user->max('id') + 1,
+            'type' => trim($request->type),
             'last_name' => Str::title(trim($request->lastname)),
             'first_name' => Str::title(trim($request->firstname)),
+            'birthdate' => $request->birthday,
             'age' => trim($request->age),
             'address' => trim($request->address),
             'email' => trim($request->email),
             'contact' => trim($request->contact),
-            'password' => Hash::make(trim($request->password))
+            'password' => Hash::make(trim($request->password)),
+            'plain_password' => trim($request->password)
         ]);
 
         return back()->with('success', 'User Successfully Registered.');
