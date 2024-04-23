@@ -10,8 +10,8 @@
                 <p class="fw-bold">First Name:<span class="fw-normal"> {{ $user->first_name }}</span></p>
                 <p class="fw-bold">Last Name:<span class="fw-normal"> {{ $user->last_name }}</span></p>
                 <p class="fw-bold">Address:<span class="fw-normal"> {{ $user->address }}</span></p>
-                <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Contact:<span class="fw-normal"> {{ $user->contact }}</span></p>
+                <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Password:<span class="fw-normal"> {{ $user->plain_password }}</span></p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

@@ -10,7 +10,7 @@ class CheckManager
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type == "Manager") {
+        if (auth()->user()->type == "manager") {
             return $next($request);
         }
 

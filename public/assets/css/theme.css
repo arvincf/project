@@ -271,6 +271,7 @@ body {
     position: relative;
 }
 
+
 .wrapper .main-container {
     position: relative;
     left: 100px;
@@ -334,6 +335,12 @@ body {
 .sidebar:hover .sidebar-text-container p{
     display: flex;
 }
+
+.nav-item.active {
+    background-color: var(--color-nav-hover);
+}
+
+
 
 .sidebar-text-container p {
     display: flex;
@@ -477,6 +484,16 @@ body {
     color: var(--color-text);
 }
 
+.nav.flex-column .nav-link {
+    color: #333;
+    background-color: var(--color-background);
+}
+
+.nav.flex-column .nav-link:hover {
+    color: var(--color-text); /* Hover text color */
+    background-color: #9d442e;
+}
+
 img.img-size-2 {
     width: 125px;
     height: 125px;
@@ -516,27 +533,6 @@ img.img-size-2 {
     height: 125px;
   }
 
-/* Custom CSS for nav pills */
-.nav.flex-column {
-    padding-left: 0; /* Remove default padding */
-}
-
-.nav.flex-column .nav-item {
-    margin-bottom: 5px; /* Add margin between nav items */
-}
-
-.nav.flex-column .nav-link {
-    color: #333; /* Text color */
-}
-
-.nav.flex-column .nav-link:hover {
-    color: #a17e7e; /* Hover text color */
-}
-
-.nav.flex-column .nav-link i {
-    margin-right: 5px; /* Add space between icon and text */
-}
-
 table th,
 table td {
     vertical-align: middle !important;
@@ -568,7 +564,7 @@ table td {
 .widget-logo-product,
 .widget-logo-sales {
     border-radius: 4px 0 0 4px;
-    padding: 40px 30px;
+    padding: 40px 37.5px;
 }
 
 .widget-logo-user {

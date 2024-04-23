@@ -18,15 +18,14 @@
                         <div class="jumbotron text-center bg-red">
                             <img class="img-circle img-size-2" src="{{ asset('assets/img/no_image.png')}}" alt=""><br>
                             <h3>{{ auth()->user()->first_name }}</h3>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route(strtolower(auth()->user()->type) . '.setting') }}">
+                                        <i class="bi bi-pencil-square"></i> Edit profile
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route(strtolower(auth()->user()->type) . '.setting') }}">
-                                    <i class="bi bi-pencil-square"></i> Edit profile
-                                </a>
-                            </li>
-                        </ul>
-                        
                     </div>
                 </div>
             </div>

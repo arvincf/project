@@ -17,12 +17,12 @@
         </div>
         <div class="sidebar-content">
             <div class="nav-item">
-                <a href="dashboard">
+                <a href="{{ route(auth()->user()->type . '.dashboard') }}">
                     <i class="bi bi-house"></i>
                     <span>Dashboard</span>
                 </a>
             </div>
-            @if(auth()->user()->type == 'Admin')
+            @if(auth()->user()->type == 'admin')
                 <button class="dropdown-btn" data-bs-toggle="dropdown">
                     <i class="bi bi-person"></i>
                     <span style="margin-right: 10px;">User Management</span>
@@ -62,7 +62,7 @@
                         <span>Product Reservation</span>
                     </a>
                 </div>
-            @elseif(auth()->user()->type == 'Supplier')
+            @elseif(auth()->user()->type == 'supplier')
                 <div class="nav-item">
                     <a href="{{ route('supplier.request') }}">
                         <i class="bi bi-bag-fill"></i>
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 
-            @elseif(auth()->user()->type == 'Customer')
+            @elseif(auth()->user()->type == 'customer')
                 <div class="nav-item">
                     <a href="{{ route('customer.product.display') }}">
                         <i class="bi bi-grid"></i>
@@ -95,7 +95,7 @@
                         <span>Record of Reservation</span>
                     </a>
                 </div>
-            @elseif(auth()->user()->type == 'Manager')
+            @elseif(auth()->user()->type == 'manager')
             <button class="dropdown-btn" data-bs-toggle="dropdown">
                 <i class="bi bi-person"></i>
                 <span style="margin-right: 10px;">User Management </span>
@@ -149,10 +149,19 @@
                 </a>
             </div>
             @endif
-            
-            <div class="text-center d-none d-md-inline">
-                <button id="sidebarToggle" class="btn rounded-circle border-0" type="button"></button>
-            </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var currentUrl = window.location.href;
+    var links = document.querySelectorAll('.nav-item a');
+
+    links.forEach(function(link) {
+        if (link.getAttribute('href') === currentUrl) {
+            link.closest('.nav-item').classList.add('active');
+        }
+    });
+});
+</script>

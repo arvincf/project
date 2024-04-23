@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            "type" => "Applicant",
+            "type" => "applicant",
             "last_name" => "Faustino",
             "first_name" => "Arvin",
             "birthdate"=> "2002-01-01",
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "type" => "Supplier",
+            "type" => "supplier",
             "last_name" =>  "Pastor",
             "first_name" => "Jochelle Mae",
             "birthdate"=> "2002-01-01",
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "type" => "Admin",
+            "type" => "admin",
             "last_name" =>  "Jumarang",
             "first_name" => "Leo",
             "birthdate"=> "2002-01-01",
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "type" => "Manager",
+            "type" => "manager",
             "last_name" =>  "Casile",
             "first_name" => "Michelle",
             "birthdate"=> "2002-01-01",
@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            "type" => "Customer",
+            "type" => "customer",
             "last_name" => "Batayon",
             "first_name" => "Elisha",
             "birthdate"=> "2002-01-01",

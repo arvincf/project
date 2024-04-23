@@ -80,6 +80,7 @@ class UsersController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'birthday' => 'required',
+            'age' => 'required',
             'address' => 'required',
             'email' => 'required',
             'contact' => 'required'

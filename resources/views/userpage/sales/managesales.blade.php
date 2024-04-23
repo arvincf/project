@@ -29,6 +29,8 @@
                                     <td>{{ $sale->product_quantity }}</td>
                                     <td>
                                         <div class="action-btn">
+                                            <a href="#" data-bs-toggle="modal" class="btn btn-primary"
+                                                title="Remove"><i class="bi bi-eye"></i>Views</a>
                                             <a href="#" data-bs-toggle="modal" class="btn btn-secondary"
                                                 title="Remove"><i class="bi bi-plus-circle"></i> Add</a>
                                         </div>
