@@ -57,7 +57,7 @@
                 </section>
         </main>
     </div>
-@elseif (auth()->user()->type == 'Customer')
+@elseif (auth()->user()->type == 'customer')
     <div id="grid-view" class="panel">
         <div class="row">
             @foreach ($products as $product)

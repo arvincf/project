@@ -24,7 +24,7 @@ class RequestController extends Controller
     public function displayrequestProduct()
     {
         $user = auth()->user();
-        if ($user->type == "Supplier") {
+        if ($user->type == "supplier") {
             $request =  $this->request
             ->where('supplier_name', $user->first_name)->get();
             $coffeebeans = $this->coffeebeans->all();

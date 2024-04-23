@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.update.delivery', $deliver->id) : route('admin.delivery.update', $deliver->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'manager' ? route('manager.update.delivery', $deliver->id) : route('admin.delivery.update', $deliver->id) }}"
                     method="POST">
                     @method('PUT')
                     @csrf

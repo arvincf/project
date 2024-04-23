@@ -123,7 +123,7 @@ class UsersController extends Controller
     public function getApplicant()
     {
         $users = User::where('id', '!=', auth()->user()->id)
-            ->where('type', '=', 'Applicant')
+            ->where('type', '=', 'applicant')
             ->get();
 
         return response(['userData' => $users]);
@@ -153,7 +153,7 @@ class UsersController extends Controller
     {
         $userData = $this->user
             ->select('*')
-            ->whereNotIn('type', ['Manager', 'Applicant'])
+            ->whereNotIn('type', ['manager', 'applicant'])
             ->where('id', '!=', auth()->user()->id)
             ->where(function ($query) use ($request) {
                 $query->where('last_name', 'LIKE', "%{$request->name}%")

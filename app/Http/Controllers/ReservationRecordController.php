@@ -21,7 +21,7 @@ class ReservationRecordController extends Controller
         $user = auth()->user();
 
     // Check if the authenticated user is an admin or manager
-    if ($user->type=="Admin" || $user->type=="Manager") {
+    if ($user->type=="admin" || $user->type=="manager") {
         // Admins and managers can see all reservation records
         $reserveProduct = $this->reserveProduct->get();
     } else {

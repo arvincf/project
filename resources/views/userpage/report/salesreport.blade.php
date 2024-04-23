@@ -32,7 +32,7 @@
                             <th>Product Name</th>
                             <th>Product Quantity</th>
                             <th>Sales Date</th>
-                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                            @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                 <th>Action</th>
                             @endif
                         </thead>

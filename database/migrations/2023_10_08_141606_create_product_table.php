@@ -15,7 +15,6 @@ return new class extends Migration
             $table->decimal('unit_price');
             $table->text('details');
             $table->date('date_of_storing');
-            $table->string('image');
             $table->timestamps();
         });
     }

@@ -13,13 +13,13 @@
             @include('components.header')
             <h1>Settings</h1><br>
             <form
-                action="{{ auth()->check() && auth()->user()->type === 'Admin'
+                action="{{ auth()->check() && auth()->user()->type === 'admin'
                     ? route('admin.settings.update', ['id' => $user->id])
-                    : (auth()->check() && auth()->user()->type === 'Supplier'
+                    : (auth()->check() && auth()->user()->type === 'supplier'
                         ? route('supplier.settings.update', ['id' => $user->id])
-                        : (auth()->check() && auth()->user()->type === 'Manager'
+                        : (auth()->check() && auth()->user()->type === 'manager'
                             ? route('manager.settings.update', ['id' => $user->id])
-                            : (auth()->check() && auth()->user()->type === 'Applicant'
+                            : (auth()->check() && auth()->user()->type === 'applicant'
                                 ? route('applicant.settings.update', ['id' => $user->id])
                                 : route('customer.settings.update', ['id' => $user->id])))) }}"
                 method="POST">

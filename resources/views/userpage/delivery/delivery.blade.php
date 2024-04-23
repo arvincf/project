@@ -13,7 +13,7 @@
             <section class="main-section">
                 @include('components.header')
                 <h1>Deliver</h1>
-                @if (auth()->user()->type == 'Supplier')
+                @if (auth()->user()->type == 'supplier')
                     <div class="page-btn">
                         <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
                                 class="bi bi-plus-lg"></i>Add Delivery
@@ -30,7 +30,7 @@
                                 <th>Supplier Name</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                     <th>Action</th>
                                 @endif
                             </thead>
@@ -48,7 +48,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                            @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                                 <div class="action-btn">
                                                     @if ($deliver->status == 'On Deliver')
                                                         <a href="#delivered{{ $deliver->id }}" class="btn btn-primary"
