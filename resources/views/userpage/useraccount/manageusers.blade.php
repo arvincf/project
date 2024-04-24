@@ -125,7 +125,7 @@
 </script>
 
 <script>
-    function calculateAge(userId) {
+    function calcAge(userId) {
         // Get the selected birth date value
         var birthDate = new Date(document.getElementById('birthInput' + userId).value);
 

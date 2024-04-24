@@ -43,7 +43,7 @@
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control" required>
                     <label for="birthday">Birthday:</label><br>
                     <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}"
-                        name="birthday" class="form-control" required onchange="calculateAge({{ $user->id }})"
+                        name="birthday" class="form-control" required onchange="calcAge({{ $user->id }})"
                         max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}"
                         min="{{ \Carbon\Carbon::now()->subYears(70)->format('Y-m-d') }}">
                     <label>Age:</label><br>

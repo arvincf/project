@@ -73,9 +73,6 @@
     var minDate = new Date(currentDate);
     minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
 
-    
-
-    // Set minimum and maximum dates for the input field
     document.getElementById("birthInput").setAttribute("max", formattedMaxDate);
     document.getElementById("birthInput").setAttribute("min", formattedMinDate);
 
