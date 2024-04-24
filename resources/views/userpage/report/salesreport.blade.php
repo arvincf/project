@@ -46,3 +46,12 @@
 </body>
 
 </html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var reportNavItem = document.querySelector('.nav-item a[href="{{ route('manager.report') }}"]');
+        
+        reportNavItem.closest('.nav-item').classList.add('active');
+    });
+</script>

@@ -32,10 +32,10 @@
                 <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control"
                     required><br>
                 <b>Birthday:</b>
-                <input type="date" id="birthInput{{ auth()->user()->id }}" value="{{ auth()->user()->birthdate }}" name="birthday"
-                    class="form-control" required onchange="calcAge({{ auth()->user()->id }})">
-                <input type="hidden" id="countageInput{{ auth()->user()->id }}" name="age" value="{{ auth()->user()->age }}"
-                    class="form-control" min="1" max="120"><br>
+                <input type="date" id="birthInput" value="{{ auth()->user()->birthdate }}" name="birthday"
+                    class="form-control" required onchange="calculateAge({{ auth()->user()->id }})">
+                <input type="number" id="ageInput" name="age" value="{{ auth()->user()->age }}"
+                    class="form-control" min="1" max="120" hidden><br>
                 <b>Address:</b></br>
                 <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control"
                     required><br>
@@ -73,23 +73,20 @@
     var minDate = new Date(currentDate);
     minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
 
-    // Format dates for input
-    var formattedMaxDate = maxDate.toISOString().split('T')[0];
-    var formattedMinDate = minDate.toISOString().split('T')[0];
+    
 
     // Set minimum and maximum dates for the input field
-    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
-    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+    document.getElementById("birthInput").setAttribute("max", formattedMaxDate);
+    document.getElementById("birthInput").setAttribute("min", formattedMinDate);
 
-    function calcAge(userId) {
-        var birthday = new Date(document.getElementById('birthInput' + userId).value);
+    function calculateAge() {
+        var birthday = new Date(document.getElementById('birthInput').value);
         var today = new Date();
-        var birthDate = new Date(birthday);
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var month = today.getMonth() - birthDate.getMonth();
-        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        var age = today.getFullYear() - birthday.getFullYear();
+        var monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
             age--;
         }
-        document.getElementById('countageInput' + userId).value = age;
+        document.getElementById('ageInput').value = age;
     }
 </script>

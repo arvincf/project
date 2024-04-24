@@ -35,16 +35,20 @@
                     @method('PATCH')
                     @csrf
                     <label>First Name:</label><br>
-                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control" required>
+                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control"
+                        required>
                     <label>Last Name:</label><br>
                     <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control" required>
                     <label>Address:</label><br>
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control" required>
                     <label for="birthday">Birthday:</label><br>
-                    <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}" name="birthday" class="form-control" required
-                        onchange="calcAge({{ $user->id }})">
+                    <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}"
+                        name="birthday" class="form-control" required onchange="calculateAge({{ $user->id }})"
+                        max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}"
+                        min="{{ \Carbon\Carbon::now()->subYears(70)->format('Y-m-d') }}">
                     <label>Age:</label><br>
-                    <input type="number" id="countageInput{{ $user->id }}" name="age" value="{{ $user->age }}" class="form-control" min="1" max="120" readonly>
+                    <input type="number" id="ageInput{{ $user->id }}" name="age" value="{{ $user->age }}"
+                        class="form-control" min="18" max="70" readonly>
                     <label>Email Address:</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control" required>
                     <label>Contact Number:</label><br>
@@ -87,4 +91,3 @@
         </div>
     </div>
 </div>
-

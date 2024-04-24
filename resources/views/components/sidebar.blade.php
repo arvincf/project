@@ -113,6 +113,12 @@
                 </a>
             </div>
             <div class="nav-item">
+                <a href="{{ route('manager.delivery') }}">
+                    <i class="bi bi-truck"></i>
+                    <span>Delivery</span>
+                </a>
+            </div>
+            <div class="nav-item">
                 <a href="{{ route('manager.coffeebeans') }}">
                     <i class="bi bi-database-fill"></i>
                     <span>Inventory</span>
@@ -122,12 +128,6 @@
                 <a href="{{ route('manager.product.display') }}">
                     <i class="bi bi-grid"></i>
                     <span>Products</span>
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="{{ route('manager.delivery') }}">
-                    <i class="bi bi-truck"></i>
-                    <span>Delivery</span>
                 </a>
             </div>
             <div class="nav-item">
@@ -143,7 +143,7 @@
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{{route('manager.report')}}">
+                <a href="{{ route('manager.report')}}">
                     <i class="bi bi-graph-up"></i>
                     <span>Reports</span>
                 </a>
