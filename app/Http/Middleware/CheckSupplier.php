@@ -10,7 +10,7 @@ class CheckSupplier
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type == "Supplier") {
+        if (auth()->user()->type == "supplier") {
             return $next($request);
         }
 

@@ -12,7 +12,7 @@
         <main class="main-container">
             <section class="main-section">
                 @include('components.header')
-                @if (auth()->user()->type == 'Supplier')
+                @if (auth()->user()->type == 'supplier')
                     <h1 class="fw-medium">News Dashboard</h1>
                     <div>
                         <iframe
@@ -27,7 +27,7 @@
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                         <br>
                     </div>
-                @elseif(auth()->user()->type == 'Admin')
+                @elseif(auth()->user()->type == 'admin')
                     <h1 class="fw-medium">Dashboard,</h1>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         Welcome to Inventory Management.
@@ -82,10 +82,10 @@
                         </a>
 
                     </section>
-                @elseif(auth()->user()->type == 'Applicant')
+                @elseif(auth()->user()->type == 'applicant')
                     <h1>Dashboard</h1>
                     <p>We will just email you to your account: <a href="mailto:{{ auth()->user()->email }}">{{ auth()->user()->email }}</a>.</p>
-                @elseif(auth()->user()->type == 'Manager')
+                @elseif(auth()->user()->type == 'manager')
                     <h1 class="fw-medium">Dashboard,</h1>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         Welcome to Inventory Management.

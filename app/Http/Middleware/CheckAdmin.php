@@ -10,7 +10,7 @@ class CheckAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type == "Admin") {
+        if (auth()->user()->type == "admin") {
             return $next($request);
         }
 

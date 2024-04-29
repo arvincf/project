@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                            @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                             <th>Customer Name</th>
                             @endif
                             <th>Product Name</th>
@@ -24,14 +24,14 @@
                             <th>Quantity</th>
                             <th>Reservation Date</th>
                             <th>Reservation Status</th>
-                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                            @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                 <th>Action</th>
                             @endif
                         </thead>
                         <tbody>
                             @forelse ($reserveProduct as $product)
                                 <tr>
-                                    @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                    @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                     <td>{{ $product->customer_name }}</td>
                                     @endif
                                     <td>{{ $product->product_name }}</td>
@@ -39,7 +39,7 @@
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ \Carbon\Carbon::parse($product->date)->format('F j, Y') }}</td>
                                     <td>{{ $product->status }}</td>
-                                    @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                    @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                         <td style="width:30%;">
                                             <div class="action-btn">
                                                 @if ($product->status == 'Pending')

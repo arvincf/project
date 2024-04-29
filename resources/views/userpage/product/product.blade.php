@@ -13,7 +13,7 @@
         <main class="main-container">
             @include('components.header')
             <h1>Products</h1>
-            @if (auth()->user()->type == 'Manager' || auth()->user()->type == 'Admin')
+            @if (auth()->user()->type == 'manager' || auth()->user()->type == 'admin')
                 <div class="page-btn">
                     <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
                             class="bi bi-plus-lg"></i>Add Product
@@ -46,6 +46,7 @@
                                                 <a href="#remove{{ $product->id }}" data-bs-toggle="modal"
                                                     class="btn-danger" title="Remove"><i
                                                         class="bi bi-trash"></i>Remove</a>
+                                                </td>
                                             </div>
                                     </tr>
                                     @include('userpage.product.productmodal')
@@ -56,7 +57,7 @@
                 </section>
         </main>
     </div>
-@elseif (auth()->user()->type == 'Customer')
+@elseif (auth()->user()->type == 'customer')
     <div id="grid-view" class="panel">
         <div class="row">
             @foreach ($products as $product)

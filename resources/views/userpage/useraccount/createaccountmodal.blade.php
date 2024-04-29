@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.manageusers.create') : route('admin.manageusers.create') }}"
                     method="POST">
                     @csrf
                     <label>Type</label></br>
@@ -25,7 +25,7 @@
                     <input type="text" name="firstname" class="form-control" autocomplete="off"
                         value="{{ !empty(old('firstname')) ? old('firstname') : null }}" placeholder="First Name"
                         required></br>
-                    <label for="birthday">Birthday:</label></br>
+                    <label>Birthday:</label></br>
                     <input type="date" id="birthdayInput" name="birthday" class="form-control" required
                         onchange="calculateAge()"></br>
                     <label>Age</label></br>

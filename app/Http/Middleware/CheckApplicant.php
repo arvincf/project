@@ -10,7 +10,7 @@ class CheckApplicant
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type == "Applicant") {
+        if (auth()->user()->type == "applicant") {
             return $next($request);
         }
 

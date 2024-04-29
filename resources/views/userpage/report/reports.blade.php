@@ -11,6 +11,17 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Coffee Reports</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('manager.sales.rep') }}">Sales Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Members Report</a>
+                </li>
+            </ul>
             <h1>Reports</h1>
             <div class="card">
                 <div class="card-body">

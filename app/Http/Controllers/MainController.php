@@ -49,6 +49,7 @@ class MainController extends Controller
                     }
                 },
             ],
+            'age' => 'required',
             'address' => 'required',
             'email' => 'required|email',
             'contact' => 'required|numeric' // Assuming contact is numeric
@@ -72,6 +73,7 @@ class MainController extends Controller
             'first_name' => Str::title(trim($request->firstname)),
             'last_name' => Str::title(trim($request->lastname)),
             'birthdate' => trim($request->birthday),
+            'age' => $request->age,
             'address' => trim($request->address),
             'email' => trim($request->email),
             'contact' => trim($request->contact)

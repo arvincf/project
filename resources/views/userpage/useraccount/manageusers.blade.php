@@ -122,16 +122,25 @@
         }
         document.getElementById('ageInput').value = age;
     }
+</script>
 
+<script>
     function calcAge(userId) {
-        var birthday = new Date(document.getElementById('birthInput' + userId).value);
-        var today = new Date();
-        var birthDate = new Date(birthday);
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var month = today.getMonth() - birthDate.getMonth();
-        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        // Get the selected birth date value
+        var birthDate = new Date(document.getElementById('birthInput' + userId).value);
+
+        // Calculate the current date
+        var currentDate = new Date();
+
+        // Calculate the age
+        var age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        // Adjust the age if the birthday hasn't occurred yet this year
+        if (currentDate.getMonth() < birthDate.getMonth() || (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
             age--;
         }
-        document.getElementById('countageInput' + userId).value = age;
+
+        // Set the calculated age to the corresponding input field
+        document.getElementById('ageInput' + userId).value = age;
     }
 </script>

@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.claim.confirm', $product->id) : route('admin.claim.confirm', $product->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.claim.confirm', $product->id) : route('admin.claim.confirm', $product->id) }}"
                     method="POST">
                     @method('PATCH')
                     @csrf

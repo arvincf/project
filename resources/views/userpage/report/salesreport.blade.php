@@ -11,6 +11,17 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ route('manager.report') }}">Coffee Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Sales Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Members Report</a>
+                </li>
+            </ul>
             <h1>Sales</h1>
             <div class="card">
                 <div class="card-body">
@@ -21,7 +32,7 @@
                             <th>Product Name</th>
                             <th>Product Quantity</th>
                             <th>Sales Date</th>
-                            @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                            @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                 <th>Action</th>
                             @endif
                         </thead>
@@ -35,3 +46,12 @@
 </body>
 
 </html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var reportNavItem = document.querySelector('.nav-item a[href="{{ route('manager.report') }}"]');
+        
+        reportNavItem.closest('.nav-item').classList.add('active');
+    });
+</script>

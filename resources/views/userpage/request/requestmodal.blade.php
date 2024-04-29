@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.request.add') : route('admin.request.add') }}" method="POST">
+                <form action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.request.add') : route('admin.request.add') }}" method="POST">
                     @csrf
                     <label>Supplier</label><br>
                     <select name="supplier" class="form-select" required>

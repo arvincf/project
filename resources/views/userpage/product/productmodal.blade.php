@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.product.add') : route('admin.product.add') }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'manager' ? route('manager.product.add') : route('admin.product.add') }}"
                     method="post">
                     @csrf
                     <label for="product_name">Product Name</label><br>
@@ -42,7 +42,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.product.edit', $product->id) : route('admin.product.edit', $product->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'manager' ? route('manager.product.edit', $product->id) : route('admin.product.edit', $product->id) }}"
                     method="POST">
                     @method('PUT')
                     @csrf
@@ -79,7 +79,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.product.remove', $product->id) : route('admin.product.remove', $product->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.product.remove', $product->id) : route('admin.product.remove', $product->id) }}"
                     method="POST">
                     @method('DELETE')
                     @csrf

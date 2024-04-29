@@ -6,7 +6,7 @@
             e.preventDefault();
 
             $.ajax({
-                url: "{{ auth()->check() && auth()->user()->type === 'Admin' ? route('admin.search.applicant') : route('manager.search.applicant') }}",
+                url: "{{ auth()->check() && auth()->user()->type === 'admin' ? route('admin.search.applicant') : route('manager.search.applicant') }}",
                 method: "GET",
                 data: {
                     name: $("#searchapplicantInput").val()
@@ -51,7 +51,7 @@
 
             if (userInput == "") {
                 $.ajax({
-                    url: "{{auth()->check() && auth()->user()->type === 'Admin' ? route('admin.getApplicant') : route('manager.getApplicant') }}",
+                    url: "{{auth()->check() && auth()->user()->type === 'admin' ? route('admin.getApplicant') : route('manager.getApplicant') }}",
                     method: "GET",
                     success(response) {
                         let userTableBody = $("#userTableBody");

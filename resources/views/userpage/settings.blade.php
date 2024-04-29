@@ -13,11 +13,15 @@
             @include('components.header')
             <h1>Settings</h1><br>
             <form
-                action="{{ auth()->check() && auth()->user()->type === 'Admin' ? route('admin.settings.update', ['id' => $user->id]) : 
-                (auth()->check() && auth()->user()->type === 'Supplier' ? route('supplier.settings.update', ['id' => $user->id]) : 
-                (auth()->check() && auth()->user()->type === 'Manager' ? route('manager.settings.update', ['id' => $user->id]) : 
-                (auth()->check() && auth()->user()->type === 'Applicant' ? route('applicant.settings.update', ['id' => $user->id]) : 
-                route('customer.settings.update', ['id' => $user->id])))) }}"
+                action="{{ auth()->check() && auth()->user()->type === 'admin'
+                    ? route('admin.settings.update', ['id' => $user->id])
+                    : (auth()->check() && auth()->user()->type === 'supplier'
+                        ? route('supplier.settings.update', ['id' => $user->id])
+                        : (auth()->check() && auth()->user()->type === 'manager'
+                            ? route('manager.settings.update', ['id' => $user->id])
+                            : (auth()->check() && auth()->user()->type === 'applicant'
+                                ? route('applicant.settings.update', ['id' => $user->id])
+                                : route('customer.settings.update', ['id' => $user->id])))) }}"
                 method="POST">
                 @method('PATCH')
                 @csrf
@@ -28,8 +32,10 @@
                 <input type="text" name="lastname" value="{{ auth()->user()->last_name }}" class="form-control"
                     required><br>
                 <b>Birthday:</b>
-                <input type="date" name="birthday" id="birthdayInput" value="{{ auth()->user()->birthdate }}"
-                    class="form-control" required><br>
+                <input type="date" id="birthInput" value="{{ auth()->user()->birthdate }}" name="birthday"
+                    class="form-control" required onchange="calculateAge({{ auth()->user()->id }})">
+                <input type="number" id="ageInput" name="age" value="{{ auth()->user()->age }}"
+                    class="form-control" min="1" max="120" hidden><br>
                 <b>Address:</b></br>
                 <input type="text" name="address" value="{{ auth()->user()->address }}" class="form-control"
                     required><br>
@@ -44,6 +50,7 @@
                     onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"><br>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     <button type="submit" class="btn-success">Edit</button>
+                    <br><br>
                 </div>
             </form>
         </main>
@@ -66,11 +73,17 @@
     var minDate = new Date(currentDate);
     minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
 
-    // Format dates for input
-    var formattedMaxDate = maxDate.toISOString().split('T')[0];
-    var formattedMinDate = minDate.toISOString().split('T')[0];
+    document.getElementById("birthInput").setAttribute("max", formattedMaxDate);
+    document.getElementById("birthInput").setAttribute("min", formattedMinDate);
 
-    // Set minimum and maximum dates for the input field
-    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
-    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+    function calculateAge() {
+        var birthday = new Date(document.getElementById('birthInput').value);
+        var today = new Date();
+        var age = today.getFullYear() - birthday.getFullYear();
+        var monthDiff = today.getMonth() - birthday.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+            age--;
+        }
+        document.getElementById('ageInput').value = age;
+    }
 </script>

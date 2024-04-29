@@ -10,8 +10,8 @@
                 <p class="fw-bold">First Name:<span class="fw-normal"> {{ $user->first_name }}</span></p>
                 <p class="fw-bold">Last Name:<span class="fw-normal"> {{ $user->last_name }}</span></p>
                 <p class="fw-bold">Address:<span class="fw-normal"> {{ $user->address }}</span></p>
-                <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Contact:<span class="fw-normal"> {{ $user->contact }}</span></p>
+                <p class="fw-bold">Email:<span class="fw-normal"> {{ $user->email }}</span></p>
                 <p class="fw-bold">Password:<span class="fw-normal"> {{ $user->plain_password }}</span></p>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
@@ -30,21 +30,25 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type == 'Manager' ? route('manager.manageusers.update', $user->id) : route('admin.manageusers.update', $user->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type == 'manager' ? route('manager.manageusers.update', $user->id) : route('admin.manageusers.update', $user->id) }}"
                     method="POST">
                     @method('PATCH')
                     @csrf
                     <label>First Name:</label><br>
-                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control" required>
+                    <input type="text" name="firstname" value="{{ $user->first_name }}" class="form-control"
+                        required>
                     <label>Last Name:</label><br>
                     <input type="text" name="lastname" value="{{ $user->last_name }}" class="form-control" required>
                     <label>Address:</label><br>
                     <input type="text" name="address" value="{{ $user->address }}" class="form-control" required>
                     <label for="birthday">Birthday:</label><br>
-                    <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}" name="birthday" class="form-control" required
-                        onchange="calcAge({{ $user->id }})">
+                    <input type="date" id="birthInput{{ $user->id }}" value="{{ $user->birthdate }}"
+                        name="birthday" class="form-control" required onchange="calcAge({{ $user->id }})"
+                        max="{{ \Carbon\Carbon::now()->subYears(18)->format('Y-m-d') }}"
+                        min="{{ \Carbon\Carbon::now()->subYears(70)->format('Y-m-d') }}">
                     <label>Age:</label><br>
-                    <input type="number" id="countageInput{{ $user->id }}" name="age" value="{{ $user->age }}" class="form-control" min="1" max="120" readonly>
+                    <input type="number" id="ageInput{{ $user->id }}" name="age" value="{{ $user->age }}"
+                        class="form-control" min="18" max="70" readonly>
                     <label>Email Address:</label><br>
                     <input type="text" name="email" value="{{ $user->email }}" class="form-control" required>
                     <label>Contact Number:</label><br>
@@ -72,7 +76,7 @@
             </div>
             <div class="modal-body">
                 <form
-                    action="{{ auth()->check() && auth()->user()->type === 'Manager' ? route('manager.manageusers.delete', $user->id) : route('admin.manageusers.delete', $user->id) }}"
+                    action="{{ auth()->check() && auth()->user()->type === 'manager' ? route('manager.manageusers.delete', $user->id) : route('admin.manageusers.delete', $user->id) }}"
                     method="POST">
                     @method('DELETE')
                     @csrf
@@ -87,4 +91,3 @@
         </div>
     </div>
 </div>
-

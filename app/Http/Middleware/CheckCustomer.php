@@ -10,7 +10,7 @@ class CheckCustomer
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->type == "Customer") {
+        if (auth()->user()->type == "customer") {
             return $next($request);
         }
 
