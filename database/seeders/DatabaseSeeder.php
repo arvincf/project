@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             "type" => "manager",
-            "last_name" =>  "Casile",
+            "last_name" =>  "De Sagun",
             "first_name" => "Michelle",
             "birthdate"=> "2002-01-01",
             "age" => 22,

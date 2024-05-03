@@ -37,7 +37,7 @@
                         <tbody id="userTableBody">
                             @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $user->type }}</td>
+                                    <td>{{ ucfirst($user->type) }}</td>
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->age }}</td>
@@ -122,6 +122,12 @@
         }
         document.getElementById('ageInput').value = age;
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var reportNavItem = document.querySelector('.nav-item a[href="{{ route('manager.manageusers') }}"]');
+        
+        reportNavItem.closest('.nav-item').classList.add('active');
+    });
 </script>
 
 <script>
@@ -144,3 +150,4 @@
         document.getElementById('ageInput' + userId).value = age;
     }
 </script>
+

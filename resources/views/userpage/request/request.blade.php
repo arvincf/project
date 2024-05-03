@@ -25,21 +25,21 @@
                     <div class="card-body">
                         <table class="table">
                             <thead>
-                                @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                 <th>Supplier Name</th>
                                 @endif
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                @if (auth()->user()->type == 'Supplier')
+                                @if (auth()->user()->type == 'supplier')
                                 <th>Actions</th>
                                 @endif
                             </thead>
                             <tbody>
                                 @forelse ($request as $requests)
                                     <tr>
-                                        @if (auth()->user()->type == 'Admin' || auth()->user()->type == 'Manager')
+                                        @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                         <td>{{ $requests->supplier_name }}</td>
                                         @endif
                                         <td>{{ $requests->product_name }}</td>
@@ -51,7 +51,7 @@
                                                 {{ $requests->status }}
                                             </div>
                                         </td>
-                                        @if (auth()->user()->type == 'Supplier')
+                                        @if (auth()->user()->type == 'supplier')
                                         <td style="width:30%;">
                                             <div class="action-btn">
                                                 @if ($requests->status == 'Confirming...')

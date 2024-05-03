@@ -12,7 +12,7 @@
                     <select name="supplier" class="form-select" required>
                         <option disabled selected hidden value="">Select Supplier</option>
                         @foreach ($user as $users)
-                            @if ($users->type == 'Supplier')
+                            @if ($users->type == 'supplier')
                                 <option value="{{ $users->first_name }}">{{ $users->first_name }}</option>
                             @endif
                         @endforeach

@@ -27,7 +27,6 @@
                 <div class="card-body">
                     <table class="table">
                         <thead>
-                            <th>Id</th>
                             <th>Customer Name</th>
                             <th>Product Name</th>
                             <th>Product Quantity</th>
