@@ -50,18 +50,34 @@ class DeliveryController extends Controller
     }
 
     public function updateDelivery(Request $request, $id)
-    {
-        try {
-            $delivery = $this->deliver->findOrFail($id);
+{
+    try {
+        $delivery = $this->deliver->findOrFail($id);
 
-            $delivery->update([
-                'status' => trim($request->status),
-                'delivery_date' => now()
-            ]);
+        // Get the current quantity of coffeebeans
+        $coffeebean = Coffeebeans::where('coffee_name', $delivery->product_name)->firstOrFail();
 
-            return back()->with('success', 'Delivery Updated!');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Failed to update delivery. ' . $e->getMessage());
-        }
+        // Calculate the new quantity of coffeebeans
+        
+        $newCoffeebeanQuantity = $coffeebean->quantity + $delivery->quantity;
+
+        // Update the delivery
+        $delivery->update([
+            'status' => trim($request->status),
+            'delivery_date' => now()
+            
+        ]);
+
+        // Update the quantity of coffeebeans
+        $coffeebean->update([
+            'quantity' => $newCoffeebeanQuantity,
+            'date' => now()
+        ]);
+
+        return back()->with('success', 'Delivery Updated!');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Failed to update delivery. ' . $e->getMessage());
     }
+}
+
 }
