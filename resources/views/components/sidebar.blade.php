@@ -103,7 +103,7 @@
             </button>
             <div class="dropdown-container">
                 <li><a href="{{ route('manager.newapplicant') }}">New Applicant</a></li>
-                <li><a href="#">Applicant Records</a></li>
+                <li><a href="{{ route('manager.drecord') }}">Applicant Records</a></li>
                 <li><a href="{{ route('manager.manageusers') }}">Manage Users</a></li>
             </div>
             <div class="nav-item">

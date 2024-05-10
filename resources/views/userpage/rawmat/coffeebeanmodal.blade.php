@@ -7,9 +7,9 @@
             </div>
             <div class="modal-body">
                     <label><b>Process:</b></label><br>
-                    <input type="radio" name="gender" value="male"> Brewed<br>
-                    <input type="radio" name="gender" value="female"> Powdered<br>
-                    <input type="radio" name="gender" value="others"> Others: 
+                    <input type="radio" name="process" value="Brewed"> Brewed<br>
+                    <input type="radio" name="process" value="Powdered"> Powdered<br>
+                    <input type="radio" name="process" value="others"> Others: 
                     <input type="text" name="others"><br>
                     <label><b>Use product: </b></label><br>
                     <select name="type" required>

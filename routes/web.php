@@ -156,6 +156,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/searchapplicant', 'searchApplicant')->name('search.applicant');
             Route::get('/getApplicant', 'getApplicant')->name('getApplicant');
             Route::get('/manageusers', 'manageusers')->name('manageusers');
+            Route::get('/applicantrecords', 'disapproveapplicant')->name('drecord');
             Route::get('/getUsersAccount', 'getUsersAccount')->name('getUsersAccount');
             Route::post('/manageusers', 'createAccount')->name('manageusers.create');
             Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');

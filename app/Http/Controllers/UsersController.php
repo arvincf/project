@@ -32,8 +32,13 @@ class UsersController extends Controller
     public function newapplicants()
     {
         $users = User::where('type', 'applicant')->simplePaginate(5);
-
         return view('userpage.useraccount.newapplicant', compact('users'));
+    }
+
+    public function disapproveapplicant()
+    {
+        $users = User::where('status', 'disapprove')->simplePaginate(5);
+        return view('userpage.useraccount.applicantrecords', compact('users'));
     }
 
     public function createAccount(Request $request)
