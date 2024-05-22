@@ -16,7 +16,6 @@
                     <input type="number" class="form-control" name="quantity" value="{{ $requests->quantity }}" hidden>
                     <input type="date" class="form-control" name="delivery_date" value="{{ $requests->date }}" hidden>
                     <div class="modal-footer">
-                        <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-success">Confirm</button>
                     </div>
                 </form>

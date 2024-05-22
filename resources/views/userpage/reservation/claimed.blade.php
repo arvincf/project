@@ -19,7 +19,6 @@
                     <input type="hidden" name="price" value="{{ $product->unit_price }}">
                     <input type="hidden" name="quantity" value="{{ $product->quantity }}">
                     <div class="modal-footer">
-                        <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn-success">Claim</button>
                     </div>
                 </form>

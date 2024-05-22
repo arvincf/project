@@ -16,7 +16,6 @@
                         <h5 class="text-center">Product Name: {{ $user->first_name }}</h5>
                         <input type="hidden" name="type" value="supplier">
                         <div class="modal-footer">
-                            <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn-success">Approve</button>
                         </div>
                     </form>

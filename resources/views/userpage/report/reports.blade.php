@@ -25,7 +25,6 @@
             <h1>Reports</h1>
             <div class="card">
                 <div class="card-body">
-                    
                     <br>
                     <table class="table">
                         <thead>
@@ -33,6 +32,9 @@
                             <th>Quantity</th>
                             <th>Actions</th>
                         </thead>
+                    </table>
+                </div>
+            </div>
         </main>
     </div>
 

@@ -24,7 +24,6 @@
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"
                         required><br>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>
                     </div>
                 </form>

@@ -50,55 +50,58 @@
                                                 <a href="#remove{{ $product->id }}" data-bs-toggle="modal"
                                                     class="btn-danger" title="Remove"><i
                                                         class="bi bi-trash"></i>Remove</a>
+                                            </div>
                                         </td>
+                                    </tr>
+                                    @include('userpage.product.productmodal')
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                    </tr>
-                    @include('userpage.product.productmodal')
-            @endforeach
-            </tbody>
-            </table>
-    </div>
-    </section>
-    </main>
-    </div>
-@elseif (auth()->user()->type == 'customer')
-    <div id="grid-view" class="panel">
-        <div class="row">
-            @foreach ($products as $product)
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                    <div class="card card-profile">
-                        <div class="card-header justify-content-end pb-0">
-                            <div class="card-body pt-2">
-                                <div class="text-center">
-                                    <div class="profile-photo">
-                                        <img src="/assets/img/side-image.jpg" width="100"
-                                            class="img-fluid rounded circle">
+                </section>
+            @elseif (auth()->user()->type == 'customer')
+                <div id="grid-view" class="panel">
+                    <div class="row">
+                        @foreach ($products as $product)
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                <div class="card card-profile">
+                                    <div class="card-header justify-content-end pb-0">
+                                        <div class="card-body pt-2">
+                                            <div class="text-center">
+                                                <div class="profile-photo">
+                                                    <img src="/assets/img/side-image.jpg" width="100"
+                                                        class="img-fluid rounded circle">
+                                                </div>
+                                                <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
+                                                <p class="text-muted">₱{{ $product->unit_price }}</p>
+                                                <ul class="list-group mb-3 list-group-flush">
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span>Unit
+                                                            Price:</span><strong>₱{{ $product->unit_price }}</strong>
+                                                    </li>
+                                                    <li class="list-group-item px-0 d-flex justify-content-between">
+                                                        <span>Description:</span><strong>{{ $product->details }}</strong>
+                                                    </li>
+                                                </ul>
+                                                <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
+                                                    data-bs-toggle="modal" href="#view{{ $product->id }}">Read
+                                                    More</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h3 class="mt-4 mb-1">{{ $product->name }}</h3>
-                                    <p class="text-muted">₱{{ $product->unit_price }}</p>
-                                    <ul class="list-group mb-3 list-group-flush">
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Quantity:</span><strong>{{ $product->quantity }}</strong>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Unit Price:</span><strong>₱{{ $product->unit_price }}</strong>
-                                        </li>
-                                        <li class="list-group-item px-0 d-flex justify-content-between">
-                                            <span>Description:</span><strong>{{ $product->details }}</strong>
-                                        </li>
-                                    </ul>
-                                    <a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="">Read
-                                        More</a>
                                 </div>
                             </div>
-
-                        </div>
+                            @include('userpage.product.productmodal')
+                        @endforeach
                     </div>
                 </div>
-            @endforeach
-        </div>
+            @endif
+        </main>
     </div>
-    @endif
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>

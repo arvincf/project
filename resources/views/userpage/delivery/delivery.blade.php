@@ -12,15 +12,17 @@
         <main class="main-container">
             <section class="main-section">
                 @include('components.header')
-                <h1>Deliver</h1>
-                @if (auth()->user()->type == 'supplier')
-                    <div class="page-btn">
-                        <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adddeliver"><i
-                                class="bi bi-plus-lg"></i>Add Delivery
-                        </button>
-                    </div>
-                    @include('userpage.delivery.adddelivery')
-                @endif
+                <div class="header-dashboard-con">
+                    <h1>Deliver</h1>
+                    @if (auth()->user()->type == 'supplier')
+                        <div class="page-btn">
+                            <button type="button" class="btn-success" data-bs-toggle="modal"
+                                data-bs-target="#adddeliver"><i class="bi bi-plus-lg"></i>Add Delivery
+                            </button>
+                        </div>
+                        @include('userpage.delivery.adddelivery')
+                    @endif
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <table class="table">
@@ -51,8 +53,9 @@
                                             @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                                 <div class="action-btn">
                                                     @if ($deliver->status == 'On Deliver')
-                                                        <button type="button" href="#delivered{{ $deliver->id }}" class="btn btn-primary"
-                                                            title="Deliver" data-bs-toggle="modal">Deliver</button>
+                                                        <button type="button" href="#delivered{{ $deliver->id }}"
+                                                            class="btn btn-primary" title="Deliver"
+                                                            data-bs-toggle="modal">Deliver</button>
                                                     @endif
                                                 </div>
                                             @endif

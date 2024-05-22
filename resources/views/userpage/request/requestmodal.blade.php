@@ -26,10 +26,9 @@
                     </select><br>
                     <input type="hidden" name="status" value="Confirming...">
                     <label>Quantity</label><br>
-                    <input type="number" class="form-control" name="quantity" min="1"
+                    <input type="number" class="form-control" name="quantity" min="1" placeholder="Quantity"
                     onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;"><br>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Request Product</button>
                     </div>
                 </form>
@@ -64,7 +63,6 @@
                         pattern="[0-9]{11}" minlength="5" maxlength="5" min="1"
                         onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;" required><br>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success btn-sm">Deliver</button>
                     </div>
                 </form>

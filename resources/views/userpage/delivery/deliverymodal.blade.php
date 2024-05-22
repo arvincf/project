@@ -15,8 +15,7 @@
                     <h5 class="text-center">Product Name: {{ $deliver->product_name }}</h5>
                     <input type="hidden" name="status" value="Delivered">
                     <div class="modal-footer">
-                        <button type="button" class="btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn-success">Delivered</button>
+                        <button type="submit" class="btn-success">Deliver</button>
                     </div>
                 </form>
             </div>
