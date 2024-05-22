@@ -51,8 +51,8 @@
                                             @if (auth()->user()->type == 'admin' || auth()->user()->type == 'manager')
                                                 <div class="action-btn">
                                                     @if ($deliver->status == 'On Deliver')
-                                                        <a href="#delivered{{ $deliver->id }}" class="btn btn-primary"
-                                                            title="Deliver" data-bs-toggle="modal">Deliver</a>
+                                                        <button type="button" href="#delivered{{ $deliver->id }}" class="btn btn-primary"
+                                                            title="Deliver" data-bs-toggle="modal">Deliver</button>
                                                     @endif
                                                 </div>
                                             @endif

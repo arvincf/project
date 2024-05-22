@@ -11,7 +11,6 @@ use App\Http\Controllers\ReservationRecordController;
 use App\Http\Controllers\ReportsController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::controller(AuthenticationController::class)->group(function () {
     Route::view('/', 'homepage')->name('home');
     Route::view('/applicant/register-applicant', 'authentication.applicant.registerApplicant')->name('register.applicant');
@@ -30,7 +29,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
             Route::patch('/settings/{id}', 'updateSettings')->name('settings.update');
-
+            Route::get('/settings', 'settings')->name('setting');
+            Route::post('/generateExcelSalesData', 'generateExcelSalesData')->name('generate.sales.data');
+            Route::post('/generateExcelBeansData', 'generateExcelBeansData')->name('generate.beans.data');
         });
 
         Route::controller(ProductController::class)->name('product.')->group(function () {
@@ -63,6 +64,7 @@ Route::middleware('auth')->group(function () {
             Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');
             Route::delete('/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
             Route::patch('/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
+            Route::patch('/removeApplicant/{id}', 'disapprovedAccount')->name('applicant.remove');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {
@@ -87,7 +89,7 @@ Route::middleware('auth')->group(function () {
         Route::controller(MainController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
-            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update'); 
+            Route::patch('/settings/{id}', 'updateSettings')->name('settings.update');
         });
 
         Route::controller(ProductController::class)->name('product.')->group(function () {
@@ -135,6 +137,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
             Route::get('/settings', 'settings')->name('setting');
             Route::patch('/settings/{id}', 'updateSettings')->name('settings.update');
+            Route::post('/generateExcelSalesData', 'generateExcelSalesData')->name('generate.sales.data');
+            Route::post('/generateExcelBeansData', 'generateExcelBeansData')->name('generate.beans.data');
         });
 
         Route::controller(ProductController::class)->name('product.')->group(function () {
@@ -162,6 +166,7 @@ Route::middleware('auth')->group(function () {
             Route::patch('/manageusers/{id}', 'updateAccount')->name('manageusers.update');
             Route::delete('/manageusers/{id}', 'removeAccount')->name('manageusers.delete');
             Route::patch('/newapplicant/{id}', 'approveaccount')->name('newapplicant.update');
+            Route::patch('/removeApplicant/{id}', 'disapprovedAccount')->name('applicant.remove');
         });
 
         Route::controller(ReservationRecordController::class)->group(function () {

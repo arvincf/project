@@ -32,6 +32,7 @@ class UsersController extends Controller
     public function newapplicants()
     {
         $users = User::where('type', 'applicant')->simplePaginate(5);
+
         return view('userpage.useraccount.newapplicant', compact('users'));
     }
 
@@ -123,7 +124,7 @@ class UsersController extends Controller
 
         return response(['userData' => $userData]);
     }
-    
+
 
     public function getApplicant()
     {
@@ -139,7 +140,17 @@ class UsersController extends Controller
         $this->user->find($id)->update([
             'type' => trim($request->type),
         ]);
+
         return back()->with('success', 'User Updated!');
+    }
+
+    public function disapprovedAccount(Request $request, $id)
+    {
+        $this->user->find($id)->update([
+            'type' => trim($request->type),
+        ]);
+
+        return back()->with('success', 'User Refused!');
     }
 
     public function removeAccount($id)

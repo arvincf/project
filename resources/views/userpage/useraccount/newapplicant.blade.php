@@ -15,7 +15,8 @@
             <div class="card">
                 <div class="card-body">
                     <form class="form-inline d-flex">
-                        <input id="searchapplicantInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
+                        <input id="searchapplicantInput" name="name" class="form-control form-control-sm ml-3 w-75"
+                            type="text" placeholder="Search for ...">
                         <button class="btn btn-primary" id="searchApplicantBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <br></br>
@@ -44,15 +45,16 @@
                                             <a href="#approve{{ $user->id }}" class="btn-success" title="Approve"
                                                 data-bs-toggle="modal"><i class="bi bi-check-lg"></i>Approve
                                             </a>
-                                            <a href="" class="btn-danger" title="Disapproved"
+                                            <a href="#disapprove{{ $user->id }}" class="btn-danger" title="Disapproved"
                                                 data-bs-toggle="modal"><i class="bi bi-x-lg"></i>Disapproved
                                             </a>
                                         </div>
                                         @include('userpage.useraccount.approvemodal')
+                                        @include('userpage.useraccount.disapproveModal')
                                     </td>
                                     @include('userpage.useraccount.useraccountmodal')
                                 </tr>
-                                @empty
+                            @empty
                                 <tr>
                                     <td colspan="7" class="text-center">No Applicant found.</td>
                                 </tr>

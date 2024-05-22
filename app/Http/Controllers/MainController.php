@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CoffeeBeansExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -10,6 +11,8 @@ use App\Models\Delivery;
 use App\Models\Product;
 use App\Models\ProductReserve;
 use App\Models\User;
+use App\Exports\SalesExport;
+use Maatwebsite\Excel\Excel as FileFormat;
 
 class MainController extends Controller
 {
@@ -23,6 +26,34 @@ class MainController extends Controller
         $totalDelivery = Delivery::count();
 
         return view("userpage.dashboard", compact("totalUsers", "totalProducts", "totalreservation", "totalDelivery"));
+    }
+
+    public function generateExcelBeansData(Request $request)
+    {
+        $validation = Validator::make($request->all(), ['range' => 'required']);
+
+        if ($validation->fails()) {
+            return response(['status' => 'warning', 'message' => $validation->errors()->first()]);
+        }
+
+        return (new CoffeeBeansExport($request->range))
+            ->download('beans-data.xlsx', FileFormat::XLSX, [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ]);
+    }
+
+    public function generateExcelSalesData(Request $request)
+    {
+        $validation = Validator::make($request->all(), ['range' => 'required']);
+
+        if ($validation->fails()) {
+            return response(['status' => 'warning', 'message' => $validation->errors()->first()]);
+        }
+
+        return (new SalesExport($request->range))
+            ->download('sales-data.xlsx', FileFormat::XLSX, [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ]);
     }
 
     public function settings()

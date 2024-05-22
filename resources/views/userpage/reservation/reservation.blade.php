@@ -20,6 +20,7 @@
                         @csrf
                         <div class="product-widget">
                             <input type="text" name="productId" value="{{ $product->id }}" hidden>
+                            <input type="text" class="priceInput" value="{{ $product->unit_price }}" hidden>
                             <div class="product-image">
                                 <img src="{{ asset('assets/img/side-image.jpg') }}" alt="Image">
                             </div>
@@ -47,8 +48,30 @@
                                 </div>
                                 <div class="product-btn-container">
                                     <div class="reservation-btn-wrapper">
-                                        <button class="btn-reserve" title="Reserve"
+                                        <button type="button" class="btn-reserve" title="Reserve"
                                             {{ $product->quantity <= 0 ? 'disabled' : '' }}>Reserve</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="reservationModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success text-white">
+                                            <h5 class="modal-title">RESERVATION FORM</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="number" name="quantity" class="form-control quantity" hidden>
+                                            <label for="date">Date</label>
+                                            <input type="date" name="date" class="form-control" required>
+                                            <label for="price">Price</label>
+                                            <input type="number" name="total" class="form-control total"
+                                                placeholder="Price" required>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn-success">Reserve</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -94,6 +117,7 @@
                     }
                 }, 200); // Change the delay (in milliseconds) for the first decrement
             }
+
             $('.btn-add').click(function(e) {
                 e.preventDefault();
                 let productItem = $(this).closest('.product-widget'),
@@ -103,7 +127,7 @@
                 if (currentStock > 0) {
                     let quantityInput = productItem.find('#quantity'),
                         currentQuantity = parseInt(quantityInput.val());
-                        
+
                     productItem.find('#quantity').val((i, val) => +val + 1);
                     stockText.text(currentStock - 1);
                     updateReservationButton(productItem, currentStock - 1);
@@ -127,16 +151,21 @@
                 }
             });
 
-            $('.reservation-form').submit(function(e) {
-                e.preventDefault();
-                let quantityInput = $(this).find('#quantity'),
-                    reservationMsg = $(this).find('.reservation-msg');
+            $(document).on('click', '.btn-reserve', function() {
+                let quantityInput = $(this).closest('.product-widget').find('#quantity'),
+                    reservationMsg = $(this).closest('.product-widget').find('.reservation-msg');
 
                 if (quantityInput.val() === '') {
-                    // Display reservation alert
                     alert('Click the "+" button to have a reservation');
                 } else {
-                    $(this).unbind('submit').submit();
+                    let widget = $(this).closest('.product-widget');
+                    let quantity = widget.find('#quantity').val();
+                    let price = widget.find('.priceInput').val();
+
+                    $('#reservationModal').on('shown.bs.modal', function(e) {
+                        $(this).find('.total').val(quantity * price);
+                        $(this).find('.quantity').val(quantity);
+                    }).modal('show');
                 }
             });
 

@@ -6,19 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductRequest;
 use App\Models\User;
 use App\Models\Coffeebeans;
+use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RequestController extends Controller
 {
 
-    private $request, $user, $coffeebeans;
+    private $delivery, $request, $user, $coffeebeans;
 
     public function __construct()
     {
         $this->request = new ProductRequest;
         $this->user = new User;
         $this->coffeebeans = new Coffeebeans;
+        $this->delivery = new Delivery;
 
     }
     public function displayrequestProduct()
@@ -65,10 +67,19 @@ class RequestController extends Controller
 
     public function updatestatus(Request $request, $id)
     {
+        $this->delivery->create([
+            'supplier_name' => trim($request->supplierName),
+            'quantity' => trim($request->quantity),
+            'product_name' => trim($request->product_name),
+            'status' => "On Deliver",
+            'delivery_date' => $request->delivery_date
+        ]);
+
         $this->request->find($id)->update([
             'status' => trim($request->status),
             'supplier_name' => trim($request->supplierName)
         ]);
+
         return back()->with('success', 'Request Confirmed!');
     }
     
