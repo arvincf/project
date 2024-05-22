@@ -12,13 +12,17 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <h1>Products</h1>
+            <div class="header-dashboard-con">
+                <h1>Products</h1>
+                @if (auth()->user()->type == 'manager' || auth()->user()->type == 'admin')
+                    <div class="page-btn">
+                        <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
+                                class="bi bi-plus-lg"></i>Add Product
+                        </button>
+                    </div>
+                @endif
+            </div>
             @if (auth()->user()->type == 'manager' || auth()->user()->type == 'admin')
-                <div class="page-btn">
-                    <button type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#addproduct"><i
-                            class="bi bi-plus-lg"></i>Add Product
-                    </button>
-                </div>
                 <section class="card">
                     <div class="card-body">
                         <table class="table">
@@ -46,16 +50,16 @@
                                                 <a href="#remove{{ $product->id }}" data-bs-toggle="modal"
                                                     class="btn-danger" title="Remove"><i
                                                         class="bi bi-trash"></i>Remove</a>
-                                                </td>
-                                            </div>
-                                    </tr>
-                                    @include('userpage.product.productmodal')
-                                @endforeach
-                            </tbody>
-                        </table>
+                                        </td>
                     </div>
-                </section>
-        </main>
+                    </tr>
+                    @include('userpage.product.productmodal')
+            @endforeach
+            </tbody>
+            </table>
+    </div>
+    </section>
+    </main>
     </div>
 @elseif (auth()->user()->type == 'customer')
     <div id="grid-view" class="panel">

@@ -11,21 +11,25 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
-            <h1>Users Account</h1>
-            <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
-                <i class="bi bi-plus-lg"></i>Create User
-            </button><br><br>
+            <div class="header-dashboard-con">
+                <h1>Users Account</h1>
+                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#adduser">
+                    <i class="bi bi-plus-lg"></i>Create User
+                </button>
+            </div>
+            <br>
             <div class="user-table-body"></div>
             @include('userpage.useraccount.createaccountmodal')
             <div class="card">
                 <div class="card-body">
                     <form class="form-inline d-flex">
-                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for ...">
+                        <input id="searchInput" name="name" class="form-control form-control-sm ml-3 w-75"
+                            type="text" placeholder="Search for ...">
                         <button class="btn btn-primary" id="searchUserBtn"><i class="bi bi-search"></i></button>
                     </form>
                     <br></br>
                     <table class="table">
-                        <thead> 
+                        <thead>
                             <th>User Type</th>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -125,7 +129,7 @@
 
     document.addEventListener("DOMContentLoaded", function() {
         var reportNavItem = document.querySelector('.nav-item a[href="{{ route('manager.manageusers') }}"]');
-        
+
         reportNavItem.closest('.nav-item').classList.add('active');
     });
 </script>
@@ -142,7 +146,8 @@
         var age = currentDate.getFullYear() - birthDate.getFullYear();
 
         // Adjust the age if the birthday hasn't occurred yet this year
-        if (currentDate.getMonth() < birthDate.getMonth() || (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() < birthDate.getDate())) {
+        if (currentDate.getMonth() < birthDate.getMonth() || (currentDate.getMonth() === birthDate.getMonth() &&
+                currentDate.getDate() < birthDate.getDate())) {
             age--;
         }
 
@@ -150,4 +155,3 @@
         document.getElementById('ageInput' + userId).value = age;
     }
 </script>
-

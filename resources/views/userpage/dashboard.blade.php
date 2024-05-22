@@ -28,21 +28,25 @@
                         <br>
                     </div>
                 @elseif(auth()->user()->type == 'admin')
-                    <h1 class="fw-medium">Dashboard,</h1>
+                    <div class="header-dashboard-con">
+                        <h1 class="fw-medium">Dashboard,</h1>
+                        <div class="generate-btn-con">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateSalesModal"
+                                class="btn btn-success generateBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Sales Data
+                            </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateBeansModal"
+                                class="btn btn-success generateBeansBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Coffee Beans Data
+                            </button>
+                        </div>
+                    </div>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         Welcome to Inventory Management.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#generateSalesModal"
-                        class="btn btn-success generateBtn">
-                        <i class="bi bi-printer"></i>
-                        Generate Sales Data
-                    </button>
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#generateBeansModal"
-                        class="btn btn-success generateBeansBtn">
-                        <i class="bi bi-printer"></i>
-                        Generate Coffee Beans Data
-                    </button>
                     <div class="modal fade" id="generateSalesModal" data-bs-backdrop="static" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -158,10 +162,20 @@
                     <p>We will just email you to your account: <a
                             href="mailto:{{ auth()->user()->email }}">{{ auth()->user()->email }}</a>.</p>
                 @elseif(auth()->user()->type == 'manager')
-                    <h1 class="fw-medium">Dashboard,</h1>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        Welcome to Inventory Management.
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <div class="header-dashboard-con">
+                        <h1 class="fw-medium">Dashboard,</h1>
+                        <div class="generate-btn-con">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateSalesModal"
+                                class="btn btn-success generateBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Sales Data
+                            </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateBeansModal"
+                                class="btn btn-success generateBeansBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Coffee Beans Data
+                            </button>
+                        </div>
                     </div>
                     <section class="wigdet-container">
                         <div class="widget">
@@ -236,7 +250,7 @@
 
             generateBeansBtn.click((e) => {
                 e.preventDefault();
-                
+
                 $.ajax({
                     type: "POST",
                     url: '{{ route(auth()->user()->type == 'admin' ? 'admin.generate.beans.data' : 'manager.generate.beans.data') }}',
@@ -263,7 +277,7 @@
 
             generateBtn.click((e) => {
                 e.preventDefault();
-                
+
                 $.ajax({
                     type: "POST",
                     url: '{{ route(auth()->user()->type == 'admin' ? 'admin.generate.sales.data' : 'manager.generate.sales.data') }}',
