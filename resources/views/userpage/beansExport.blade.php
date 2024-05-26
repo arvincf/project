@@ -16,7 +16,7 @@
                 <th>COFFEE NAME</th>
                 <th>SUPPLIER NAME</th>
                 <th>QUANTITY</th>
-                <th>DATE</th>
+                <th>PERIOD START</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                 <tr>
                     <td data-column="Coffee Name">{{ $beans->coffee_name }}</td>
                     <td data-column="Supplier Name">{{ $beans->supplier_name }}</td>
-                    <td data-column="Quantity">{{ $beans->quantity }}</td>
-                    <td data-column="Date">{{ \Carbon\Carbon::parse($beans->date)->format('F j, Y') }}</td>
+                    <td data-column="Quantity">{{ $beans->total_quantity }}</td>
+                    <td data-column="Date">{{ \Carbon\Carbon::parse($beans->period_start)->format('F j, Y') }}</td>
             @endforeach
         </tbody>
     </table>

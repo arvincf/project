@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\Coffeebeans;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromView;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -25,33 +26,45 @@ class CoffeeBeansExport implements FromView, ShouldAutoSize, WithStyles, WithDef
     public function __construct($range)
     {
         $this->beans = new Coffeebeans;
-        $now = Carbon::now();
 
         switch ($range) {
             case 'weekly':
-                $start = $now->startOfWeek()->toDateString();
-                $end = $now->endOfWeek()->toDateString();
+                $this->groupedBeans = DB::select("
+                        SELECT coffee_name, supplier_name,
+                            MAX(period_start) AS period_start,
+                            SUM(total_quantity) AS total_quantity
+                        FROM (
+                            SELECT coffee_name, supplier_name,
+                                DATE_FORMAT(created_at - INTERVAL (WEEKDAY(created_at)) DAY, '%Y-%m-%d') AS period_start,
+                                SUM(quantity) AS total_quantity
+                            FROM coffeebeans
+                            GROUP BY coffee_name, supplier_name, period_start
+                        ) AS subquery
+                        GROUP BY coffee_name, supplier_name
+                    ");
                 break;
 
             case 'monthly':
-                $start = $now->startOfMonth()->toDateString();
-                $end = $now->endOfMonth()->toDateString();
+                $this->groupedBeans = $this->beans
+                    ->select('coffee_name', 'supplier_name', DB::raw('DATE_FORMAT(created_at, "%Y-%m-01") AS period_start'), DB::raw('SUM(quantity) AS total_quantity'))
+                    ->groupBy('coffee_name', 'supplier_name', DB::raw('DATE_FORMAT(created_at, "%Y-%m-01")'))
+                    ->orderBy('period_start')
+                    ->get();
                 break;
 
             case 'annually':
-                $start = $now->startOfYear()->toDateString();
-                $end = $now->endOfYear()->toDateString();
-                break;
-
-            default:
-                $start = $now->startOfWeek()->toDateString();
-                $end = $now->endOfWeek()->toDateString();
+                $this->groupedBeans = $this->beans
+                    ->select(
+                        'coffee_name',
+                        'supplier_name',
+                        DB::raw('YEAR(created_at) AS period_start'),
+                        DB::raw('SUM(quantity) AS total_quantity')
+                    )
+                    ->groupBy('coffee_name', 'supplier_name', DB::raw('YEAR(created_at)'))
+                    ->orderBy('period_start')
+                    ->get();
                 break;
         };
-
-        $this->groupedBeans = $this->beans
-            ->whereBetween('created_at', [$start, $end])
-            ->get();
     }
 
     public function view(): View
