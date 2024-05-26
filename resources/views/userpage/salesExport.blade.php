@@ -13,21 +13,18 @@
     <table class="table">
         <thead>
             <tr>
-                <th>CUSTOMER NAME</th>
                 <th>PRODUCT NAME</th>
-                <th>PRODUCT QUANTITY</th>
-                <th>PRICE</th>
-                <th>DATE</th>
+                <th>PERIOD START</th>
+                <th>TOTAL COST</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($groupedSales as $sale)
                 <tr>
-                    <td data-column="Customer Name">{{ $sale->customer_name }}</td>
                     <td data-column="Product Name">{{ $sale->product_name }}</td>
-                    <td data-column="Product Quantity">{{ $sale->product_quantity }}</td>
-                    <td data-column="Price">{{ $sale->price }}</td>
-                    <td data-column="Date">{{ \Carbon\Carbon::parse($sale->date)->format('F j, Y') }}</td>
+                    <td data-column="Date">{{ \Carbon\Carbon::parse($sale->period_start)->format('F j, Y') }}</td>
+                    <td data-column="Total Cost">{{ $sale->total_cost }}</td>
+                </tr>
             @endforeach
         </tbody>
     </table>
