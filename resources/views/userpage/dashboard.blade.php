@@ -177,6 +177,72 @@
                             </button>
                         </div>
                     </div>
+                    <div class="modal fade" id="generateSalesModal" data-bs-backdrop="static" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-label">Generate Excel Sales</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" id="generateSalesForm">
+                                        @csrf
+                                        <div class="form-content">
+                                            <div class="field-container">
+                                                <label for="disaster_name">Range</label>
+                                                <select class="form-control form-select" name="range" required>
+                                                    <option value="" selected disabled hidden>Select Range
+                                                    </option>
+                                                    <option value="weekly">Weekly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                    <option value="annually">Annualy</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-button-container">
+                                                <button class="btn-success modalBtn" id="btnSubmit">
+                                                    Generate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="generateBeansModal" data-bs-backdrop="static" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-label">Generate Excel Coffee Beans</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" id="generateBeansForm">
+                                        @csrf
+                                        <div class="form-content">
+                                            <div class="field-container">
+                                                <label for="disaster_name">Range</label>
+                                                <select class="form-control form-select" name="range" required>
+                                                    <option value="" selected disabled hidden>Select Range
+                                                    </option>
+                                                    <option value="weekly">Weekly</option>
+                                                    <option value="monthly">Monthly</option>
+                                                    <option value="annually">Annualy</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-button-container">
+                                                <button class="btn-success modalBtn" id="beansBtnSubmit">
+                                                    Generate
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <section class="wigdet-container">
                         <div class="widget">
                             <div class="widget-logo-user">
