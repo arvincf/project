@@ -164,6 +164,18 @@
                 @elseif(auth()->user()->type == 'manager')
                     <div class="header-dashboard-con">
                         <h1 class="fw-medium">Dashboard,</h1>
+                        <div class="generate-btn-con">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateSalesModal"
+                                class="btn btn-success generateBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Sales Data
+                            </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#generateBeansModal"
+                                class="btn btn-success generateBeansBtn">
+                                <i class="bi bi-printer"></i>
+                                Generate Coffee Beans Data
+                            </button>
+                        </div>
                     </div>
                     <section class="wigdet-container">
                         <div class="widget">

@@ -142,12 +142,6 @@
                     <span>Sales </span>
                 </a>
             </div>
-            <div class="nav-item">
-                <a href="{{ route('manager.report')}}">
-                    <i class="bi bi-graph-up"></i>
-                    <span>Reports</span>
-                </a>
-            </div>
             @endif
         </div>
     </div>
