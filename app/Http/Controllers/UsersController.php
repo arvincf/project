@@ -38,7 +38,7 @@ class UsersController extends Controller
 
     public function disapproveapplicant()
     {
-        $users = User::where('status', 'disapprove')->simplePaginate(5);
+        $users = User::where('type', 'disapprove')->simplePaginate(5);
         return view('userpage.useraccount.applicantrecords', compact('users'));
     }
 

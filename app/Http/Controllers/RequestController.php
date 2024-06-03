@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductRequest;
 use App\Models\User;
 use App\Models\Coffeebeans;
+use App\Models\Product;
 use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RequestController extends Controller
 {
 
-    private $delivery, $request, $user, $coffeebeans;
+    private $delivery, $request, $user, $coffeebeans, $product;
 
     public function __construct()
     {
@@ -21,6 +23,7 @@ class RequestController extends Controller
         $this->user = new User;
         $this->coffeebeans = new Coffeebeans;
         $this->delivery = new Delivery;
+        $this->product = new Product;
 
     }
     public function displayrequestProduct()
@@ -87,5 +90,49 @@ class RequestController extends Controller
     {
         $coffeebeans = $this->coffeebeans->all();
         return view('userpage.rawmat.coffeebeans', compact('coffeebeans'));
+    }
+
+    public function addcoffeebeans(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'coffee_name' => 'required',
+            'supplier_name' => 'required',
+            'quantity' => 'required',
+            'date' => 'required'
+        ]);
+
+        if ($validation->fails()) {
+            return back()->withInput()->with('warning', $validation->errors()->first());
+        }
+
+        $this->coffeebeans->create([
+            'coffee_name' => trim($request->coffee_name),
+            'supplier_name' => trim($request->supplier_name),
+            'quantity' => trim($request->quantity),
+            'date' => $request->date
+        ]);
+
+        return back()->with('success', "Product successfully added!");
+    }
+
+    public function updatecoffeebeans(Request $request, $id)
+    {
+        $product = Product::findOrFail($request->product_id);
+    $productQuantity = $request->prodquantity;
+
+    // Update product quantity
+    $product->update([
+        'quantity' => $product->quantity + $productQuantity
+    ]);
+
+    // Update coffee bean quantity
+    $coffeebean = Coffeebeans::findOrFail($product->id);
+    $coffeebean->update([
+        'quantity' => $coffeebean->quantity - $productQuantity
+    ]);
+
+    // Other necessary operations
+
+    return back()->with('success', 'Product stored successfully!');
     }
 }

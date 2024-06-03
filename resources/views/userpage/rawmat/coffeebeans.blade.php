@@ -11,7 +11,14 @@
         @include('components.dropdown')
         <main class="main-container">
             @include('components.header')
+            <div class="header-dashboard-con">
             <h1>Stored Beans</h1>
+            <div class="page-btn">
+                <button type="button" class="btn-success" data-bs-toggle="modal" data-bs-target="#createbeans"><i
+                        class="bi bi-plus-lg"></i>ADD BEANS
+                </button>
+            </div>
+            </div>
             <hr>
             <div id="grid-view" class="panel">
                 <div class="row">
@@ -47,6 +54,7 @@
                             </div>
                             @include('userpage.rawmat.coffeebeanmodal')
                         </div>
+                        @include('userpage.rawmat.createbeans')
                     @endforeach
                 </div>
             </div>

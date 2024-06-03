@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
             Route::get('/displayrequestproduct', 'displayrequestProduct')->name('request');
             Route::post('/addrequestproduct', 'addrequest')->name('request.add');
             Route::get('/displaybeans', 'displaybeans')->name('coffeebeans');
+            Route::post('/createbeans', 'addcoffeebeans')->name('beans.add');
+            Route::patch('/displaybeans/{id}', 'updatecoffeebeans')->name('beans.update');
         });
 
         Route::controller(UsersController::class)->group(function () {
@@ -183,6 +185,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/requestproduct', 'displayrequestProduct')->name('request');
             Route::post('/addrequestproduct', 'addrequest')->name('request.add');
             Route::get('/displaybeans', 'displaybeans')->name('coffeebeans');
+            Route::post('/createbeans', 'addcoffeebeans')->name('beans.add');
         });
 
         Route::controller(ReportsController::class)->group(function () {

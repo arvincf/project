@@ -67,7 +67,7 @@
                                             <input type="date" name="date" class="form-control" required>
                                             <label for="price">Price</label>
                                             <input type="number" name="total" class="form-control total"
-                                                placeholder="Price" required>
+                                                placeholder="Price" readonly>
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn-success">Reserve</button>
                                             </div>

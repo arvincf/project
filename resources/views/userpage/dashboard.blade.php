@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('admin.reservationrecord') }}" style="color:black;//">
+                        <a href="{{ route('admin.reservationrecord') }}" style="color:black;">
                             <div class="widget">
                                 <div class="widget-logo-product">
                                     <i class="bi bi-list-ul"></i>
@@ -145,7 +145,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('admin.delivery.display') }}" style="color:black;//">
+                        <a href="{{ route('admin.delivery.display') }}" style="color:black;">
                             <div class="widget">
                                 <div class="widget-logo-sales">
                                     <i class="bi bi-cash"></i>
@@ -275,7 +275,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('manager.delivery') }}" style="color:black;//">
+                        <a href="{{ route('manager.delivery') }}" style="color:black;">
                             <div class="widget">
                                 <div class="widget-logo-sales">
                                     <i class="bi bi-cash"></i>

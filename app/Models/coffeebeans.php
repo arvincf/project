@@ -15,6 +15,7 @@ class Coffeebeans extends Model
 
     protected $fillable = [
         "coffee_name",
+        "supplier_name",
         "quantity",
         "date"
     ];
