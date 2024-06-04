@@ -38,7 +38,15 @@
                                 @foreach ($products as $product)
                                     <tr>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->quantity }}</td>
+                                        <td>
+                                            @if ($product->quantity <= 3)
+                                                <span class="text-danger">{{ $product->quantity }}</span>
+                                                <!-- Add notification for critical stock -->
+                                                <span class="badge bg-danger">Critical</span>
+                                            @else
+                                                {{ $product->quantity }}
+                                            @endif
+                                        </td>
                                         <td>₱{{ $product->unit_price }}</td>
                                         <td>{{ \Carbon\Carbon::parse($product->date_of_storing)->format('F j, Y') }}
                                         </td>

@@ -57,7 +57,11 @@
                 </div>
                 <div class="field-container">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+                </div>
+                <div class="field-container">
+                    <label for="confirm_password" class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" required>
                 </div>
                 <div class="authentication-button-container">
                     <a href="{{ route('home') }}" class="btn-danger">Back</a>
@@ -65,58 +69,72 @@
                 </div>
             </form>
         </section>
-    </,>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
     @include('partials.toastr-script')
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var passwordInput = document.getElementById("password");
+            var confirmPasswordInput = document.getElementById("confirm_password");
+
+            function validatePassword() {
+                if (passwordInput.value != confirmPasswordInput.value) {
+                    confirmPasswordInput.setCustomValidity("Passwords do not match");
+                } else {
+                    confirmPasswordInput.setCustomValidity("");
+                }
+            }
+
+            passwordInput.addEventListener("change", validatePassword);
+            confirmPasswordInput.addEventListener("input", validatePassword);
+        });
+
+        var currentDate = new Date();
+        var maxDate = new Date(currentDate);
+        maxDate.setFullYear(maxDate.getFullYear() - 18); // 18 years ago
+
+        var minDate = new Date(currentDate);
+        minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
+
+        // Format dates for input
+        var formattedMaxDate = maxDate.toISOString().split('T')[0];
+        var formattedMinDate = minDate.toISOString().split('T')[0];
+
+        // Set minimum and maximum dates for the input field
+        document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
+        document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
+
+        // Function to generate a random password
+        function randomPassword(length) {
+            var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var password = "";
+            for (var i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return password;
+        }
+
+        // Set the generated password to the password input field when the form is submitted
+        document.addEventListener("submit", function(event) {
+            var passwordInput = document.getElementById("password");
+            passwordInput.value = randomPassword(8); // Generate an 8-character random password
+        });
+
+        function calculateAge() {
+            var birthday = new Date(document.getElementById('birthdayInput').value);
+            var today = new Date();
+            var age = today.getFullYear() - birthday.getFullYear();
+            var monthDiff = today.getMonth() - birthday.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+                age--;
+            }
+            document.getElementById('ageInput').value = age;
+        }
+    </script>
 </body>
 
 </html>
-
-<script>
-    var currentDate = new Date();
-    var maxDate = new Date(currentDate);
-    maxDate.setFullYear(maxDate.getFullYear() - 18); // 18 years ago
-
-    var minDate = new Date(currentDate);
-    minDate.setFullYear(minDate.getFullYear() - 70); // 70 years ago
-
-    // Format dates for input
-    var formattedMaxDate = maxDate.toISOString().split('T')[0];
-    var formattedMinDate = minDate.toISOString().split('T')[0];
-
-    // Set minimum and maximum dates for the input field
-    document.getElementById("birthdayInput").setAttribute("max", formattedMaxDate);
-    document.getElementById("birthdayInput").setAttribute("min", formattedMinDate);
-
-
-    // Function to generate a random password
-    function randomPassword(length) {
-        var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        var password = "";
-        for (var i = 0; i < length; i++) {
-            password += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return password;
-    }
-
-    // Set the generated password to the password input field when the form is submitted
-    document.getElementById("userForm").addEventListener("submit", function(event) {
-        var passwordInput = document.getElementById("password");
-        passwordInput.value = randomPassword(8); // Generate an 8-character random password
-    });
-
-    function calculateAge() {
-        var birthday = new Date(document.getElementById('birthdayInput').value);
-        var today = new Date();
-        var age = today.getFullYear() - birthday.getFullYear();
-        var monthDiff = today.getMonth() - birthday.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
-            age--;
-        }
-        document.getElementById('ageInput').value = age;
-    }
-
-</script>

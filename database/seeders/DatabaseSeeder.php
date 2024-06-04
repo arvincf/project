@@ -99,6 +99,24 @@ class DatabaseSeeder extends Seeder
             "date_of_storing" => "2023-03-12"
         ]);
 
+        Product::create([
+            "id" => 3,
+            "name" =>  "Powdered Arabica",
+            "quantity" => 5,
+            "unit_price" => 50,
+            "details" => "Lorem ipsum",
+            "date_of_storing" => "2023-03-12"
+        ]);
+
+        Product::create([
+            "id" => 4,
+            "name" =>  "Brewed Robusta",
+            "quantity" => 100,
+            "unit_price" => 50,
+            "details" => "Lorem ipsum",
+            "date_of_storing" => "2023-03-12"
+        ]);
+
         Delivery::create([
             "id" => 1,
             "supplier_name" => "Jochelle Mae",
