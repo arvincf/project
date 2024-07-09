@@ -82,6 +82,7 @@
         $(document).ready(() => {
     let pressTimer;
     let longPressDuration = 500;
+    
 
     function startIncrement(productItem, stockText) {
         pressTimer = setInterval(function() {
@@ -154,12 +155,12 @@
             let price = widget.find('.priceInput').val();
 
             let currentDate = new Date();
-            let threeDaysLater = new Date(currentDate.setDate(currentDate.getDate() + 3));
+            let threeDaysLater = new Date(currentDate.setDate(currentDate.getDate() + 4));
             let formattedDate = threeDaysLater.toISOString().split('T')[0];
             $('#reservationModal').on('shown.bs.modal', function(e) {
                 $(this).find('.total').val(quantity * price);
                 $(this).find('.quantity').val(quantity);
-                $(this).find('[name="date"]').attr('min', formattedDate);
+                $(this).find('[name="date"]').attr(formattedDate);
             }).modal('show');
         }
     });

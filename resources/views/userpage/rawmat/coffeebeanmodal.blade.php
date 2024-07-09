@@ -18,14 +18,17 @@
                     <select name="prodquantity" required>
                         <option disabled selected hidden value="">Unit</option>
                         <!-- Options for quantities from 1 to 25 -->
-                        @for ($i = 1; $i <= 25; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
+                        @for ($i = 1; $i <= 25; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
                     </select>
                     KG<br>
                     <label><b>Quantity: </b></label>
-                    <input type="number" class="form-control" name="quantity" min="1" onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
+                    <input type="number" class="form-control" name="quantity" min="1"
+                        onkeypress="return (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 8;">
                     <label><b>Expiration Date:</b></label>
-                    <input type="date" id="ExipiredInput" name="expdate" class="form-control" required><br>
+                    <input type="date" id="ExipiredInput" name="expdate" class="form-control" required
+                        min="{{ date('Y-m-d', strtotime('+6 years')) }}"><br>
                     <br><br>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

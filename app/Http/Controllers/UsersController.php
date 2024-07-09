@@ -20,6 +20,7 @@ class UsersController extends Controller
         $users = User::where('id', '!=', auth()->user()->id)
             ->where('type', '!=', 'manager')
             ->where('type', '!=', 'applicant')
+            ->where('type', '!=', 'disapprove')
             ->simplePaginate(5);
 
         if (request()->ajax()) {
