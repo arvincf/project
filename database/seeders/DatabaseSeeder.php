@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\coffeebeans;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Delivery;
 use App\Models\Sales;
+use App\Models\CoffeeBeans;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
             "delivery_date" => "2023-09-15",
         ]);
 
-        Coffeebeans::create([
+        CoffeeBeans::create([
             "id" => 1,
             "coffee_name" =>  "Arabica",
             "supplier_name" => "Jochelle Mae",
@@ -143,7 +143,7 @@ class DatabaseSeeder extends Seeder
             "date" => "2023-12-15"
         ]);
 
-        Coffeebeans::create([
+        CoffeeBeans::create([
             "id" => 2,
             "coffee_name" =>  "Robusta",
             "supplier_name" => "Jochelle Mae",
